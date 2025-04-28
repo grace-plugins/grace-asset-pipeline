@@ -37,11 +37,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
     compileOnly "org.graceframework:grace-boot"
     implementation "org.graceframework:grace-web-common"
     implementation "org.graceframework:grace-web-taglib"
-    // implementation "org.graceframework:grace-web-url-mappings"
     implementation project(':asset-pipeline-core'), {
         exclude group:'org.mozilla', module:'rhino'
         exclude group:'com.google.javascript', module:'closure-compiler-unshaded'
@@ -73,6 +71,17 @@ publishing {
                 classifier: "plugin",
                 extension: 'xml'
 
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+
+            from components.java
+
             pom {
                 name = 'Grace Asset Pipeline I18n Plugin'
                 description = 'The Grace Asset-Pipeling plugin to use localized messages in JavaScript.'
@@ -96,8 +105,6 @@ publishing {
                     }
                 }
             }
-
-            from components.java
         }
     }
 }
