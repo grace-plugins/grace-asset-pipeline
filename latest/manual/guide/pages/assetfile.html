@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>6.1 Asset File Definitions 6.3.0-RC2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/grace.html">&lt;&lt; <strong>5</strong><span>Grace</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+
+
+                <div class="project">
+                    <h1>6.1 Asset File Definitions</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-RC2</p>
+                </div>
+
+                
+
+                
+
+<h2 id="assetfile"><a class="anchor" href="#assetfile"></a>6.1 Asset File Definitions</h2>
+
+
+<div class="sect2">
+<h3 id="_asset_file_definition">Asset File Definition</h3>
+<div class="paragraph">
+<p>The <code>AssetFile</code> definition is where our journey begins. This is the defining file for various file types. Without this definition, the asset-pipeline will treat an unknown file type as a standard passthrough resource. As an example, lets first look at the <code>CssAssetFile</code> definition.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CssAssetFile</span> <span class="directive">extends</span> AbstractAssetFile {
+  <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> contentType = <span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span>
+  <span class="directive">static</span> extensions = [<span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>]
+  <span class="directive">static</span> compiledExtension = <span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>
+  <span class="directive">static</span> processors = [CssProcessor]
+
+  <span class="predefined-type">String</span> directiveForLine(<span class="predefined-type">String</span> line) {
+    line.find(<span class="regexp"><span class="delimiter">/</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span>) { fullMatch, directive -&gt; <span class="keyword">return</span> directive }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file definition is pretty short but allows us to define some very useful information. First, we look at the static definitions at the top of the class. These static definitions are fairly easy to meta-override with Groovy and add additional processors or adjust with added plugins.</p>
+</div>
+<div class="paragraph">
+<p>The <code>contentType</code> property is used to match a file definition with an incoming file request. When the browser requests a <code>text/css</code> content-type file , this file is matched and files matching this definition are scanned. The <code>extensions</code> list tells asset-pipeline which file extensions to scan through and match. In this case it is just 'css', but in the case of LESS for example, we may be looking for extensions <code>less</code>, or <code>css.less</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>compiledExtension</code> property tells asset-pipelines precompiler what the final file extension should be.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>processors</code> array determines the list of processors that need be run on the file contents before returning a result. This array is executed in order. In this case, we have the <code>CssProcessor</code> (a processor for converting the relative image paths and replacing with their cache digested version).</p>
+</div>
+<div class="sect3">
+<h4 id="_directive_definition">Directive Definition</h4>
+<div class="paragraph">
+<p>An <code>assetFile</code> can specify a REGEXP pattern for require directives. These directives are used to bundle assets together. Some file types don&#8217;t utilize these require directives and simply returning a null value will cancel directive processing.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">  <span class="predefined-type">Pattern</span> directivePattern = ~<span class="regexp"><span class="delimiter">/</span><span class="content">(?m)</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Used to there was a <code>directiveForLine</code> that matched on each individual line. This was changed to support a multiline regex pattern for faster processing.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The example above shows a match pattern for CSS files. This allows it to match require directives for the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">/*
+*= require_self
+*= require_file example_b
+*= require_tree .
+*/</span>
+
+body {
+  margin-<span class="key">top</span>:<span class="integer">25</span>px;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_processing_data_streams">Processing Data Streams</h4>
+<div class="paragraph">
+<p>Processors are used to precompile certain assets, and/or adjust the file path contents. The Processor class itself will get a more in depth explanation in the next section. For now, the part we want to look at is the processedStream function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> processedStream(<span class="predefined-type">Boolean</span> precompiler) {
+  <span class="keyword">def</span> fileText
+  <span class="keyword">def</span> skipCache = precompiler ?: (!processors || processors.size() == <span class="integer">0</span>)
+
+  <span class="keyword">if</span>(baseFile?.encoding || encoding) {
+    fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
+  } <span class="keyword">else</span> {
+    fileText = file?.text
+  }
+
+  <span class="keyword">def</span> md5 = AssetHelper.getByteDigest(fileText.bytes)
+  <span class="keyword">if</span>(!skipCache) {
+    <span class="keyword">def</span> cache = CacheManager.findCache(file.canonicalPath, md5)
+    <span class="keyword">if</span>(cache) {
+      <span class="keyword">return</span> cache
+    }
+  }
+  <span class="keyword">for</span>(processor <span class="keyword">in</span> processors) {
+    <span class="keyword">def</span> processInstance = processor.newInstance(precompiler)
+    fileText = processInstance.process(fileText, <span class="local-variable">this</span>)
+  }
+
+  <span class="keyword">if</span>(!skipCache) {
+    CacheManager.createCache(file.canonicalPath,md5,fileText)
+  }
+
+  <span class="keyword">return</span> fileText
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example above iterates over all of the processor classes defined in our static <code>processors</code> variable. This creates a new instance and informs the processor whether this is a developer mode request or being issued by the precompiler (useful for determining if file replacements need to be cache digested or not). The <code>processedStream</code> method is now a part of the <code>AbstractAssetFile</code> definition and handles cache management if there are processors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_the_asset_definiton_to_the_list_of_assetfiles">Adding the Asset definiton to the list of AssetFiles</h4>
+<div class="paragraph">
+<p>Originally we had to add these classes on startup in both runtime and build phases to the <code>AssetHelper.assetSpecs</code> array. Thanks to contributions by Graeme Rocher we have been able to simplify this process.
+Simply adding a list file <code>META-INF/asset-pipeline/asset.specs</code> to the classpath will automatically get scanned.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.HtmlAssetFile
+asset.pipeline.JsAssetFile
+asset.pipeline.CssAssetFile</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another autoscanning file allows us to tack on Processors to already registered AssetFile specifications. This is called the <code>processor.specs</code> file and goes in the same <code>META-INF/asset-pipeline</code> folder.
+This is a Properties file with the key being the class path of the Processor and the value being a comma delimited list of <code>AssetFile</code> classes you want the processor added to.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.CssProcessor=asset.pipeline.CssAssetFile,asset.pipeline.LessAssetFile</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/grace.html">&lt;&lt; <strong>5</strong><span>Grace</span></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

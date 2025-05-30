@@ -1,0 +1,977 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>2.1 What's new in 6.x 6.3.0-RC2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>2.1 What's new in 6.x</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-RC2</p>
+                </div>
+
+                
+
+                
+
+<h2 id="release6"><a class="anchor" href="#release6"></a>2.1 What's new in 6.x</h2>
+
+
+<div class="sect2">
+<h3 id="_6_3_0_rc2">6.3.0-RC2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Correct branch 6.3.x for docs workflow</p>
+</li>
+<li>
+<p>Cleanup documentation dependencies</p>
+</li>
+<li>
+<p>Update docs workflow - Update event paths</p>
+</li>
+<li>
+<p>Update docs - Add releases</p>
+</li>
+<li>
+<p>Generate docs for release workflow</p>
+</li>
+<li>
+<p>Setup github docs workflow</p>
+</li>
+<li>
+<p>Refine documentation * Using Gradle task: org.graceframework.grace-doc</p>
+</li>
+<li>
+<p>Remove duplicated documentation in the asset-pipeline-plugin/src/docs</p>
+</li>
+<li>
+<p>Reorganize asset-pipeline-docs/docs <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/64">#64</a></p>
+</li>
+<li>
+<p>Remove unused asset-pipeline-site <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/63">#63</a></p>
+</li>
+<li>
+<p>Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.3.0-RC2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/61">#61</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-RC1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/60">#60</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 8.14 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/62">#62</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_3_0_rc1">6.3.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update README Update badge versions of Grace and Spring Boot</p>
+</li>
+<li>
+<p>Streamline Gradle build scripts: using the Spring Dependency Management Plugin to manage dependencies and versions <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/58">#58</a></p>
+</li>
+<li>
+<p>Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/59">#59</a></p>
+</li>
+<li>
+<p>Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/57">#57</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.3.0-M2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/52">#52</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 8.13 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/55">#55</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 4.0.26 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/53">#53</a></p>
+</li>
+<li>
+<p>Upgrade to SLF4J 2.0.17 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/54">#54</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-RC1</p>
+</li>
+<li>
+<p>Update .sdkmanrc: Gradle 8.13 and Java 17.0.14-zulu <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/56">#56</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_3_0_m1">6.3.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add asset-pipeline-i18n module <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/51">#51</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <code>graceVersion</code> to the root gradle.properties</p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to SLF4J 2.0.16 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/50">#50</a></p>
+</li>
+<li>
+<p>Upgrade to Graal JavaScript Engine 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/49">#49</a></p>
+</li>
+<li>
+<p>Upgrade to Graal SDK 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/48">#48</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/47">#47</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-M1</p>
+</li>
+<li>
+<p>Update github workflows Switch to 6.3.x branch</p>
+</li>
+<li>
+<p>Set version to 6.3.0-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0">6.2.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add asset-pipeline-i18n module <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/51">#51</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <code>graceVersion</code> to the root gradle.properties</p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to SLF4J 2.0.16 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/50">#50</a></p>
+</li>
+<li>
+<p>Upgrade to Graal JavaScript Engine 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/49">#49</a></p>
+</li>
+<li>
+<p>Upgrade to Graal SDK 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/48">#48</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/47">#47</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-M1</p>
+</li>
+<li>
+<p>Update github workflows Switch to 6.3.x branch</p>
+</li>
+<li>
+<p>Set version to 6.3.0-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_rc1">6.2.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cleanup build scripts <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/39">#39</a></p>
+</li>
+<li>
+<p>Remove extra files <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/38">#38</a></p>
+</li>
+<li>
+<p>Rename to asset-pipeline-i18n <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/37">#37</a></p>
+</li>
+<li>
+<p>Remove unused submodules <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/36">#36</a></p>
+</li>
+<li>
+<p>Remove unused task <code>console</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/35">#35</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🐞 Bug Fixes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove dependencyManagement of generated POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/32">#32</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Gradle 8.12 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/34">#34</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 4.0.24 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/33">#33</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m3">6.2.0-M3</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M3">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setup GitHub Workflow to publish Grace plugins <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/30">#30</a></p>
+</li>
+<li>
+<p>Publish Asset Pipeline Plugin to the Gradle Plugin Portal <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/29">#29</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Corrent website and vcsUrl</p>
+</li>
+<li>
+<p>Update Generated POM info of the artifacts <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/28">#28</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🐞 Bug Fixes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes missing Signature when publishing Gradle plugin to Sonatype <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/31">#31</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.2.0-M3 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/27">#27</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.2.0-M2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/26">#26</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m2">6.2.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add bean aliases <code>linkGenerator</code>, <code>grailsLinkGenerator</code> for <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/25">#25</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m1">6.2.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update README update badges</p>
+</li>
+<li>
+<p>build: Remove dependency on <code>commons-lang</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/24">#24</a></p>
+</li>
+<li>
+<p>AssetProcessorService: remove dependency on <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/23">#23</a></p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.2.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/22">#22</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.1.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/21">#21</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_1">6.1.1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>build: Remove dependency on <code>commons-lang</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/42">#42</a></p>
+</li>
+<li>
+<p>Add bean aliases <code>linkGenerator</code>, <code>grailsLinkGenerator</code> for <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/41">#41</a></p>
+</li>
+<li>
+<p>AssetProcessorService: remove dependency on <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/40">#40</a></p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/21">#21</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0">6.1.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rename to README.md</p>
+</li>
+<li>
+<p>Update README</p>
+</li>
+<li>
+<p>Remove <code>@ConditionalOnMissingBean</code> value of bean <code>assetResourceLocator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/20">#20</a></p>
+</li>
+<li>
+<p>Remove buildscript block</p>
+</li>
+<li>
+<p>Use <code>gradlePluginPortal()</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/18">#18</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-RC1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/17">#17</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle Nexus Publish Plugin 2.0.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/19">#19</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_rc1">6.1.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Correct POM url <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/16">#16</a></p>
+</li>
+<li>
+<p>Remove repository <code>jcenter()</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/15">#15</a></p>
+</li>
+<li>
+<p>Use <code>classesDirectory</code> property instead of deprecated <code>outputDir</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/14">#14</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-M3 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/11">#11</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.23 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/13">#13</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_m2">6.1.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simplify <code>AssetPipelineGrailsPlugin</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/8">#8</a></p>
+</li>
+<li>
+<p>Update <code>grailsVersion</code> to allowed above <code>2023.0.0</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/7">#7</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/6">#6</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_m1">6.1.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Auto-Configure Asset Pipeline <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/4">#4</a></p>
+</li>
+<li>
+<p>Remove WARN from <code>LocalVariableTableParameterNameDiscoverer</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/5">#5</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Caffeine 3.1.8</p>
+</li>
+<li>
+<p>Upgrade to GraalVM SDK and JS 22.3.5</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.2</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.1</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_1">6.0.1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.1</p>
+</li>
+<li>
+<p>Change group of Asset Pipeline Gradle tasks</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0</p>
+</li>
+<li>
+<p>Merge pull request <a href="https://github.com/grace-plugins/grace-asset-pipeline/pull/3">#3</a> from codeconsole/grace-gradle-default-skipNonDigests</p>
+</li>
+<li>
+<p>Default skipNonDigests for all applications.</p>
+</li>
+<li>
+<p>Set version to 6.0.1-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0">6.0.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0</p>
+</li>
+<li>
+<p>Set group and description of Assets Gradle tasks</p>
+</li>
+<li>
+<p>Update plugin description</p>
+</li>
+<li>
+<p>Upgrade to Google closure-compiler v20240317</p>
+</li>
+<li>
+<p>Merge pull request <a href="https://github.com/grace-plugins/grace-asset-pipeline/pull/2">#2</a> from codeconsole/grace&#8212;&#8203;default-skipNonDigests</p>
+</li>
+<li>
+<p>Default skipNonDigests = true for Grace apps.</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-RC2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_rc1">6.0.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-RC1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-RC1</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.22</p>
+</li>
+<li>
+<p>Upgrade to Caffeine 3.1.6</p>
+</li>
+<li>
+<p>Supports configure grails assetsPath when using <code>grails-app</code>, default value: <code>app/assets</code></p>
+</li>
+<li>
+<p>Upgrade to Gradle Wrapper 7.6.4</p>
+</li>
+<li>
+<p>Add artifact <code>grails-plugin.xml</code></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M7</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+<li>
+<p>Fixes github repo url</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m4">6.0.0-M4</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M4">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M4</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M6</p>
+</li>
+<li>
+<p>Fixes very time-consuming processing in <code>assetCompile</code> task</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.21</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m3">6.0.0-M3</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M3">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M3</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M5</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.17</p>
+</li>
+<li>
+<p>Update AssetsTagLib</p>
+</li>
+<li>
+<p>Default Resolver to support <code>app\assets</code></p>
+</li>
+<li>
+<p>Enhance <code>AssetsTagLib</code>: add <code>type</code> attr to support module scripts</p>
+</li>
+<li>
+<p>Default use <code>app\assets</code> as <code>assetsPath</code> for Grace</p>
+</li>
+<li>
+<p>Return empty string instead of null in <code>AbstractAssetFile.getParentPath</code></p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.12</p>
+</li>
+<li>
+<p>build: make graalvm-js compileOnly</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m2">6.0.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M2">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M2</p>
+</li>
+<li>
+<p>Migrate to jakarta namespace</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m1">6.0.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M1</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+<li>
+<p>Migrate to Jakarta Servlet API</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M1</p>
+</li>
+<li>
+<p>Build target to JDK 17</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>
