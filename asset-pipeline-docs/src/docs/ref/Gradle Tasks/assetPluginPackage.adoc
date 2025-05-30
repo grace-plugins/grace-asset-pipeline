@@ -1,0 +1,5 @@
+== assetPluginPackage
+
+=== Description
+
+Assembles assets.

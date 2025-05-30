@@ -1,0 +1,5 @@
+== assetCompile
+
+=== Description
+
+Compiles application assets.

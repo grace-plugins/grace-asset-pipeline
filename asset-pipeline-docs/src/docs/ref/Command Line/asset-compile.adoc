@@ -1,5 +1,0 @@
-== asset-precompile
-
-=== Description
-
-Precompiles application assets

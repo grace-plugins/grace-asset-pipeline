@@ -1,5 +1,0 @@
-== asset-compile
-
-=== Description
-
-Compiles application assets
