@@ -3,6 +3,8 @@
 [![Grace CI](https://github.com/graceframework/grace-asset-pipeline/workflows/Grace%20CI/badge.svg?style=flat)](https://github.com/graceframework/grace-asset-pipeline/actions?query=workflow%3A%Grace+CI%22)
 [![Apache 2.0 license](https://img.shields.io/badge/License-APACHE%202.0-green.svg?logo=APACHE&style=flat)](https://opensource.org/licenses/Apache-2.0)
 [![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework.plugins/asset-pipeline-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework.plugins)
+[![Grace Document](https://img.shields.io/badge/Grace_Document--blue?style=social&logo=asciidoctor&logoColor=E40046
+)](https://grace-plugins.github.io/grace-asset-pipeline/latest/guide/index.html)
 [![Grace on Gradle](https://img.shields.io/badge/Gradle_Plugin_Portal--blue?style=social&logo=gradle
 )](https://plugins.gradle.org/u/grace)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
