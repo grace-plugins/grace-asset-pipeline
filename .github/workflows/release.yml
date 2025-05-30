@@ -64,7 +64,7 @@ jobs:
           VERSION: ${{ steps.release_version.outputs.release_version }}
           TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: asset-pipeline-docs/build/docs
+          FOLDER: asset-pipeline-docs/build/docs/manual
       - name: Generate secring file
         id: secring
         env:
