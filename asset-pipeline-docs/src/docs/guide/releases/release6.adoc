@@ -1,3 +1,27 @@
+=== 6.3.0-RC2
+
+https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC2[release notes]
+
+🛠 Improvements
+
+* Correct branch 6.3.x for docs workflow 
+* Cleanup documentation dependencies
+* Update docs workflow - Update event paths
+* Update docs - Add releases
+* Generate docs for release workflow 
+* Setup github docs workflow 
+* Refine documentation * Using Gradle task: org.graceframework.grace-doc
+* Remove duplicated documentation in the asset-pipeline-plugin/src/docs
+* Reorganize asset-pipeline-docs/docs https://github.com/grace-plugins/grace-asset-pipeline/issues/64[#64]
+* Remove unused asset-pipeline-site https://github.com/grace-plugins/grace-asset-pipeline/issues/63[#63]
+* Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu 
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2023.3.0-RC2 https://github.com/grace-plugins/grace-asset-pipeline/issues/61[#61]
+* Upgrade to Grace 2023.3.0-RC1 https://github.com/grace-plugins/grace-asset-pipeline/issues/60[#60]
+* Upgrade to Gradle 8.14 https://github.com/grace-plugins/grace-asset-pipeline/issues/62[#62]
+
 === 6.3.0-RC1
 
 https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC1[release notes]
