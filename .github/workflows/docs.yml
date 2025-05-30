@@ -42,4 +42,4 @@ jobs:
           VERSION: ${{ steps.getversion.outputs.version }}
           TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: asset-pipeline-docs/build/docs
+          FOLDER: asset-pipeline-docs/build/docs/manual
