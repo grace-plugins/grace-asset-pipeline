@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>5.2 Configuration 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/gradle.html">&lt;&lt; <strong>4</strong><span>Gradle</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>5.2 Configuration</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>5.2 Configuration</h2>
+
+
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>Asset-Pipeline has several configuration options for use with Grace 2022. For most cases the configuration options listed in the Gradle guide pertain to Grace 2022. Some subtle differences is the concept of development runtime vs. build time. If you want settings to apply to both development runtime and build time the properties have to be duplicated in your applications <code>application.yml</code> project. This is currently a limitation in how grails reads configuration files and Gradle conveys properties.</p>
+</div>
+<div class="paragraph">
+<p>Most build time options like <code>skipNonDigests</code> or <code>enableGzip</code> will never need specified in this YAML file as they will never be used during development runtime. It is also possible to disable development runtime entirely. In this scenario assets will always be packaged with the application and not monitored for changes unless Gradle continuous build is utilized. Simply set <code>assets { developmentRuntime = false}</code> in your <code>build.gradle</code> file.</p>
+</div>
+<div class="paragraph">
+<p>Example yaml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">bundle</span>: <span class="string"><span class="content">true</span></span> <span class="comment">#dont individually require files in development</span>
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/path/to/store</span></span> <span class="comment">#automatically copy assets to external folder on startup</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mappings_and_asset_taglib_urls">Mappings and Asset Taglib URLs</h4>
+<div class="paragraph">
+<p>In many cases you may want to change the URL for which to include your static assets. This can be useful when using a CDN or perhaps even using nginx to serve your static assets.</p>
+</div>
+<div class="paragraph">
+<p>To change the URL for your taglibs use the following configuration option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">url</span>: <span class="string"><span class="content">http://cdn.example.com/</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now your files are going to reference the CDN when running in the production environment. To go with this feature, you can have your application automatically copy your asset files out of your base WAR file on startup of your application. Optionally the asset URL config can also be defined as a closure that takes a request argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">grails.assets.url = { request -&gt;
+        <span class="keyword">if</span>(request.isSecure()) {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        } <span class="keyword">else</span> {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This allows more fine grained control of your asset URLs based on the incoming request. An example, might be SSL detection or even changing CDN region by source IP.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To use an asset closure config must be placed in an <code>application.groovy</code> file instead of <code>application.yml</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/var/cdn/path</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also change the default Tomcat path for both debugging and file inclusion using the <code>mapping</code> config option.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">mapping</span>: <span class="string"><span class="content">assets</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For all these configuration options, you will want to put these config values in the appropriate environment in <code>application.yml</code> or in groovy format in <code>application.groovy</code>.</p>
+</div>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/gradle.html">&lt;&lt; <strong>4</strong><span>Gradle</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

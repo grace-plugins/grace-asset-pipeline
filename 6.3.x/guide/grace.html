@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>5 Grace 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../guide/gradle.html">&lt;&lt; <strong>4</strong><span>Gradle</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>5 Grace</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+                <div id="table-of-content">
+                    <h2>Table of Contents</h2>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#gettingStarted"><strong>5.1</strong><span>Getting Started</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#configuration"><strong>5.2</strong><span>Configuration</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#organization"><strong>5.3</strong><span>Asset Organization</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#taglibs"><strong>5.4</strong><span>Taglibs</span></a>
+                    </div>
+                    
+                </div>
+                
+
+                
+
+<h1 id="grace"><a class="anchor" href="#grace"></a>5 Grace</h1>
+
+
+<div class="sect1">
+<h2 id="grace">Grace</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section of the documentation discusses configuration and setup of the asset-pipeline plugin for Grace 2022+ based applications.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="gettingStarted"><a class="anchor" href="#gettingStarted"></a>5.1 Getting Started</h2>
+
+
+<div class="sect2">
+<h3 id="_getting_started">Getting Started</h3>
+<div class="paragraph">
+<p>In Grace 2022 most assets live in the <code>app/assets</code> directory. This folder is automatically generated for you along with the organizational subdirectories <code>javascripts</code>, <code>images</code>, and <code>stylesheets</code>.</p>
+</div>
+<div class="paragraph">
+<p>To get started simply add asset-pipeline to your <code>build.gradle</code> file (See Gradle usage). And the Grace plugin to the dependencies block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+  runtime 'org.graceframework.plugins:asset-pipeline-plugin:{project-version}'
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_development_runtime">Development Runtime</h4>
+<div class="paragraph">
+<p>A great feature built into Grace is its development runtime support. All assets that are used in your gsp files are automatically generated and processed on the fly when requested. This means when a change is made in a css file or javascript file, the results are instant. A refresh of the page will reflect the changes without needing to wait for any type of <code>FileWatcher</code>. These results are also cached making it highly performant as your project grows.</p>
+</div>
+<div class="paragraph">
+<p>Another great aspect of development runtime with Grace is each file will individually be required in the gsp. A dependency graph is generated and each file is required individually to make it easy to debug javascript errors and stylesheet errors. While sourcemap support is integrated for javascript, this is not supported in a lot of browsers developers still target compatibility for. It is possible to disable this feature via configuration or simply testing your app with the embedded tomcat war to see how post minified and bundled assets will behave.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>5.2 Configuration</h2>
+
+
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>Asset-Pipeline has several configuration options for use with Grace 2022. For most cases the configuration options listed in the Gradle guide pertain to Grace 2022. Some subtle differences is the concept of development runtime vs. build time. If you want settings to apply to both development runtime and build time the properties have to be duplicated in your applications <code>application.yml</code> project. This is currently a limitation in how grails reads configuration files and Gradle conveys properties.</p>
+</div>
+<div class="paragraph">
+<p>Most build time options like <code>skipNonDigests</code> or <code>enableGzip</code> will never need specified in this YAML file as they will never be used during development runtime. It is also possible to disable development runtime entirely. In this scenario assets will always be packaged with the application and not monitored for changes unless Gradle continuous build is utilized. Simply set <code>assets { developmentRuntime = false}</code> in your <code>build.gradle</code> file.</p>
+</div>
+<div class="paragraph">
+<p>Example yaml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">bundle</span>: <span class="string"><span class="content">true</span></span> <span class="comment">#dont individually require files in development</span>
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/path/to/store</span></span> <span class="comment">#automatically copy assets to external folder on startup</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mappings_and_asset_taglib_urls">Mappings and Asset Taglib URLs</h4>
+<div class="paragraph">
+<p>In many cases you may want to change the URL for which to include your static assets. This can be useful when using a CDN or perhaps even using nginx to serve your static assets.</p>
+</div>
+<div class="paragraph">
+<p>To change the URL for your taglibs use the following configuration option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">url</span>: <span class="string"><span class="content">http://cdn.example.com/</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now your files are going to reference the CDN when running in the production environment. To go with this feature, you can have your application automatically copy your asset files out of your base WAR file on startup of your application. Optionally the asset URL config can also be defined as a closure that takes a request argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">grails.assets.url = { request -&gt;
+        <span class="keyword">if</span>(request.isSecure()) {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        } <span class="keyword">else</span> {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This allows more fine grained control of your asset URLs based on the incoming request. An example, might be SSL detection or even changing CDN region by source IP.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To use an asset closure config must be placed in an <code>application.groovy</code> file instead of <code>application.yml</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/var/cdn/path</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also change the default Tomcat path for both debugging and file inclusion using the <code>mapping</code> config option.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">mapping</span>: <span class="string"><span class="content">assets</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For all these configuration options, you will want to put these config values in the appropriate environment in <code>application.yml</code> or in groovy format in <code>application.groovy</code>.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="organization"><a class="anchor" href="#organization"></a>5.3 Asset Organization</h2>
+
+
+<div class="sect2">
+<h3 id="_organization">Organization</h3>
+<div class="paragraph">
+<p>Asset pipeline organization occurs within the "app/assets" folder. This folder can exist within both the main application as well as a plugin.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A plugin will also include its web-app directory to better deal with plugins that wish to support both the resources plugin as well as asset-pipeline.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Within the <code>app/assets</code> directory are several subfolders</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>app/assets/javascripts</code></p>
+</li>
+<li>
+<p><code>app/assets/stylesheets</code></p>
+</li>
+<li>
+<p><code>app/assets/images</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A common folder that gets added to this set of organization is a "lib" folder. This folder can be useful in organizing third party libraries like jQuery, or Bootstrap.</p>
+</div>
+<div class="sect3">
+<h4 id="_plugins">Plugins</h4>
+<div class="paragraph">
+<p>Plugins also can have the same "app/assets" folder and their URL mapping is also the same. This means it can be more important to ensure unique naming / path mapping between plugins. This is also powerful in the sense that a plugin can add helper manifests to be used within your apps like jquery, bootstrap, font-awesome, and more.</p>
+</div>
+<div class="paragraph">
+<p>Plugins should make sure that the <code>assets { packagePlugin }</code> property is set to true in their <code>build.gradle</code> file otherwise assets will not properly be packaged into the plugin for use by the application.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Plugins with assets must have the <code>packagePlugin</code> property set to true on the assets extension in <code>build.gradle</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If, in the event, a file within a plugin needs to be overridden within your application, simply create the same file with the same relative path to <code>app/assets</code> and it will override / take precedence over the plugin. More on that later.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Since plugins share the same file structure for assets, as well as web-app. It can become more important to "namespace" your plugins by creating further nested folders. (i.e. the plugin SpudCore puts its application.js file within <code>app/assets/javascripts/spud/admin/application.js</code>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_search_paths">Search Paths</h4>
+<div class="paragraph">
+<p>When a file is referenced via a taglib or a manifest require directive, the asset-pipeline checks for the file in several locations.</p>
+</div>
+<div class="paragraph">
+<p>First it tries to find the file relative to the manifest including it. For example "admin/application.js" looking for "table.js"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// FileName: admin/application.js</span>
+<span class="comment">//= require table</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first place we will look is within <code>app/assets/javascripts/admin/*</code> We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.</p>
+</div>
+<div class="paragraph">
+<p>The next place we will look is the root of all app/assets plugin sub folders (e.g. <code>app/assets/<strong>/table.js</code>, and <code>web-app/</strong>/table.js</code> for plugins).</p>
+</div>
+<div class="paragraph">
+<p>Finally all binary plugins are scanned in the <code>classpath:META-INF/assets</code> folder, <code>classpath:META-INF/static</code> and <code>classpath:META-INF/resources</code>.</p>
+</div>
+<div class="paragraph">
+<p>In all cases, the applications assets folder takes precedence between the search paths, but plugins get scanned as well.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These same conditions should be implemented on any preprocessor extension plugin, e.g. LESS-asset-pipeline follows the same scan for @import directives.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+<h2 id="taglibs"><a class="anchor" href="#taglibs"></a>5.4 Taglibs</h2>
+
+
+<div class="sect2">
+<h3 id="_taglibs">Taglibs</h3>
+<div class="paragraph">
+<p>Asset Pipeline adds a few new taglibs to properly reference your assets. These taglibs automatically handle swapout of cache digest names during production use as well as any custom URL mapping changes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;asset:stylesheet</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.css</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/head&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The primary include tags, as shown above, are quite useful for including your relevant JavaScript or stylesheet files. Notice that you do not have to prefix with '/assets', as this is handled automatically by the tag.</p>
+</div>
+<div class="paragraph">
+<p>In GSP views, you can also reference images included in the asset-pipeline with the following tag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:image</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assets can also be referenced within subdirectories if required and simply require the use of the relative path.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:image</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icons/delete.png</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to return an assetPath as a string for injection in your own tags:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${assetPath(src: 'manifest.json')}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to execute a code section only if an asset exists or to simply test for existence</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:assetPathExists</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">test.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+This will only be displayed if the asset exists
+<span class="tag">&lt;/asset:assetPathExists&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html">asset.assetPathExists(src: 'test.js') //returns true or false</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_resource">Getting Resource</h4>
+<div class="paragraph">
+<p>As of version 0.8.2 a new bean exists called <code>assetResourceLocator</code> This can be used to find assets by URI in both development and production mode.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html">class ExampleService {
+  def assetResourceLocator
+
+  def someMethod() {
+    Resource myResource = assetResourceLocator.findAssetForURI('test.css')
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deferred_scripts">Deferred Scripts</h4>
+<div class="paragraph">
+<p>Asset-Pipeline provides a set of tags that can be used to ensure script blocks are deferred to the end of your page. This is not recommended as it is obtrusive, but has been added to help newcomers upgrade existing apps from resources.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">asset-defer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  console.log(&quot;Hello World&quot;);
+<span class="tag">&lt;/asset:script&gt;</span>
+<span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  console.log(&quot;Hello World 2&quot;);
+<span class="tag">&lt;/asset:script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now to render the output of these scripts simply use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="gsp">&lt;asset:deferredScripts/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../guide/gradle.html">&lt;&lt; <strong>4</strong><span>Gradle</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

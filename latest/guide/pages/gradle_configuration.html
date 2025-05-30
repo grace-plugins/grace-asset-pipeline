@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>4.2 Configuration 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/concepts.html">&lt;&lt; <strong>3</strong><span>Concepts</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>4.2 Configuration</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="gradle_configuration"><a class="anchor" href="#gradle_configuration"></a>4.2 Configuration</h2>
+
+
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>The asset-pipeline Gradle plugin provides several very useful configuration options. An extension called <code>assets</code> is automatically added to Gradle when the plugin is applied that provides several options:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  minifyJs = <span class="predefined-constant">true</span>
+  minifyCss = <span class="predefined-constant">true</span>
+  enableSourceMaps = <span class="predefined-constant">true</span>
+  maxThreads = <span class="integer">4</span> <span class="comment">//useful for concurrent asset processing during build</span>
+  configOptions = [:] <span class="comment">//useful for custom config on extension libraries</span>
+
+  minifyOptions = [
+    <span class="key">optimizationLevel</span>: <span class="string"><span class="delimiter">'</span><span class="content">SIMPLE</span><span class="delimiter">'</span></span>,
+    <span class="key">angularPass</span>: <span class="predefined-constant">true</span> <span class="comment">// Can use @ngInject annotation for Angular Apps</span>
+    <span class="key">excludes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">**/bundle.js</span><span class="delimiter">'</span></span>] <span class="comment">// Example of excluding specific resources from minification, e.g., if it was minified externally</span>
+  ]
+
+  includes = <span class="type">[]</span>
+  excludes = [<span class="string"><span class="delimiter">'</span><span class="content">**/*.less</span><span class="delimiter">'</span></span>] <span class="comment">//Example Exclude GLOB pattern</span>
+
+  <span class="comment">//for plugin packaging</span>
+  packagePlugin=<span class="predefined-constant">false</span> <span class="comment">//set to true if this is a library</span>
+
+  <span class="comment">//developmentRuntime can be turned off</span>
+  developmentRuntime=<span class="predefined-constant">true</span>
+
+  <span class="comment">//if you want to customize the jar task this task runs on you can specify a jarTaskName</span>
+  jarTaskName=<span class="predefined-constant">null</span>
+
+  <span class="comment">// Can add custom asset locations (directories or individual jar files)</span>
+  from <span class="string"><span class="delimiter">'</span><span class="content">/vendor/lib</span><span class="delimiter">'</span></span>
+  from <span class="string"><span class="delimiter">'</span><span class="content">/path/to/file.jar</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default settings will work for most projects, but if one wanted to add a custom source file location the <code>from</code> directive can be quite useful. Asset-pipeline&#8217;s broad <code>Resolver</code> support makes it easy to include assets from a diverse set of locations (even webjars).</p>
+</div>
+<div class="paragraph">
+<p>A common configuration change for assets may be the includes/excludes patterns. These allow one to specify specific files that should not be individually required or compiled because it does not make sense for them to be individually compiled. In the example above: all <code>.less</code> files are excluded. This does not exclude processing however when a <code>require</code> directive is used making it very easy to only package and bundle assets that the final website needs. It is also important to note that these patterns do not have to be <code>GLOB</code> patterns but can also be regular expressions by prefixing the pattern with <code>regex:</code>. By default all files prefixed with an underscore are automatically excluded from individual processing (similar to SASS).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Tuning the includes/excludes patterns can dramatically reduce the build time of your project.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Some additional options are also provided for configuring what types of output assets are generated:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  enableDigests = <span class="predefined-constant">true</span>
+  skipNonDigests = <span class="predefined-constant">false</span>
+  enableGzip = <span class="predefined-constant">true</span>
+  maxThreads = <span class="integer">4</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default both digested named versions of assets as well as non digested named versions are generated as well as the gzip equivalents. Some frameworks dont actually need the non digested named versions (<code>spring-boot</code>, and <code>servlets</code>). These frameworks take advantage of the <code>manifest.properties</code> file discussed earlier in the documentation to properly map requests for non digested file names to the digested equivalent and preserve compatibility with libraries that may not work well with digested file names.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Change <code>skipNonDigests</code> to true to help reduce the file size of your final generated project.
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/concepts.html">&lt;&lt; <strong>3</strong><span>Concepts</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

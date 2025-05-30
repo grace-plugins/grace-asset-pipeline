@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>3 Concepts 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../guide/releases.html">&lt;&lt; <strong>2</strong><span>Release History</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../guide/gradle.html"><strong>4</strong><span>Gradle</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>3 Concepts</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h1 id="concepts"><a class="anchor" href="#concepts"></a>3 Concepts</h1>
+
+
+<div class="sect1">
+<h2 id="concepts">Concepts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asset-pipeline is a highly extensible asset processing library that is easy to integrate into your jvm based application or to even use standalone with Gradle. It works by defining <code>AssetFile</code> definitions for different file types in which <code>Processors</code> can be chained for processing and conversion to different target content types. But to use it you don&#8217;t really need to know about any of this (It really does just work).</p>
+</div>
+<div class="sect2">
+<h3 id="_commonjs">CommonJs</h3>
+<div class="paragraph">
+<p>Asset-pipeline now fully supports the commonJs method of loading modules using the <code>require()</code> function. It is important to note, however that these calls are preprocessed outside of a js runtime such that the string being passed to require must be a constant string and not a variable..</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Loading image files as modules uses a base url prefix by default of <code>/assets/</code> The <code>mapping</code> config option can often be set to an empty string to move this to the root level of your application (very common in Micronaut apps).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecmascript_20172018_beyond">ECMAScript 2017,2018, beyond</h3>
+<div class="paragraph">
+<p>Asset-pipeline now supports processing Modern ECMAScript specifications utilizing BabelJs. By default this is disabled for performance but can be enabled by two ways. One is simply by adding <code>.es6</code> , <code>.es7</code>, <code>.es8</code> to the end of your javascript file extensions. This can also be done with jsx files (i.e. <code>.jsx.es6</code>) when using <code>jsx-asset-pipeline</code>.</p>
+</div>
+<div class="paragraph">
+<p>If it is desired to process ALL javascript assets through BabelJs this can be done as well by setting the configuration property in both development runtime and Gradle for assets called <code>enableES6:true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+BabelJs processing is new and will more than likely be enhanced in the future.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_directives">Directives</h3>
+<div class="paragraph">
+<p>Similar to other packaging libraries like webpack or grunt, asset-pipeline provides a means to require other files or "modules" into your javascript and/or css. We will call these require patterns <code>directives</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asset-pipeline chooses to be dependency syntax agnostic. This makes it very easy to add in extension modules for things like CommonJS.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In asset-pipeline it is a common pattern to list all requirements of your file at the top in a comments section but this is not required. Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">//This is a JavaScript file with its top level require directives</span>
+<span class="comment">//= require jquery</span>
+<span class="comment">//= require app/models.js</span>
+<span class="comment">//= require_tree views</span>
+<span class="comment">//= require_self</span>
+
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">This is my javascript manifest</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or similarly a CSS file might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="css"><span class="comment">/*
+This is a comment block in the top of a css file
+*= require bootstrap
+*= require font-awesome
+*= require navigation/header.css
+*= require_tree components
+*/</span>
+
+<span class="tag">body</span> {
+  <span class="key">font-size</span>: <span class="float">12px</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may look very simple at first but can become really quite powerful. For example, these directives can be nested in other files that you might include. This allows the asset-pipeline to build a dependency-graph, eliminating duplicate requirements, and ensuring everything is loaded in the most optimal order possible.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Requirement directives are recursively scanned within each required file, not just the first file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>One other cool aspect of these require directives is the extension is not mandatory. Asset-pipeline will automatically look for any file matching that name (minus the extension) that has a registered <code>AssetFile</code> capable of converting it to the intended target file type. i.e. that Bootstrap directive could be including a LESS file or the javascript could easily include a Coffeescript file.</p>
+</div>
+<div class="sect3">
+<h4 id="_encoding">Encoding</h4>
+<div class="paragraph">
+<p>In some cases it may be necessary to specify an encoding for your assets. An example might be for Japanese characters in a JavaScript file. To do this, two things must be done. First, we simply set the charset attribute when we include are JavaScript file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">utf-8</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should take care of testing in development mode and debugging. However, when we move to production/WAR mode the precompiler has no way to infer the desired encoding for compilation. To accomplish this, we have the <code>//= encoding</code> directive. This can be placed at the top of your <code>application.js</code> to define the desired compilation encoding.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">//=encoding UTF-8</span>
+<span class="comment">//=require_self</span>
+<span class="comment">//=require_tree .</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s all there is to it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_common_js">Common Js</h3>
+<div class="paragraph">
+<p>As of asset-pipeline 2.10.x CommonJs support was added. This is automatically detected in any javascript file and assets are automatically resolved within the project structure of asset-pipeline just like any other directive processor (i.e. <code>var React = require('react');</code>). If your project has conflicts with commonJs it can be turned off by setting the <code>configOptions</code> in Gradle and in <code>grails.assets</code> config.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  configOptions = [<span class="key">commonJs</span>: <span class="predefined-constant">false</span>] <span class="comment">//useful for custom config on extension libraries</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or:</p>
+</div>
+<div class="listingblock">
+<div class="title">application.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">grails {
+  assets {
+    commonJs = <span class="predefined-constant">false</span>
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_project_structure">Project Structure</h3>
+<div class="paragraph">
+<p>Depending on which framework integration is being used (or even if no framework integration is being used) the project of the asset-pipeline files can slightly differ. However, typically this only affects the source folder location while all other aspects of the project structure remain the same.</p>
+</div>
+<div class="paragraph">
+<p>By default assets live in the <code>src/assets</code> directory of the project (except in the case of Grace where these live in <code>app/assets</code>). However, files should not live at this direct root level and by default asset-pipeline will not detect them if they were. It is a conventional practice that files be organized in one level down subfolders. For example, in a base Grace app the following folder structure is used and encouraged:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>assets/javascripts</code></p>
+</li>
+<li>
+<p><code>assets/stylesheets</code></p>
+</li>
+<li>
+<p><code>assets/images</code></p>
+</li>
+<li>
+<p><code>assets/libs</code>&#8201;&#8212;&#8201;common naming for components that contain both css/javascript/images</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Asset-pipeline will automatically add any subfolder in the <code>assets</code> directory as a <code>FileResolver</code>. Meaning each folder is treated as a root level resolver path. It is also important to note that asset-pipeline does not actually care what file types go where. This is purely for the organizational benefit of the project.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When requiring files using require directives do not include these directory names, treat them as root level traversal.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_paths">Search Paths</h3>
+<div class="paragraph">
+<p>When a file is referenced via a require directive or web request, the asset-pipeline checks for the file in several locations.</p>
+</div>
+<div class="paragraph">
+<p>First it tries to find the file relative to the manifest including it. For example "admin/application.js" looking for "table.js"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// FileName: admin/application.js</span>
+<span class="comment">//= require table</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first place we will look is within <code>src/assets/javascripts/admin/*</code> We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.</p>
+</div>
+<div class="paragraph">
+<p>The next place we will look is the root of all src/assets plugin sub folders (e.g. <code>src/assets/*/table.js</code>).</p>
+</div>
+<div class="paragraph">
+<p>Finally all binary plugins are scanned in the <code>classpath:META-INF/assets</code> folder, <code>classpath:META-INF/static</code> and <code>classpath:META-INF/resources</code>.</p>
+</div>
+<div class="paragraph">
+<p>In all cases, the applications assets folder takes precedence between the search paths, but plugins get scanned as well.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_structure">Build Structure</h3>
+<div class="paragraph">
+<p>When the project is built (in Gradle that&#8217;s the <code>assetCompile</code> task) these folders are flattened and merged. Meaning this first level subdirectory structure disappears and all files are copied into <code>build/assets</code>. These files also get md5 digested names for cache busting as well as GZIP versions for compressed file serving (except already compressed images).</p>
+</div>
+<div class="paragraph">
+<p>In a Java based framework any type of WAR or JAR packaging typically gets detected and assets are automatically moved into <code>classpath:assets</code> along with a file <code>classpath:assets/manifest.properties</code>. This manifest is a list of every file that was packaged by the asset-pipeline as the key, and the digested name equivalent as the value. This facilitates easy differential syncing between CDNS (like an s3 bucket for cloudfront) as well as fast and easy generation of ETag headers when serving assets from the application (more on this later).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relative_urls">Relative Urls</h3>
+<div class="paragraph">
+<p>With all this renaming of assets with digested names as well as slight restructuring between source and build, what happens with url references specified in <code>CSS</code> as well as <code>HTML</code>. This is where some familiar with the Ruby on Rails sprockets based asset-pipeline might remember the need for erb helpers to specify path replacement. The asset-pipeline for the JVM, however, takes a different more automatic approach:</p>
+</div>
+<div class="paragraph">
+<p>All CSS type files go through a processor called the <code>CssProcessor</code>. This processor looks for any <code>url(../path/to/file.png)</code> type patterns and automatically resolves the asset from the asset-pipeline. If it finds the matching file, the url is automatically replaced with the correct url pattern including the digest name: <code>url(path/file-dadvbfgdaf123e.png)</code>.</p>
+</div>
+<div class="paragraph">
+<p>This relative url replacement is really handy because any external css library that is included in your project (i.e. bootstrap) can be used as is without any need to sift through its code and replace url patterns to match. This feature is also performend on <code>HTML</code> files.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+HTML files automatically get relative url replacement making it easy to generate 100% static websites without any need for a dynamic templating engine.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Currently javascript is not scanned for relative path replacement. It is now possible to reference assets from your javascript using a precompiler directive in your code called <code>asset_url</code>. It is not relative and always produces an absolute path response which can be configured via the <code>mapping</code> config option which defaults to 'assets':</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">---
+<span class="keyword">var</span> logo = asset_url(<span class="string"><span class="delimiter">'</span><span class="content">grace_logo.png</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<hr>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This method is not evaluated in javascript but rather replaced like a precompiler directive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../guide/releases.html">&lt;&lt; <strong>2</strong><span>Release History</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../guide/gradle.html"><strong>4</strong><span>Gradle</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

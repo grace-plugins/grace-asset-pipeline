@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>6.2 Processors 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Asset Pipeline</h1>
+            <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/concepts.html"><strong>3</strong><span>Concepts</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/gradle.html"><strong>4</strong><span>Gradle</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/grace.html"><strong>5</strong><span>Grace</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/extending.html"><strong>6</strong><span>Extending Asset-Pipeline</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/grace.html">&lt;&lt; <strong>5</strong><span>Grace</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+
+
+                <div class="project">
+                    <h1>6.2 Processors</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="processors"><a class="anchor" href="#processors"></a>6.2 Processors</h2>
+
+
+<div class="sect2">
+<h3 id="_processors">Processors</h3>
+<div class="paragraph">
+<p>Processors are where the real power of asset-pipeline comes into play. These are the driving force behind making compileable assets such as LESS, and CoffeeScript first class citizens. Gone is the need to run a compiler on the side, and gone is the delay between making changes in development.</p>
+</div>
+<div class="paragraph">
+<p>A Processor is an implementation of the <code>Processor</code> interface via the <code>AbstractProcessor</code> class. It must have a constructor with an <code>AssetCompiler</code> argument, and it must have a process method. The rest is up to the developer.
+The reason the AssetCompiler is passed is for giving the processor access to manipulate the precompiler phase. If a null precompiler is passed, than development mode is assumed and the processor can infer that. An example use case
+for this is the SassProcessor in the SASS/SCSS Asset Pipeline Plugin. Image sprite generation causes additional image files to be created that need added to the list of files to process.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CoffeeScriptProcessor</span> <span class="directive">extends</span> AbstractProcessor {
+
+  Scriptable globalScope
+  <span class="predefined-type">ClassLoader</span> classLoader
+
+  CoffeeScriptProcessor(AssetCompiler precompiler){
+    <span class="local-variable">super</span>(precompiler)
+  }
+
+  <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
+    <span class="keyword">try</span> {
+      <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
+      <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
+      compileScope.setParentScope(globalScope)
+      compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
+      <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
+      <span class="keyword">return</span> result
+    } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+        CoffeeScript Engine compilation of coffeescript to javascript failed.
+        </span><span class="inline"><span class="inline-delimiter">$</span>e</span><span class="content">
+        </span><span class="delimiter">&quot;&quot;&quot;</span></span>)
+    } <span class="keyword">finally</span> {
+      <span class="predefined-type">Context</span>.exit()
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above is an excerpt of the <code>CoffeeScriptProcessor</code> plugin. This plugin takes advantage of RhinoJS to use the CoffeeScript compiler and provide the application with direct support for CoffeeScript files. The <code>process</code> method takes an input, as well as a reference to the asset file definition, and returns a result. To use your processor simply add it to your 'static processors' array on the <code>AssetFile</code> definition.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LESSProcessor</code> was not used in this example as it&#8217;s more complicated due to supporting the <code>@import</code> LESS directive and cache dependencies on the cache manager. However, it is a great example to look at and highly recommended.</p>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/grace.html">&lt;&lt; <strong>5</strong><span>Grace</span></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPath.html">assetPath</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/assetPathExists.html">assetPathExists</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/deferredScripts.html">deferredScripts</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/image.html">image</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/javascript.html">javascript</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/link.html">link</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/script.html">script</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../../ref/Tags/stylesheet.html">stylesheet</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

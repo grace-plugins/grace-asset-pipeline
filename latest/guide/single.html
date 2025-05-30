@@ -1,0 +1,2222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Grace Asset Pipeline 6.3.0-SNAPSHOT</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
+        <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
+    <script type="text/javascript">
+function addJsClass(el) {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+    </head>
+
+    <body class="body" onload="addJsClass();">
+        <div id="navigation">
+            <div class="navHeader">
+                
+                <span id="logo">
+                    <a href="https://graceframework.org" title="Go to Grace Framework Website">
+                        <img src="../img/grace.svg" alt="Grace Framework" />
+                    </a>
+                </span>
+                
+                <div class="docHeader">
+                    <h1 class="docTitle">Grace Asset Pipeline</h1>
+                    <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
+                    <span class="docVersion">6.3.0-SNAPSHOT</span>
+                </div>
+            </div>
+            <div class="navLinks">
+                <ul>
+                    <li>
+                        <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                            <a href="../guide/index.html" class="button">Table of contents</a>
+                            <div id="nav-summary-childs" style="display:none;">
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#releases"><strong>2</strong><span>Release History</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#concepts"><strong>3</strong><span>Concepts</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#gradle"><strong>4</strong><span>Gradle</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#grace"><strong>5</strong><span>Grace</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#extending"><strong>6</strong><span>Extending Asset-Pipeline</span></a></div>
+                                
+                            </div>
+                        </div>
+                    </li>
+                    <li class="separator selected">
+                        <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+                    </li>
+                    <li class="separator selected">
+                        <a id="ref-button" href="../api/index.html">API Docs</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <table id="colset" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="col1">
+                    <div id="main" class="corner-all">
+
+                        <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                        <div class="project">
+                            <h1>Grace Asset Pipeline</h1>
+                            <p><strong>Authors:</strong> Michael Yan</p>
+                            <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                            
+                        </div>
+
+                        
+                        <div id="table-of-content">
+                            <h2>Table of Contents</h2>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#releases"><strong>2</strong><span>Release History</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#release6"><strong>2.1</strong><span>What's new in 6.x</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#concepts"><strong>3</strong><span>Concepts</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#gradle"><strong>4</strong><span>Gradle</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#getting_started"><strong>4.1</strong><span>Getting Started</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#gradle_configuration"><strong>4.2</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#java"><strong>4.3</strong><span>JVM Based Dependencies</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#grace"><strong>5</strong><span>Grace</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#gettingStarted"><strong>5.1</strong><span>Getting Started</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#configuration"><strong>5.2</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#organization"><strong>5.3</strong><span>Asset Organization</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#taglibs"><strong>5.4</strong><span>Taglibs</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#extending"><strong>6</strong><span>Extending Asset-Pipeline</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#assetfile"><strong>6.1</strong><span>Asset File Definitions</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#processors"><strong>6.2</strong><span>Processors</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#postprocessors"><strong>6.3</strong><span>Post-Processors</span></a></div>
+                            
+                            <div style="clear:both" ></div>
+                        </div>
+                        
+                        
+
+<h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
+
+
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The asset-pipeline provides first class static and 'not so static' asset management for the JVM including many native framework integrations. It is highly extensible and provides processing of dynamic languages like LESS, SASS, Coffee, Typescript, and more. This goes beyond simple asset packaging and processing (making tools like grunt or webpack unnecessary for building high quality single page apps on the JVM), but also takes it a step further by providing features for optimally serving assets from your application as well.</p>
+</div>
+<div class="paragraph">
+<p>This guide documents configuration and usage examples of the asset-pipeline plugin.</p>
+</div>
+<div class="sect2">
+<h3 id="_overview">Overview</h3>
+<div class="paragraph">
+<p>The Asset-Pipeline is a plugin used for managing and processing static assets in Grace applications primarily via Gradle. Asset-Pipeline functions include processing and minification of both CSS and JavaScript files.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asset Bundling</p>
+</li>
+<li>
+<p>Css Minification / Relative Path assertion</p>
+</li>
+<li>
+<p>Js Minification</p>
+</li>
+<li>
+<p>Js SourceMap Generation</p>
+</li>
+<li>
+<p>File Encoding Support</p>
+</li>
+<li>
+<p>GZIP File Generation</p>
+</li>
+<li>
+<p>Last-Modified Header</p>
+</li>
+<li>
+<p>Cache Digest Names (Creates cache digested names and stores aliases in a manifest.properties)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This repository is a fork of <a href="https://github.com/wondrify/asset-pipeline">Asset-Pipeline</a>, developed to support Grace only.
+Since Grails does not currently support Spring Boot 3.0+, this plugin does not support Grails 5/6.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<h1 id="releases"><a class="anchor" href="#releases"></a>2 Release History</h1>
+
+
+<div class="sect1">
+<h2 id="releases">Release History</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To make it easier for users to use and upgrade, Plugin adopts a version policy consistent with the <a href="https://github.com/graceframework/grace-framework">Grace Framework</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plugin Version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grace Version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023.3.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.2.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023.2.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.1.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023.1.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.0.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023.0.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022.2.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022.1.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022.0.x</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<h2 id="release6"><a class="anchor" href="#release6"></a>2.1 What's new in 6.x</h2>
+
+
+<div class="sect2">
+<h3 id="_6_3_0_rc2">6.3.0-RC2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Correct branch 6.3.x for docs workflow</p>
+</li>
+<li>
+<p>Cleanup documentation dependencies</p>
+</li>
+<li>
+<p>Update docs workflow - Update event paths</p>
+</li>
+<li>
+<p>Update docs - Add releases</p>
+</li>
+<li>
+<p>Generate docs for release workflow</p>
+</li>
+<li>
+<p>Setup github docs workflow</p>
+</li>
+<li>
+<p>Refine documentation * Using Gradle task: org.graceframework.grace-doc</p>
+</li>
+<li>
+<p>Remove duplicated documentation in the asset-pipeline-plugin/src/docs</p>
+</li>
+<li>
+<p>Reorganize asset-pipeline-docs/docs <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/64">#64</a></p>
+</li>
+<li>
+<p>Remove unused asset-pipeline-site <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/63">#63</a></p>
+</li>
+<li>
+<p>Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.3.0-RC2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/61">#61</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-RC1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/60">#60</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 8.14 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/62">#62</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_3_0_rc1">6.3.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update README Update badge versions of Grace and Spring Boot</p>
+</li>
+<li>
+<p>Streamline Gradle build scripts: using the Spring Dependency Management Plugin to manage dependencies and versions <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/58">#58</a></p>
+</li>
+<li>
+<p>Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/59">#59</a></p>
+</li>
+<li>
+<p>Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/57">#57</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.3.0-M2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/52">#52</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 8.13 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/55">#55</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 4.0.26 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/53">#53</a></p>
+</li>
+<li>
+<p>Upgrade to SLF4J 2.0.17 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/54">#54</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-RC1</p>
+</li>
+<li>
+<p>Update .sdkmanrc: Gradle 8.13 and Java 17.0.14-zulu <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/56">#56</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_3_0_m1">6.3.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add asset-pipeline-i18n module <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/51">#51</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <code>graceVersion</code> to the root gradle.properties</p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to SLF4J 2.0.16 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/50">#50</a></p>
+</li>
+<li>
+<p>Upgrade to Graal JavaScript Engine 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/49">#49</a></p>
+</li>
+<li>
+<p>Upgrade to Graal SDK 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/48">#48</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/47">#47</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-M1</p>
+</li>
+<li>
+<p>Update github workflows Switch to 6.3.x branch</p>
+</li>
+<li>
+<p>Set version to 6.3.0-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0">6.2.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add asset-pipeline-i18n module <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/51">#51</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <code>graceVersion</code> to the root gradle.properties</p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to SLF4J 2.0.16 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/50">#50</a></p>
+</li>
+<li>
+<p>Upgrade to Graal JavaScript Engine 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/49">#49</a></p>
+</li>
+<li>
+<p>Upgrade to Graal SDK 23.0.6 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/48">#48</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.3.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/47">#47</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.3.0-M1</p>
+</li>
+<li>
+<p>Update github workflows Switch to 6.3.x branch</p>
+</li>
+<li>
+<p>Set version to 6.3.0-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_rc1">6.2.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cleanup build scripts <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/39">#39</a></p>
+</li>
+<li>
+<p>Remove extra files <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/38">#38</a></p>
+</li>
+<li>
+<p>Rename to asset-pipeline-i18n <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/37">#37</a></p>
+</li>
+<li>
+<p>Remove unused submodules <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/36">#36</a></p>
+</li>
+<li>
+<p>Remove unused task <code>console</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/35">#35</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🐞 Bug Fixes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove dependencyManagement of generated POM <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/32">#32</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Gradle 8.12 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/34">#34</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 4.0.24 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/33">#33</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m3">6.2.0-M3</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M3">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>⭐️ New Features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setup GitHub Workflow to publish Grace plugins <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/30">#30</a></p>
+</li>
+<li>
+<p>Publish Asset Pipeline Plugin to the Gradle Plugin Portal <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/29">#29</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Corrent website and vcsUrl</p>
+</li>
+<li>
+<p>Update Generated POM info of the artifacts <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/28">#28</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🐞 Bug Fixes</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixes missing Signature when publishing Gradle plugin to Sonatype <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/31">#31</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.2.0-M3 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/27">#27</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.2.0-M2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/26">#26</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m2">6.2.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add bean aliases <code>linkGenerator</code>, <code>grailsLinkGenerator</code> for <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/25">#25</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_0_m1">6.2.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update README update badges</p>
+</li>
+<li>
+<p>build: Remove dependency on <code>commons-lang</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/24">#24</a></p>
+</li>
+<li>
+<p>AssetProcessorService: remove dependency on <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/23">#23</a></p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.2.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/22">#22</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.1.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/21">#21</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_1">6.1.1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>build: Remove dependency on <code>commons-lang</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/42">#42</a></p>
+</li>
+<li>
+<p>Add bean aliases <code>linkGenerator</code>, <code>grailsLinkGenerator</code> for <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/41">#41</a></p>
+</li>
+<li>
+<p>AssetProcessorService: remove dependency on <code>LinkGenerator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/40">#40</a></p>
+</li>
+<li>
+<p>Update README Update badge of Grace to current version</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/21">#21</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0">6.1.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rename to README.md</p>
+</li>
+<li>
+<p>Update README</p>
+</li>
+<li>
+<p>Remove <code>@ConditionalOnMissingBean</code> value of bean <code>assetResourceLocator</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/20">#20</a></p>
+</li>
+<li>
+<p>Remove buildscript block</p>
+</li>
+<li>
+<p>Use <code>gradlePluginPortal()</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/18">#18</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-RC1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/17">#17</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle Nexus Publish Plugin 2.0.0 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/19">#19</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_rc1">6.1.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-RC1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Correct POM url <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/16">#16</a></p>
+</li>
+<li>
+<p>Remove repository <code>jcenter()</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/15">#15</a></p>
+</li>
+<li>
+<p>Use <code>classesDirectory</code> property instead of deprecated <code>outputDir</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/14">#14</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-M3 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/11">#11</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.23 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/13">#13</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_m2">6.1.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simplify <code>AssetPipelineGrailsPlugin</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/8">#8</a></p>
+</li>
+<li>
+<p>Update <code>grailsVersion</code> to allowed above <code>2023.0.0</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/7">#7</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2023.1.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/6">#6</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_1_0_m1">6.1.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Auto-Configure Asset Pipeline <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/4">#4</a></p>
+</li>
+<li>
+<p>Remove WARN from <code>LocalVariableTableParameterNameDiscoverer</code> <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/5">#5</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Caffeine 3.1.8</p>
+</li>
+<li>
+<p>Upgrade to GraalVM SDK and JS 22.3.5</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.2</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.1</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_1">6.0.1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.1</p>
+</li>
+<li>
+<p>Change group of Asset Pipeline Gradle tasks</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0</p>
+</li>
+<li>
+<p>Merge pull request <a href="https://github.com/grace-plugins/grace-asset-pipeline/pull/3">#3</a> from codeconsole/grace-gradle-default-skipNonDigests</p>
+</li>
+<li>
+<p>Default skipNonDigests for all applications.</p>
+</li>
+<li>
+<p>Set version to 6.0.1-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0">6.0.0</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0</p>
+</li>
+<li>
+<p>Set group and description of Assets Gradle tasks</p>
+</li>
+<li>
+<p>Update plugin description</p>
+</li>
+<li>
+<p>Upgrade to Google closure-compiler v20240317</p>
+</li>
+<li>
+<p>Merge pull request <a href="https://github.com/grace-plugins/grace-asset-pipeline/pull/2">#2</a> from codeconsole/grace&#8212;&#8203;default-skipNonDigests</p>
+</li>
+<li>
+<p>Default skipNonDigests = true for Grace apps.</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-RC2</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_rc1">6.0.0-RC1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-RC1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-RC1</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.22</p>
+</li>
+<li>
+<p>Upgrade to Caffeine 3.1.6</p>
+</li>
+<li>
+<p>Supports configure grails assetsPath when using <code>grails-app</code>, default value: <code>app/assets</code></p>
+</li>
+<li>
+<p>Upgrade to Gradle Wrapper 7.6.4</p>
+</li>
+<li>
+<p>Add artifact <code>grails-plugin.xml</code></p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M7</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+<li>
+<p>Fixes github repo url</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m4">6.0.0-M4</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M4">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M4</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M6</p>
+</li>
+<li>
+<p>Fixes very time-consuming processing in <code>assetCompile</code> task</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.21</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m3">6.0.0-M3</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M3">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M3</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M5</p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.17</p>
+</li>
+<li>
+<p>Update AssetsTagLib</p>
+</li>
+<li>
+<p>Default Resolver to support <code>app\assets</code></p>
+</li>
+<li>
+<p>Enhance <code>AssetsTagLib</code>: add <code>type</code> attr to support module scripts</p>
+</li>
+<li>
+<p>Default use <code>app\assets</code> as <code>assetsPath</code> for Grace</p>
+</li>
+<li>
+<p>Return empty string instead of null in <code>AbstractAssetFile.getParentPath</code></p>
+</li>
+<li>
+<p>Upgrade to Groovy 3.0.12</p>
+</li>
+<li>
+<p>build: make graalvm-js compileOnly</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m2">6.0.0-M2</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M2">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M2</p>
+</li>
+<li>
+<p>Migrate to jakarta namespace</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_0_0_m1">6.0.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M1">release notes</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v6.0.0-M1</p>
+</li>
+<li>
+<p>Update github workflows</p>
+</li>
+<li>
+<p>Migrate to Jakarta Servlet API</p>
+</li>
+<li>
+<p>Upgrade to Grace 2023.0.0-M1</p>
+</li>
+<li>
+<p>Build target to JDK 17</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+<h1 id="concepts"><a class="anchor" href="#concepts"></a>3 Concepts</h1>
+
+
+<div class="sect1">
+<h2 id="concepts">Concepts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asset-pipeline is a highly extensible asset processing library that is easy to integrate into your jvm based application or to even use standalone with Gradle. It works by defining <code>AssetFile</code> definitions for different file types in which <code>Processors</code> can be chained for processing and conversion to different target content types. But to use it you don&#8217;t really need to know about any of this (It really does just work).</p>
+</div>
+<div class="sect2">
+<h3 id="_commonjs">CommonJs</h3>
+<div class="paragraph">
+<p>Asset-pipeline now fully supports the commonJs method of loading modules using the <code>require()</code> function. It is important to note, however that these calls are preprocessed outside of a js runtime such that the string being passed to require must be a constant string and not a variable..</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Loading image files as modules uses a base url prefix by default of <code>/assets/</code> The <code>mapping</code> config option can often be set to an empty string to move this to the root level of your application (very common in Micronaut apps).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ecmascript_20172018_beyond">ECMAScript 2017,2018, beyond</h3>
+<div class="paragraph">
+<p>Asset-pipeline now supports processing Modern ECMAScript specifications utilizing BabelJs. By default this is disabled for performance but can be enabled by two ways. One is simply by adding <code>.es6</code> , <code>.es7</code>, <code>.es8</code> to the end of your javascript file extensions. This can also be done with jsx files (i.e. <code>.jsx.es6</code>) when using <code>jsx-asset-pipeline</code>.</p>
+</div>
+<div class="paragraph">
+<p>If it is desired to process ALL javascript assets through BabelJs this can be done as well by setting the configuration property in both development runtime and Gradle for assets called <code>enableES6:true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+BabelJs processing is new and will more than likely be enhanced in the future.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_directives">Directives</h3>
+<div class="paragraph">
+<p>Similar to other packaging libraries like webpack or grunt, asset-pipeline provides a means to require other files or "modules" into your javascript and/or css. We will call these require patterns <code>directives</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asset-pipeline chooses to be dependency syntax agnostic. This makes it very easy to add in extension modules for things like CommonJS.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In asset-pipeline it is a common pattern to list all requirements of your file at the top in a comments section but this is not required. Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">//This is a JavaScript file with its top level require directives</span>
+<span class="comment">//= require jquery</span>
+<span class="comment">//= require app/models.js</span>
+<span class="comment">//= require_tree views</span>
+<span class="comment">//= require_self</span>
+
+console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">This is my javascript manifest</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or similarly a CSS file might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="css"><span class="comment">/*
+This is a comment block in the top of a css file
+*= require bootstrap
+*= require font-awesome
+*= require navigation/header.css
+*= require_tree components
+*/</span>
+
+<span class="tag">body</span> {
+  <span class="key">font-size</span>: <span class="float">12px</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may look very simple at first but can become really quite powerful. For example, these directives can be nested in other files that you might include. This allows the asset-pipeline to build a dependency-graph, eliminating duplicate requirements, and ensuring everything is loaded in the most optimal order possible.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Requirement directives are recursively scanned within each required file, not just the first file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>One other cool aspect of these require directives is the extension is not mandatory. Asset-pipeline will automatically look for any file matching that name (minus the extension) that has a registered <code>AssetFile</code> capable of converting it to the intended target file type. i.e. that Bootstrap directive could be including a LESS file or the javascript could easily include a Coffeescript file.</p>
+</div>
+<div class="sect3">
+<h4 id="_encoding">Encoding</h4>
+<div class="paragraph">
+<p>In some cases it may be necessary to specify an encoding for your assets. An example might be for Japanese characters in a JavaScript file. To do this, two things must be done. First, we simply set the charset attribute when we include are JavaScript file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">utf-8</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should take care of testing in development mode and debugging. However, when we move to production/WAR mode the precompiler has no way to infer the desired encoding for compilation. To accomplish this, we have the <code>//= encoding</code> directive. This can be placed at the top of your <code>application.js</code> to define the desired compilation encoding.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">//=encoding UTF-8</span>
+<span class="comment">//=require_self</span>
+<span class="comment">//=require_tree .</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s all there is to it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_common_js">Common Js</h3>
+<div class="paragraph">
+<p>As of asset-pipeline 2.10.x CommonJs support was added. This is automatically detected in any javascript file and assets are automatically resolved within the project structure of asset-pipeline just like any other directive processor (i.e. <code>var React = require('react');</code>). If your project has conflicts with commonJs it can be turned off by setting the <code>configOptions</code> in Gradle and in <code>grails.assets</code> config.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  configOptions = [<span class="key">commonJs</span>: <span class="predefined-constant">false</span>] <span class="comment">//useful for custom config on extension libraries</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or:</p>
+</div>
+<div class="listingblock">
+<div class="title">application.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">grails {
+  assets {
+    commonJs = <span class="predefined-constant">false</span>
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_project_structure">Project Structure</h3>
+<div class="paragraph">
+<p>Depending on which framework integration is being used (or even if no framework integration is being used) the project of the asset-pipeline files can slightly differ. However, typically this only affects the source folder location while all other aspects of the project structure remain the same.</p>
+</div>
+<div class="paragraph">
+<p>By default assets live in the <code>src/assets</code> directory of the project (except in the case of Grace where these live in <code>app/assets</code>). However, files should not live at this direct root level and by default asset-pipeline will not detect them if they were. It is a conventional practice that files be organized in one level down subfolders. For example, in a base Grace app the following folder structure is used and encouraged:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>assets/javascripts</code></p>
+</li>
+<li>
+<p><code>assets/stylesheets</code></p>
+</li>
+<li>
+<p><code>assets/images</code></p>
+</li>
+<li>
+<p><code>assets/libs</code>&#8201;&#8212;&#8201;common naming for components that contain both css/javascript/images</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Asset-pipeline will automatically add any subfolder in the <code>assets</code> directory as a <code>FileResolver</code>. Meaning each folder is treated as a root level resolver path. It is also important to note that asset-pipeline does not actually care what file types go where. This is purely for the organizational benefit of the project.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When requiring files using require directives do not include these directory names, treat them as root level traversal.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_paths">Search Paths</h3>
+<div class="paragraph">
+<p>When a file is referenced via a require directive or web request, the asset-pipeline checks for the file in several locations.</p>
+</div>
+<div class="paragraph">
+<p>First it tries to find the file relative to the manifest including it. For example "admin/application.js" looking for "table.js"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// FileName: admin/application.js</span>
+<span class="comment">//= require table</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first place we will look is within <code>src/assets/javascripts/admin/*</code> We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.</p>
+</div>
+<div class="paragraph">
+<p>The next place we will look is the root of all src/assets plugin sub folders (e.g. <code>src/assets/*/table.js</code>).</p>
+</div>
+<div class="paragraph">
+<p>Finally all binary plugins are scanned in the <code>classpath:META-INF/assets</code> folder, <code>classpath:META-INF/static</code> and <code>classpath:META-INF/resources</code>.</p>
+</div>
+<div class="paragraph">
+<p>In all cases, the applications assets folder takes precedence between the search paths, but plugins get scanned as well.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_structure">Build Structure</h3>
+<div class="paragraph">
+<p>When the project is built (in Gradle that&#8217;s the <code>assetCompile</code> task) these folders are flattened and merged. Meaning this first level subdirectory structure disappears and all files are copied into <code>build/assets</code>. These files also get md5 digested names for cache busting as well as GZIP versions for compressed file serving (except already compressed images).</p>
+</div>
+<div class="paragraph">
+<p>In a Java based framework any type of WAR or JAR packaging typically gets detected and assets are automatically moved into <code>classpath:assets</code> along with a file <code>classpath:assets/manifest.properties</code>. This manifest is a list of every file that was packaged by the asset-pipeline as the key, and the digested name equivalent as the value. This facilitates easy differential syncing between CDNS (like an s3 bucket for cloudfront) as well as fast and easy generation of ETag headers when serving assets from the application (more on this later).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relative_urls">Relative Urls</h3>
+<div class="paragraph">
+<p>With all this renaming of assets with digested names as well as slight restructuring between source and build, what happens with url references specified in <code>CSS</code> as well as <code>HTML</code>. This is where some familiar with the Ruby on Rails sprockets based asset-pipeline might remember the need for erb helpers to specify path replacement. The asset-pipeline for the JVM, however, takes a different more automatic approach:</p>
+</div>
+<div class="paragraph">
+<p>All CSS type files go through a processor called the <code>CssProcessor</code>. This processor looks for any <code>url(../path/to/file.png)</code> type patterns and automatically resolves the asset from the asset-pipeline. If it finds the matching file, the url is automatically replaced with the correct url pattern including the digest name: <code>url(path/file-dadvbfgdaf123e.png)</code>.</p>
+</div>
+<div class="paragraph">
+<p>This relative url replacement is really handy because any external css library that is included in your project (i.e. bootstrap) can be used as is without any need to sift through its code and replace url patterns to match. This feature is also performend on <code>HTML</code> files.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+HTML files automatically get relative url replacement making it easy to generate 100% static websites without any need for a dynamic templating engine.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Currently javascript is not scanned for relative path replacement. It is now possible to reference assets from your javascript using a precompiler directive in your code called <code>asset_url</code>. It is not relative and always produces an absolute path response which can be configured via the <code>mapping</code> config option which defaults to 'assets':</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">---
+<span class="keyword">var</span> logo = asset_url(<span class="string"><span class="delimiter">'</span><span class="content">grace_logo.png</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<hr>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This method is not evaluated in javascript but rather replaced like a precompiler directive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<h1 id="gradle"><a class="anchor" href="#gradle"></a>4 Gradle</h1>
+
+
+<div class="sect1">
+<h2 id="gradle">Gradle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section of the documentation discusses configuration and setup of the asset-pipeline Gradle plugin. Most framework integrations use this plugin for builds so it is important to know how it works.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="getting_started"><a class="anchor" href="#getting_started"></a>4.1 Getting Started</h2>
+
+
+<div class="sect2">
+<h3 id="_getting_started">Getting Started</h3>
+<div class="paragraph">
+<p>Getting started with Gradle is very quick and easy. The <code>asset-pipeline-gradle</code> plugin is included in both the Gradle plugin repository as well as Maven. For those of you not familiar with <a href="https://gradle.org">Gradle</a> it is a very powerful build tooling system that you should definitely check out.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Asset-Pipelines build classes are not directly dependent on Gradle and can be easily integrated into other build tooling frameworks like Maven.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In its simplest form the <code>build.gradle</code> file might look like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.graceframework.plugins:asset-pipeline-gradle:{project-version}"
+  }
+}
+
+apply plugin: "org.graceframework.asset-pipeline"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or even simpler:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">//Gradle 2.1+
+plugins {
+  id "org.graceframework.asset-pipeline" version "{project-version}"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When this plugin is added a couple tasks and extensions are automatically registered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>assetCompile</code> - Compiles and packages assets from <code>src/assets</code> into <code>build/assets</code></p>
+</li>
+<li>
+<p><code>assetPluginPackage</code> - Copies all assets unprocessed into an archive useful for plugin jars similar to webjars.</p>
+</li>
+<li>
+<p><code>assetClean</code> - Cleans and resets the <code>build/assets</code> directory.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All of these tasks support Gradle&#8217;s incubating continuous build feature. Simply prefix the task with <code>-t</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Create a folder <code>src/assets</code> and subfolders:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>javascripts</code></p>
+</li>
+<li>
+<p><code>stylesheets</code></p>
+</li>
+<li>
+<p><code>html</code></p>
+</li>
+<li>
+<p><code>images</code></p>
+</li>
+<li>
+<p><code>&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now assets can be packaged and processed with ease and performance far outpacing other static asset build tooling.</p>
+</div>
+</div>
+
+
+<h2 id="gradle_configuration"><a class="anchor" href="#gradle_configuration"></a>4.2 Configuration</h2>
+
+
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>The asset-pipeline Gradle plugin provides several very useful configuration options. An extension called <code>assets</code> is automatically added to Gradle when the plugin is applied that provides several options:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  minifyJs = <span class="predefined-constant">true</span>
+  minifyCss = <span class="predefined-constant">true</span>
+  enableSourceMaps = <span class="predefined-constant">true</span>
+  maxThreads = <span class="integer">4</span> <span class="comment">//useful for concurrent asset processing during build</span>
+  configOptions = [:] <span class="comment">//useful for custom config on extension libraries</span>
+
+  minifyOptions = [
+    <span class="key">optimizationLevel</span>: <span class="string"><span class="delimiter">'</span><span class="content">SIMPLE</span><span class="delimiter">'</span></span>,
+    <span class="key">angularPass</span>: <span class="predefined-constant">true</span> <span class="comment">// Can use @ngInject annotation for Angular Apps</span>
+    <span class="key">excludes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">**/bundle.js</span><span class="delimiter">'</span></span>] <span class="comment">// Example of excluding specific resources from minification, e.g., if it was minified externally</span>
+  ]
+
+  includes = <span class="type">[]</span>
+  excludes = [<span class="string"><span class="delimiter">'</span><span class="content">**/*.less</span><span class="delimiter">'</span></span>] <span class="comment">//Example Exclude GLOB pattern</span>
+
+  <span class="comment">//for plugin packaging</span>
+  packagePlugin=<span class="predefined-constant">false</span> <span class="comment">//set to true if this is a library</span>
+
+  <span class="comment">//developmentRuntime can be turned off</span>
+  developmentRuntime=<span class="predefined-constant">true</span>
+
+  <span class="comment">//if you want to customize the jar task this task runs on you can specify a jarTaskName</span>
+  jarTaskName=<span class="predefined-constant">null</span>
+
+  <span class="comment">// Can add custom asset locations (directories or individual jar files)</span>
+  from <span class="string"><span class="delimiter">'</span><span class="content">/vendor/lib</span><span class="delimiter">'</span></span>
+  from <span class="string"><span class="delimiter">'</span><span class="content">/path/to/file.jar</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default settings will work for most projects, but if one wanted to add a custom source file location the <code>from</code> directive can be quite useful. Asset-pipeline&#8217;s broad <code>Resolver</code> support makes it easy to include assets from a diverse set of locations (even webjars).</p>
+</div>
+<div class="paragraph">
+<p>A common configuration change for assets may be the includes/excludes patterns. These allow one to specify specific files that should not be individually required or compiled because it does not make sense for them to be individually compiled. In the example above: all <code>.less</code> files are excluded. This does not exclude processing however when a <code>require</code> directive is used making it very easy to only package and bundle assets that the final website needs. It is also important to note that these patterns do not have to be <code>GLOB</code> patterns but can also be regular expressions by prefixing the pattern with <code>regex:</code>. By default all files prefixed with an underscore are automatically excluded from individual processing (similar to SASS).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Tuning the includes/excludes patterns can dramatically reduce the build time of your project.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Some additional options are also provided for configuring what types of output assets are generated:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">assets {
+  enableDigests = <span class="predefined-constant">true</span>
+  skipNonDigests = <span class="predefined-constant">false</span>
+  enableGzip = <span class="predefined-constant">true</span>
+  maxThreads = <span class="integer">4</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default both digested named versions of assets as well as non digested named versions are generated as well as the gzip equivalents. Some frameworks dont actually need the non digested named versions (<code>spring-boot</code>, and <code>servlets</code>). These frameworks take advantage of the <code>manifest.properties</code> file discussed earlier in the documentation to properly map requests for non digested file names to the digested equivalent and preserve compatibility with libraries that may not work well with digested file names.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Change <code>skipNonDigests</code> to true to help reduce the file size of your final generated project.
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+
+<h2 id="java"><a class="anchor" href="#java"></a>4.3 JVM Based Dependencies</h2>
+
+
+<div class="sect2">
+<h3 id="_jvm_based_dependencies">JVM Based Dependencies</h3>
+<div class="paragraph">
+<p>When working on any jvm based Gradle project, the asset-pipeline plugin automatically detects all dependencies on the classpath and scans them for assets. This makes it easy to package assets in shared libraries for multiple apps to use or to even include assets that are included from a <a href="https://www.webjars.org">webjar</a> dependency.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a library is simply a webjar or asset library, these packages are not needed in your final application package and can be set to <code>provided</code> or <code>compileOnly</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+
+<h1 id="grace"><a class="anchor" href="#grace"></a>5 Grace</h1>
+
+
+<div class="sect1">
+<h2 id="grace">Grace</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section of the documentation discusses configuration and setup of the asset-pipeline plugin for Grace 2022+ based applications.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="gettingStarted"><a class="anchor" href="#gettingStarted"></a>5.1 Getting Started</h2>
+
+
+<div class="sect2">
+<h3 id="_getting_started">Getting Started</h3>
+<div class="paragraph">
+<p>In Grace 2022 most assets live in the <code>app/assets</code> directory. This folder is automatically generated for you along with the organizational subdirectories <code>javascripts</code>, <code>images</code>, and <code>stylesheets</code>.</p>
+</div>
+<div class="paragraph">
+<p>To get started simply add asset-pipeline to your <code>build.gradle</code> file (See Gradle usage). And the Grace plugin to the dependencies block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+  runtime 'org.graceframework.plugins:asset-pipeline-plugin:{project-version}'
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_development_runtime">Development Runtime</h4>
+<div class="paragraph">
+<p>A great feature built into Grace is its development runtime support. All assets that are used in your gsp files are automatically generated and processed on the fly when requested. This means when a change is made in a css file or javascript file, the results are instant. A refresh of the page will reflect the changes without needing to wait for any type of <code>FileWatcher</code>. These results are also cached making it highly performant as your project grows.</p>
+</div>
+<div class="paragraph">
+<p>Another great aspect of development runtime with Grace is each file will individually be required in the gsp. A dependency graph is generated and each file is required individually to make it easy to debug javascript errors and stylesheet errors. While sourcemap support is integrated for javascript, this is not supported in a lot of browsers developers still target compatibility for. It is possible to disable this feature via configuration or simply testing your app with the embedded tomcat war to see how post minified and bundled assets will behave.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>5.2 Configuration</h2>
+
+
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>Asset-Pipeline has several configuration options for use with Grace 2022. For most cases the configuration options listed in the Gradle guide pertain to Grace 2022. Some subtle differences is the concept of development runtime vs. build time. If you want settings to apply to both development runtime and build time the properties have to be duplicated in your applications <code>application.yml</code> project. This is currently a limitation in how grails reads configuration files and Gradle conveys properties.</p>
+</div>
+<div class="paragraph">
+<p>Most build time options like <code>skipNonDigests</code> or <code>enableGzip</code> will never need specified in this YAML file as they will never be used during development runtime. It is also possible to disable development runtime entirely. In this scenario assets will always be packaged with the application and not monitored for changes unless Gradle continuous build is utilized. Simply set <code>assets { developmentRuntime = false}</code> in your <code>build.gradle</code> file.</p>
+</div>
+<div class="paragraph">
+<p>Example yaml:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">bundle</span>: <span class="string"><span class="content">true</span></span> <span class="comment">#dont individually require files in development</span>
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/path/to/store</span></span> <span class="comment">#automatically copy assets to external folder on startup</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mappings_and_asset_taglib_urls">Mappings and Asset Taglib URLs</h4>
+<div class="paragraph">
+<p>In many cases you may want to change the URL for which to include your static assets. This can be useful when using a CDN or perhaps even using nginx to serve your static assets.</p>
+</div>
+<div class="paragraph">
+<p>To change the URL for your taglibs use the following configuration option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">url</span>: <span class="string"><span class="content">http://cdn.example.com/</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now your files are going to reference the CDN when running in the production environment. To go with this feature, you can have your application automatically copy your asset files out of your base WAR file on startup of your application. Optionally the asset URL config can also be defined as a closure that takes a request argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">grails.assets.url = { request -&gt;
+        <span class="keyword">if</span>(request.isSecure()) {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        } <span class="keyword">else</span> {
+                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+        }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This allows more fine grained control of your asset URLs based on the incoming request. An example, might be SSL detection or even changing CDN region by source IP.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To use an asset closure config must be placed in an <code>application.groovy</code> file instead of <code>application.yml</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">storagePath</span>: <span class="string"><span class="content">/var/cdn/path</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also change the default Tomcat path for both debugging and file inclusion using the <code>mapping</code> config option.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
+  <span class="key">assets</span>:
+    <span class="key">mapping</span>: <span class="string"><span class="content">assets</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For all these configuration options, you will want to put these config values in the appropriate environment in <code>application.yml</code> or in groovy format in <code>application.groovy</code>.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="organization"><a class="anchor" href="#organization"></a>5.3 Asset Organization</h2>
+
+
+<div class="sect2">
+<h3 id="_organization">Organization</h3>
+<div class="paragraph">
+<p>Asset pipeline organization occurs within the "app/assets" folder. This folder can exist within both the main application as well as a plugin.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A plugin will also include its web-app directory to better deal with plugins that wish to support both the resources plugin as well as asset-pipeline.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Within the <code>app/assets</code> directory are several subfolders</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>app/assets/javascripts</code></p>
+</li>
+<li>
+<p><code>app/assets/stylesheets</code></p>
+</li>
+<li>
+<p><code>app/assets/images</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A common folder that gets added to this set of organization is a "lib" folder. This folder can be useful in organizing third party libraries like jQuery, or Bootstrap.</p>
+</div>
+<div class="sect3">
+<h4 id="_plugins">Plugins</h4>
+<div class="paragraph">
+<p>Plugins also can have the same "app/assets" folder and their URL mapping is also the same. This means it can be more important to ensure unique naming / path mapping between plugins. This is also powerful in the sense that a plugin can add helper manifests to be used within your apps like jquery, bootstrap, font-awesome, and more.</p>
+</div>
+<div class="paragraph">
+<p>Plugins should make sure that the <code>assets { packagePlugin }</code> property is set to true in their <code>build.gradle</code> file otherwise assets will not properly be packaged into the plugin for use by the application.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Plugins with assets must have the <code>packagePlugin</code> property set to true on the assets extension in <code>build.gradle</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If, in the event, a file within a plugin needs to be overridden within your application, simply create the same file with the same relative path to <code>app/assets</code> and it will override / take precedence over the plugin. More on that later.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Since plugins share the same file structure for assets, as well as web-app. It can become more important to "namespace" your plugins by creating further nested folders. (i.e. the plugin SpudCore puts its application.js file within <code>app/assets/javascripts/spud/admin/application.js</code>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_search_paths">Search Paths</h4>
+<div class="paragraph">
+<p>When a file is referenced via a taglib or a manifest require directive, the asset-pipeline checks for the file in several locations.</p>
+</div>
+<div class="paragraph">
+<p>First it tries to find the file relative to the manifest including it. For example "admin/application.js" looking for "table.js"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// FileName: admin/application.js</span>
+<span class="comment">//= require table</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first place we will look is within <code>app/assets/javascripts/admin/*</code> We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.</p>
+</div>
+<div class="paragraph">
+<p>The next place we will look is the root of all app/assets plugin sub folders (e.g. <code>app/assets/<strong>/table.js</code>, and <code>web-app/</strong>/table.js</code> for plugins).</p>
+</div>
+<div class="paragraph">
+<p>Finally all binary plugins are scanned in the <code>classpath:META-INF/assets</code> folder, <code>classpath:META-INF/static</code> and <code>classpath:META-INF/resources</code>.</p>
+</div>
+<div class="paragraph">
+<p>In all cases, the applications assets folder takes precedence between the search paths, but plugins get scanned as well.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These same conditions should be implemented on any preprocessor extension plugin, e.g. LESS-asset-pipeline follows the same scan for @import directives.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+<h2 id="taglibs"><a class="anchor" href="#taglibs"></a>5.4 Taglibs</h2>
+
+
+<div class="sect2">
+<h3 id="_taglibs">Taglibs</h3>
+<div class="paragraph">
+<p>Asset Pipeline adds a few new taglibs to properly reference your assets. These taglibs automatically handle swapout of cache digest names during production use as well as any custom URL mapping changes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;asset:stylesheet</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.css</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/head&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The primary include tags, as shown above, are quite useful for including your relevant JavaScript or stylesheet files. Notice that you do not have to prefix with '/assets', as this is handled automatically by the tag.</p>
+</div>
+<div class="paragraph">
+<p>In GSP views, you can also reference images included in the asset-pipeline with the following tag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:image</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">logo.png</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assets can also be referenced within subdirectories if required and simply require the use of the relative path.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:image</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icons/delete.png</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to return an assetPath as a string for injection in your own tags:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${assetPath(src: 'manifest.json')}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to execute a code section only if an asset exists or to simply test for existence</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:assetPathExists</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">test.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+This will only be displayed if the asset exists
+<span class="tag">&lt;/asset:assetPathExists&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html">asset.assetPathExists(src: 'test.js') //returns true or false</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_resource">Getting Resource</h4>
+<div class="paragraph">
+<p>As of version 0.8.2 a new bean exists called <code>assetResourceLocator</code> This can be used to find assets by URI in both development and production mode.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html">class ExampleService {
+  def assetResourceLocator
+
+  def someMethod() {
+    Resource myResource = assetResourceLocator.findAssetForURI('test.css')
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deferred_scripts">Deferred Scripts</h4>
+<div class="paragraph">
+<p>Asset-Pipeline provides a set of tags that can be used to ensure script blocks are deferred to the end of your page. This is not recommended as it is obtrusive, but has been added to help newcomers upgrade existing apps from resources.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">asset-defer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  console.log(&quot;Hello World&quot;);
+<span class="tag">&lt;/asset:script&gt;</span>
+<span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  console.log(&quot;Hello World 2&quot;);
+<span class="tag">&lt;/asset:script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now to render the output of these scripts simply use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="gsp">&lt;asset:deferredScripts/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<h1 id="extending"><a class="anchor" href="#extending"></a>6 Extending Asset-Pipeline</h1>
+
+
+<div class="sect1">
+<h2 id="extending">Extending</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The asset-pipeline is extremely extensible and easy to customize to suit one&#8217;s needs. You might extend the asset-pipeline to handle a new type of asset that may need to be preprocessed before being served to the browser, or you may want to define a new custom directive. This guide will go over the basics of how to perform those tasks with ease.</p>
+</div>
+</div>
+</div>
+
+
+<h2 id="assetfile"><a class="anchor" href="#assetfile"></a>6.1 Asset File Definitions</h2>
+
+
+<div class="sect2">
+<h3 id="_asset_file_definition">Asset File Definition</h3>
+<div class="paragraph">
+<p>The <code>AssetFile</code> definition is where our journey begins. This is the defining file for various file types. Without this definition, the asset-pipeline will treat an unknown file type as a standard passthrough resource. As an example, lets first look at the <code>CssAssetFile</code> definition.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CssAssetFile</span> <span class="directive">extends</span> AbstractAssetFile {
+  <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> contentType = <span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span>
+  <span class="directive">static</span> extensions = [<span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>]
+  <span class="directive">static</span> compiledExtension = <span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>
+  <span class="directive">static</span> processors = [CssProcessor]
+
+  <span class="predefined-type">String</span> directiveForLine(<span class="predefined-type">String</span> line) {
+    line.find(<span class="regexp"><span class="delimiter">/</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span>) { fullMatch, directive -&gt; <span class="keyword">return</span> directive }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file definition is pretty short but allows us to define some very useful information. First, we look at the static definitions at the top of the class. These static definitions are fairly easy to meta-override with Groovy and add additional processors or adjust with added plugins.</p>
+</div>
+<div class="paragraph">
+<p>The <code>contentType</code> property is used to match a file definition with an incoming file request. When the browser requests a <code>text/css</code> content-type file , this file is matched and files matching this definition are scanned. The <code>extensions</code> list tells asset-pipeline which file extensions to scan through and match. In this case it is just 'css', but in the case of LESS for example, we may be looking for extensions <code>less</code>, or <code>css.less</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>compiledExtension</code> property tells asset-pipelines precompiler what the final file extension should be.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>processors</code> array determines the list of processors that need be run on the file contents before returning a result. This array is executed in order. In this case, we have the <code>CssProcessor</code> (a processor for converting the relative image paths and replacing with their cache digested version).</p>
+</div>
+<div class="sect3">
+<h4 id="_directive_definition">Directive Definition</h4>
+<div class="paragraph">
+<p>An <code>assetFile</code> can specify a REGEXP pattern for require directives. These directives are used to bundle assets together. Some file types don&#8217;t utilize these require directives and simply returning a null value will cancel directive processing.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">  <span class="predefined-type">Pattern</span> directivePattern = ~<span class="regexp"><span class="delimiter">/</span><span class="content">(?m)</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Used to there was a <code>directiveForLine</code> that matched on each individual line. This was changed to support a multiline regex pattern for faster processing.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The example above shows a match pattern for CSS files. This allows it to match require directives for the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">/*
+*= require_self
+*= require_file example_b
+*= require_tree .
+*/</span>
+
+body {
+  margin-<span class="key">top</span>:<span class="integer">25</span>px;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_processing_data_streams">Processing Data Streams</h4>
+<div class="paragraph">
+<p>Processors are used to precompile certain assets, and/or adjust the file path contents. The Processor class itself will get a more in depth explanation in the next section. For now, the part we want to look at is the processedStream function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> processedStream(<span class="predefined-type">Boolean</span> precompiler) {
+  <span class="keyword">def</span> fileText
+  <span class="keyword">def</span> skipCache = precompiler ?: (!processors || processors.size() == <span class="integer">0</span>)
+
+  <span class="keyword">if</span>(baseFile?.encoding || encoding) {
+    fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
+  } <span class="keyword">else</span> {
+    fileText = file?.text
+  }
+
+  <span class="keyword">def</span> md5 = AssetHelper.getByteDigest(fileText.bytes)
+  <span class="keyword">if</span>(!skipCache) {
+    <span class="keyword">def</span> cache = CacheManager.findCache(file.canonicalPath, md5)
+    <span class="keyword">if</span>(cache) {
+      <span class="keyword">return</span> cache
+    }
+  }
+  <span class="keyword">for</span>(processor <span class="keyword">in</span> processors) {
+    <span class="keyword">def</span> processInstance = processor.newInstance(precompiler)
+    fileText = processInstance.process(fileText, <span class="local-variable">this</span>)
+  }
+
+  <span class="keyword">if</span>(!skipCache) {
+    CacheManager.createCache(file.canonicalPath,md5,fileText)
+  }
+
+  <span class="keyword">return</span> fileText
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example above iterates over all of the processor classes defined in our static <code>processors</code> variable. This creates a new instance and informs the processor whether this is a developer mode request or being issued by the precompiler (useful for determining if file replacements need to be cache digested or not). The <code>processedStream</code> method is now a part of the <code>AbstractAssetFile</code> definition and handles cache management if there are processors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_the_asset_definiton_to_the_list_of_assetfiles">Adding the Asset definiton to the list of AssetFiles</h4>
+<div class="paragraph">
+<p>Originally we had to add these classes on startup in both runtime and build phases to the <code>AssetHelper.assetSpecs</code> array. Thanks to contributions by Graeme Rocher we have been able to simplify this process.
+Simply adding a list file <code>META-INF/asset-pipeline/asset.specs</code> to the classpath will automatically get scanned.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.HtmlAssetFile
+asset.pipeline.JsAssetFile
+asset.pipeline.CssAssetFile</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another autoscanning file allows us to tack on Processors to already registered AssetFile specifications. This is called the <code>processor.specs</code> file and goes in the same <code>META-INF/asset-pipeline</code> folder.
+This is a Properties file with the key being the class path of the Processor and the value being a comma delimited list of <code>AssetFile</code> classes you want the processor added to.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.CssProcessor=asset.pipeline.CssAssetFile,asset.pipeline.LessAssetFile</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<h2 id="processors"><a class="anchor" href="#processors"></a>6.2 Processors</h2>
+
+
+<div class="sect2">
+<h3 id="_processors">Processors</h3>
+<div class="paragraph">
+<p>Processors are where the real power of asset-pipeline comes into play. These are the driving force behind making compileable assets such as LESS, and CoffeeScript first class citizens. Gone is the need to run a compiler on the side, and gone is the delay between making changes in development.</p>
+</div>
+<div class="paragraph">
+<p>A Processor is an implementation of the <code>Processor</code> interface via the <code>AbstractProcessor</code> class. It must have a constructor with an <code>AssetCompiler</code> argument, and it must have a process method. The rest is up to the developer.
+The reason the AssetCompiler is passed is for giving the processor access to manipulate the precompiler phase. If a null precompiler is passed, than development mode is assumed and the processor can infer that. An example use case
+for this is the SassProcessor in the SASS/SCSS Asset Pipeline Plugin. Image sprite generation causes additional image files to be created that need added to the list of files to process.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CoffeeScriptProcessor</span> <span class="directive">extends</span> AbstractProcessor {
+
+  Scriptable globalScope
+  <span class="predefined-type">ClassLoader</span> classLoader
+
+  CoffeeScriptProcessor(AssetCompiler precompiler){
+    <span class="local-variable">super</span>(precompiler)
+  }
+
+  <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
+    <span class="keyword">try</span> {
+      <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
+      <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
+      compileScope.setParentScope(globalScope)
+      compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
+      <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
+      <span class="keyword">return</span> result
+    } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+        CoffeeScript Engine compilation of coffeescript to javascript failed.
+        </span><span class="inline"><span class="inline-delimiter">$</span>e</span><span class="content">
+        </span><span class="delimiter">&quot;&quot;&quot;</span></span>)
+    } <span class="keyword">finally</span> {
+      <span class="predefined-type">Context</span>.exit()
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Above is an excerpt of the <code>CoffeeScriptProcessor</code> plugin. This plugin takes advantage of RhinoJS to use the CoffeeScript compiler and provide the application with direct support for CoffeeScript files. The <code>process</code> method takes an input, as well as a reference to the asset file definition, and returns a result. To use your processor simply add it to your 'static processors' array on the <code>AssetFile</code> definition.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LESSProcessor</code> was not used in this example as it&#8217;s more complicated due to supporting the <code>@import</code> LESS directive and cache dependencies on the cache manager. However, it is a great example to look at and highly recommended.</p>
+</div>
+</div>
+
+
+<h2 id="postprocessors"><a class="anchor" href="#postprocessors"></a>6.3 Post-Processors</h2>
+
+
+<div class="sect2">
+<h3 id="_post_processors">Post-Processors</h3>
+<div class="paragraph">
+<p>Currently, PostProcessor extensibility is not available. This is currently a feature we are implementing to provide easier dropin for custom minifiers and compressors.</p>
+</div>
+</div>
+
+                    </div>
+                </td>
+                <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Command Line</h1><div class="menu-sub">
+                        
+                        
+                        <div class="menu-item"><a href="../ref/Command%20Line/asset-clean.html">asset-clean</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Command%20Line/asset-compile.html">asset-compile</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Command%20Line/asset-precompile.html">asset-precompile</a>
+                        </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Spring Beans</h1><div class="menu-sub">
+                        
+                        
+                        <div class="menu-item"><a href="../ref/Spring%20Beans/assetResourceLocator.html">assetResourceLocator</a>
+                        </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Tags</h1><div class="menu-sub">
+                        
+                        
+                        <div class="menu-item"><a href="../ref/Tags/assetPath.html">assetPath</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/assetPathExists.html">assetPathExists</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/deferredScripts.html">deferredScripts</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/image.html">image</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/javascript.html">javascript</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/link.html">link</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/script.html">script</a>
+                        </div>
+                        
+                        <div class="menu-item"><a href="../ref/Tags/stylesheet.html">stylesheet</a>
+                        </div>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+            </tr>
+        </table>
+
+        <div id="footer">
+            Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+            
+        </div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+    </body>
+</html>
