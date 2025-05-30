@@ -1,6 +1,6 @@
 === Configuration
 
-The asset-pipeline gradle plugin provides several very useful configuration options. An extension called `assets` is automatically added to Gradle when the plugin is applied that provides several options:
+The asset-pipeline Gradle plugin provides several very useful configuration options. An extension called `assets` is automatically added to Gradle when the plugin is applied that provides several options:
 
 [source,groovy]
 .build.gradle
@@ -55,7 +55,7 @@ assets {
 }
 ----
 
-By default both digested named versions of assets as well as non digested named versions are generated as well as the gzip equivalents. Some frameworks dont actually need the non digested named versions ( `ratpack`, `grails`, `spring-boot`, and `servlets`). These frameworks take advantage of the `manifest.properties` file discussed earlier in the documentation to properly map requests for non digested file names to the digested equivalent and preserve compatibility with libraries that may not work well with digested file names.
+By default both digested named versions of assets as well as non digested named versions are generated as well as the gzip equivalents. Some frameworks dont actually need the non digested named versions (`spring-boot`, and `servlets`). These frameworks take advantage of the `manifest.properties` file discussed earlier in the documentation to properly map requests for non digested file names to the digested equivalent and preserve compatibility with libraries that may not work well with digested file names.
 
 TIP: Change `skipNonDigests` to true to help reduce the file size of your final generated project.
 

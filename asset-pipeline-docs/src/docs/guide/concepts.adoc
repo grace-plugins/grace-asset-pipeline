@@ -1,7 +1,7 @@
 [[concepts]]
 == Concepts
 
-Asset-pipeline is a highly extensible asset processing library that is easy to integrate into your jvm based application or to even use standalone with gradle. It works by defining `AssetFile` definitions for different file types in which `Processors` can be chained for processing and conversion to different target content types. But to use it you don't really need to know about any of this (It really does just work).
+Asset-pipeline is a highly extensible asset processing library that is easy to integrate into your jvm based application or to even use standalone with Gradle. It works by defining `AssetFile` definitions for different file types in which `Processors` can be chained for processing and conversion to different target content types. But to use it you don't really need to know about any of this (It really does just work).
 
 === CommonJs
 
@@ -13,7 +13,7 @@ NOTE: Loading image files as modules uses a base url prefix by default of `/asse
 
 Asset-pipeline now supports processing Modern ECMAScript specifications utilizing BabelJs. By default this is disabled for performance but can be enabled by two ways. One is simply by adding `.es6` , `.es7`, `.es8` to the end of your javascript file extensions. This can also be done with jsx files (i.e. `.jsx.es6`) when using `jsx-asset-pipeline`.
 
-If it is desired to process ALL javascript assets through BabelJs this can be done as well by setting the configuration property in both development runtime and gradle for assets called `enableES6:true`.
+If it is desired to process ALL javascript assets through BabelJs this can be done as well by setting the configuration property in both development runtime and Gradle for assets called `enableES6:true`.
 
 NOTE: BabelJs processing is new and will more than likely be enhanced in the future.
 
@@ -81,7 +81,7 @@ That's all there is to it.
 
 === Common Js
 
-As of asset-pipeline 2.10.x CommonJs support was added. This is automatically detected in any javascript file and assets are automatically resolved within the project structure of asset-pipeline just like any other directive processor (i.e. `var React = require('react');`). If your project has conflicts with commonJs it can be turned off by setting the `configOptions` in gradle and in `grails.assets` config.
+As of asset-pipeline 2.10.x CommonJs support was added. This is automatically detected in any javascript file and assets are automatically resolved within the project structure of asset-pipeline just like any other directive processor (i.e. `var React = require('react');`). If your project has conflicts with commonJs it can be turned off by setting the `configOptions` in Gradle and in `grails.assets` config.
 
 [source,groovy]
 .build.gradle
@@ -108,7 +108,7 @@ grails {
 
 Depending on which framework integration is being used (or even if no framework integration is being used) the project of the asset-pipeline files can slightly differ. However, typically this only affects the source folder location while all other aspects of the project structure remain the same.
 
-By default assets live in the `src/assets` directory of the project (except in the case of grails where these live in `grails-app/assets`). However, files should not live at this direct root level and by default asset-pipeline will not detect them if they were. It is a conventional practice that files be organized in one level down subfolders. For example, in a base grails app the following folder structure is used and encouraged:
+By default assets live in the `src/assets` directory of the project (except in the case of Grace where these live in `app/assets`). However, files should not live at this direct root level and by default asset-pipeline will not detect them if they were. It is a conventional practice that files be organized in one level down subfolders. For example, in a base Grace app the following folder structure is used and encouraged:
 
 * `assets/javascripts`
 * `assets/stylesheets`
@@ -160,10 +160,10 @@ Currently javascript is not scanned for relative path replacement. It is now pos
 
 [source,javascript]
 ---
-var logo = asset_url('grails_logo.png');
+var logo = asset_url('grace_logo.png');
 
 // will get replaced at build time with :
-// var logo = '/assets/grails_logo-adcv456.png';
+// var logo = '/assets/grace_logo-adcv456.png';
 ---
 
 NOTE: This method is not evaluated in javascript but rather replaced like a precompiler directive.

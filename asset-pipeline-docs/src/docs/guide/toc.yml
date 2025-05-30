@@ -1,5 +1,8 @@
 introduction:
   title: Introduction
+releases:
+  title: Release History
+  release6: What's new in 6.x
 concepts:
   title: Concepts
 gradle:

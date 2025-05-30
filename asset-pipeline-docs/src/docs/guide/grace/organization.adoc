@@ -1,28 +1,28 @@
 === Organization
 
-Asset pipeline organization occurs within the "grails-app/assets" folder. This folder can exist within both the main application as well as a plugin.
+Asset pipeline organization occurs within the "app/assets" folder. This folder can exist within both the main application as well as a plugin.
 
 NOTE: A plugin will also include its web-app directory to better deal with plugins that wish to support both the resources plugin as well as asset-pipeline.
 
-Within the `grails-app/assets` directory are several subfolders
+Within the `app/assets` directory are several subfolders
 
-* `grails-app/assets/javascripts`
-* `grails-app/assets/stylesheets`
-* `grails-app/assets/images`
+* `app/assets/javascripts`
+* `app/assets/stylesheets`
+* `app/assets/images`
 
 A common folder that gets added to this set of organization is a "lib" folder. This folder can be useful in organizing third party libraries like jQuery, or Bootstrap.
 
 ==== Plugins
 
-Plugins also can have the same "grails-app/assets" folder and their URL mapping is also the same. This means it can be more important to ensure unique naming / path mapping between plugins. This is also powerful in the sense that a plugin can add helper manifests to be used within your apps like jquery, bootstrap, font-awesome, and more.
+Plugins also can have the same "app/assets" folder and their URL mapping is also the same. This means it can be more important to ensure unique naming / path mapping between plugins. This is also powerful in the sense that a plugin can add helper manifests to be used within your apps like jquery, bootstrap, font-awesome, and more.
 
 Plugins should make sure that the `assets { packagePlugin }` property is set to true in their `build.gradle` file otherwise assets will not properly be packaged into the plugin for use by the application.
 
 IMPORTANT: Plugins with assets must have the `packagePlugin` property set to true on the assets extension in `build.gradle`
 
-If, in the event, a file within a plugin needs to be overridden within your application, simply create the same file with the same relative path to `grails-app/assets` and it will override / take precedence over the plugin. More on that later.
+If, in the event, a file within a plugin needs to be overridden within your application, simply create the same file with the same relative path to `app/assets` and it will override / take precedence over the plugin. More on that later.
 
-NOTE: Since plugins share the same file structure for assets, as well as web-app. It can become more important to "namespace" your plugins by creating further nested folders. (i.e. the plugin SpudCore puts its application.js file within `grails-app/assets/javascripts/spud/admin/application.js`).
+NOTE: Since plugins share the same file structure for assets, as well as web-app. It can become more important to "namespace" your plugins by creating further nested folders. (i.e. the plugin SpudCore puts its application.js file within `app/assets/javascripts/spud/admin/application.js`).
 
 ==== Search Paths
 
@@ -36,9 +36,9 @@ First it tries to find the file relative to the manifest including it. For examp
 //= require table
 ----
 
-The first place we will look is within `grails-app/assets/javascripts/admin/*` We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.
+The first place we will look is within `app/assets/javascripts/admin/*` We will proceed to do this within all of the asset sub folders across plugins after the main application is searched.
 
-The next place we will look is the root of all grails-app/assets plugin sub folders (e.g. `grails-app/assets/*/table.js`, and `web-app/*/table.js` for plugins).
+The next place we will look is the root of all app/assets plugin sub folders (e.g. `app/assets/*/table.js`, and `web-app/*/table.js` for plugins).
 
 Finally all binary plugins are scanned in the `classpath:META-INF/assets` folder, `classpath:META-INF/static` and `classpath:META-INF/resources`.
 

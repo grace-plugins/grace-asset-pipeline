@@ -20,7 +20,7 @@ use as well as any custom URL mapping changes, e.g.
 
 | src
 | Yes
-| Path to the asset from `grails-app/assets` (excluding the first subdirectory)
+| Path to the asset from `app/assets` (excluding the first subdirectory)
 
 | absolute
 | No

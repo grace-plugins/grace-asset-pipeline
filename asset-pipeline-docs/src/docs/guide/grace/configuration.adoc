@@ -1,8 +1,8 @@
 === Configuration
 
-Asset-Pipeline has several configuration options for use with grails 3. For most cases the configuration options listed in the Gradle guide pertain to grails3. Some subtle differences is the concept of development runtime vs. build time. If you want settings to apply to both development runtime and build time the properties have to be duplicated in your applications `application.yml` project. This is currently a limitation in how grails reads configuration files and gradle conveys properties.
+Asset-Pipeline has several configuration options for use with Grace 2022. For most cases the configuration options listed in the Gradle guide pertain to Grace 2022. Some subtle differences is the concept of development runtime vs. build time. If you want settings to apply to both development runtime and build time the properties have to be duplicated in your applications `application.yml` project. This is currently a limitation in how grails reads configuration files and Gradle conveys properties.
 
-Most build time options like `skipNonDigests` or `enableGzip` will never need specified in this YAML file as they will never be used during development runtime. It is also possible to disable development runtime entirely. In this scenario assets will always be packaged with the application and not monitored for changes unless gradle continuous build is utilized. Simply set `assets { developmentRuntime = false}` in your `build.gradle` file.
+Most build time options like `skipNonDigests` or `enableGzip` will never need specified in this YAML file as they will never be used during development runtime. It is also possible to disable development runtime entirely. In this scenario assets will always be packaged with the application and not monitored for changes unless Gradle continuous build is utilized. Simply set `assets { developmentRuntime = false}` in your `build.gradle` file.
 
 Example yaml:
 
