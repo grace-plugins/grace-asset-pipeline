@@ -22,6 +22,6 @@ The Asset-Pipeline is a plugin used for managing and processing static assets in
 
 [IMPORTANT]
 ====
-This repository is a fork of https://github.com/bertramdev/asset-pipeline[Asset-Pipeline], developed to support Grace only. 
+This repository is a fork of https://github.com/wondrify/asset-pipeline[Asset-Pipeline], developed to support Grace only. 
 Since Grails does not currently support Spring Boot 3.0+, this plugin does not support Grails 5/6.
 ====
