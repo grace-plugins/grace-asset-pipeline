@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'asset-pipeline-docs/src/docs/**'
+      - 'asset-pipeline-docs/**'
 jobs:
   # Build job
   build:
