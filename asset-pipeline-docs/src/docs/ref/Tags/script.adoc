@@ -1,0 +1,13 @@
+== asset:script
+
+=== Description
+
+Adds an inline block of JavaScript to a page. The point in the page where this block will be rendered is determined
+by the placement of `<asset:deferredScripts/>`
+
+[source, html]
+----
+<asset:script>
+    console.log('hello world');
+</asset:script>
+----

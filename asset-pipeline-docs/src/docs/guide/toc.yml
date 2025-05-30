@@ -1,0 +1,20 @@
+introduction:
+  title: Introduction
+concepts:
+  title: Concepts
+gradle:
+  title: Gradle
+  getting_started: Getting Started
+  gradle_configuration: Configuration
+  java: JVM Based Dependencies
+grace:
+  title: Grace
+  gettingStarted: Getting Started
+  configuration: Configuration
+  organization: Asset Organization
+  taglibs: Taglibs
+extending:
+  title: Extending Asset-Pipeline
+  assetfile: Asset File Definitions
+  processors: Processors
+  postprocessors: Post-Processors

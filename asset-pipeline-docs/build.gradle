@@ -1,27 +1,71 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-    }
-}
-
 plugins {
-    id 'org.asciidoctor.jvm.convert' version '3.1.0'
+    id 'groovy'
+    id 'org.graceframework.grace-doc' version "$graceVersion"
 }
 
-asciidoctor { 
-    outputDir = new File("$buildDir/docs")
-    options = [
-        doctype: 'book'
-        
-    ]
-    attributes = [
-            'source-highlighter': 'coderay',
-            toc                 : 'left',
-            'toc-title': 'Table of Contents',
-            idprefix            : '',
-            idseparator         : '-'
-     ]
+def DOCUMENTATION_GROUP = 'Documentation'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    documentation
+}
+
+dependencies {
+    documentation 'info.picocli:picocli:3.8.0'
+    documentation 'org.fusesource.jansi:jansi:1.18'
+    documentation 'jline:jline:2.14.6'
+    documentation 'com.github.javaparser:javaparser-core:3.15.14'
+    documentation "org.apache.groovy:groovy:$groovyVersion"
+    documentation "org.apache.groovy:groovy-ant:$groovyVersion"
+    documentation "org.apache.groovy:groovy-cli-picocli:$groovyVersion"
+}
+
+def cleanTask = project.tasks.findByName('clean')
+if (cleanTask == null) {
+    task clean(type: Delete) {
+        delete(buildDir)
+    }
+}
+else {
+    cleanTask.doLast {
+        ant.delete(dir: 'build/docs')
+    }
+}
+
+tasks.withType(Groovydoc) {
+    group = DOCUMENTATION_GROUP
+    docTitle = "Grace Asset Pipeline - ${project.version}"
+    destinationDir = project.file('build/docs/manual/api')
+    def files = []
+    project.rootProject.subprojects
+            .findAll { !it.name != 'docs' && !it.name.startsWith('examples') }
+            .each { subproject ->
+                if(subproject.file('src/main/groovy').exists()) {
+                    files += subproject.files('src/main/groovy')
+                }
+                if(subproject.file('src/main/java').exists()) {
+                    files += subproject.files('src/main/java')
+                }
+            }
+    if (project.file('src/main/groovy').exists()) {
+        files += project.files('src/main/groovy')
+    }
+    source = files
+    classpath += configurations.documentation
+}
+
+docs {
+    dependsOn groovydoc
+}
+
+def assembleTask = project.tasks.findByName('assemble')
+if (assembleTask == null) {
+    task assemble(dependsOn: docs, type:Zip) {
+        baseName = "${project.name}-${project.version}"
+        destinationDir = new File(project.buildDir, 'distributions')
+        from project.files("${buildDir}/docs")
+    }
 }

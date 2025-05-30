@@ -1,0 +1,5 @@
+== asset-clean
+
+=== Description
+
+Cleans the directory where precompiled assets are stored (`build/assets`).
