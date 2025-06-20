@@ -6,33 +6,33 @@ The asset-pipeline Gradle plugin provides several very useful configuration opti
 .build.gradle
 ----
 assets {
-  minifyJs = true
-  minifyCss = true
-  enableSourceMaps = true
-  maxThreads = 4 //useful for concurrent asset processing during build
-  configOptions = [:] //useful for custom config on extension libraries
+    minifyJs = true
+    minifyCss = true
+    enableSourceMaps = true
+    maxThreads = 4 //useful for concurrent asset processing during build
+    configOptions = [:] //useful for custom config on extension libraries
 
-  minifyOptions = [
-    optimizationLevel: 'SIMPLE',
-    angularPass: true // Can use @ngInject annotation for Angular Apps
-    excludes: ['**/bundle.js'] // Example of excluding specific resources from minification, e.g., if it was minified externally
-  ]
+    minifyOptions = [
+        optimizationLevel: 'SIMPLE',
+        angularPass: true // Can use @ngInject annotation for Angular Apps
+        excludes: ['**/bundle.js'] // Example of excluding specific resources from minification, e.g., if it was minified externally
+    ]
 
-  includes = []
-  excludes = ['**/*.less'] //Example Exclude GLOB pattern
+    includes = []
+    excludes = ['**/*.less'] //Example Exclude GLOB pattern
 
-  //for plugin packaging
-  packagePlugin=false //set to true if this is a library
+    //for plugin packaging
+    packagePlugin = false //set to true if this is a library
 
-  //developmentRuntime can be turned off
-  developmentRuntime=true
+    //developmentRuntime can be turned off
+    developmentRuntime=true
 
-  //if you want to customize the jar task this task runs on you can specify a jarTaskName
-  jarTaskName=null
+    //if you want to customize the jar task this task runs on you can specify a jarTaskName
+    jarTaskName=null
 
-  // Can add custom asset locations (directories or individual jar files)
-  from '/vendor/lib'
-  from '/path/to/file.jar'
+    // Can add custom asset locations (directories or individual jar files)
+    from '/vendor/lib'
+    from '/path/to/file.jar'
 }
 ----
 
@@ -48,10 +48,10 @@ Some additional options are also provided for configuring what types of output a
 .build.gradle
 ----
 assets {
-  enableDigests = true
-  skipNonDigests = false
-  enableGzip = true
-  maxThreads = 4
+    enableDigests = true
+    skipNonDigests = false
+    enableGzip = true
+    maxThreads = 4
 }
 ----
 

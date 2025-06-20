@@ -10,30 +10,30 @@ for this is the SassProcessor in the SASS/SCSS Asset Pipeline Plugin. Image spri
 ----
 class CoffeeScriptProcessor extends AbstractProcessor {
 
-  Scriptable globalScope
-  ClassLoader classLoader
+    Scriptable globalScope
+    ClassLoader classLoader
 
-  CoffeeScriptProcessor(AssetCompiler precompiler){
-    super(precompiler)
-  }
+    CoffeeScriptProcessor(AssetCompiler precompiler){
+        super(precompiler)
+    }
 
-  String process(String input, AssetFile assetFile) {
-    try {
-      def cx = Context.enter()
-      def compileScope = cx.newObject(globalScope)
-      compileScope.setParentScope(globalScope)
-      compileScope.put("coffeeScriptSrc", compileScope, input)
-      def result = cx.evaluateString(compileScope, "CoffeeScript.compile(coffeeScriptSrc)", "CoffeeScript compile command", 0, null)
-      return result
-    } catch (Exception e) {
-      throw new Exception("""
+    String process(String input, AssetFile assetFile) {
+        try {
+            def cx = Context.enter()
+            def compileScope = cx.newObject(globalScope)
+            compileScope.setParentScope(globalScope)
+            compileScope.put("coffeeScriptSrc", compileScope, input)
+            def result = cx.evaluateString(compileScope, "CoffeeScript.compile(coffeeScriptSrc)", "CoffeeScript compile command", 0, null)
+            return result
+        } catch (Exception e) {
+        throw new Exception("""
         CoffeeScript Engine compilation of coffeescript to javascript failed.
         $e
         """)
-    } finally {
-      Context.exit()
+        } finally {
+            Context.exit()
+        }
     }
-  }
 }
 ----
 
