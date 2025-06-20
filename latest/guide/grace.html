@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>5 Grace 6.3.0</title>
+    <title>5 Grace 6.3.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -90,7 +90,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>5 Grace</h1>
 
-                    <p><strong>Version:</strong> 6.3.0</p>
+                    <p><strong>Version:</strong> 6.3.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -141,7 +141,7 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-  runtime 'org.graceframework.plugins:asset-pipeline-plugin:{project-version}'
+    implementation 'org.graceframework.plugins:asset-pipeline-plugin:6.3.1-SNAPSHOT'
 }</code></pre>
 </div>
 </div>
@@ -174,9 +174,9 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
-  <span class="key">assets</span>:
-    <span class="key">bundle</span>: <span class="string"><span class="content">true</span></span> <span class="comment">#dont individually require files in development</span>
-    <span class="key">storagePath</span>: <span class="string"><span class="content">/path/to/store</span></span> <span class="comment">#automatically copy assets to external folder on startup</span></code></pre>
+    <span class="key">assets</span>:
+        <span class="key">bundle</span>: <span class="string"><span class="content">true</span></span> <span class="comment">#dont individually require files in development</span>
+        <span class="key">storagePath</span>: <span class="string"><span class="content">/path/to/store</span></span> <span class="comment">#automatically copy assets to external folder on startup</span></code></pre>
 </div>
 </div>
 <div class="sect3">
@@ -190,8 +190,8 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
-  <span class="key">assets</span>:
-    <span class="key">url</span>: <span class="string"><span class="content">http://cdn.example.com/</span></span></code></pre>
+    <span class="key">assets</span>:
+        <span class="key">url</span>: <span class="string"><span class="content">http://cdn.example.com/</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -200,11 +200,11 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">grails.assets.url = { request -&gt;
-        <span class="keyword">if</span>(request.isSecure()) {
-                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
-        } <span class="keyword">else</span> {
-                <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
-        }
+    <span class="keyword">if</span> (request.isSecure()) {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.example.com/</span><span class="delimiter">&quot;</span></span>
+    }
 }</code></pre>
 </div>
 </div>
@@ -226,8 +226,8 @@ To use an asset closure config must be placed in an <code>application.groovy</co
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
-  <span class="key">assets</span>:
-    <span class="key">storagePath</span>: <span class="string"><span class="content">/var/cdn/path</span></span></code></pre>
+    <span class="key">assets</span>:
+        <span class="key">storagePath</span>: <span class="string"><span class="content">/var/cdn/path</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -236,8 +236,8 @@ To use an asset closure config must be placed in an <code>application.groovy</co
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yml"><span class="key">grails</span>:
-  <span class="key">assets</span>:
-    <span class="key">mapping</span>: <span class="string"><span class="content">assets</span></span></code></pre>
+    <span class="key">assets</span>:
+        <span class="key">mapping</span>: <span class="string"><span class="content">assets</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -375,8 +375,8 @@ These same conditions should be implemented on any preprocessor extension plugin
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;head&gt;</span>
-  <span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;asset:stylesheet</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.css</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;asset:stylesheet</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.css</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/head&gt;</span></code></pre>
 </div>
 </div>
@@ -433,11 +433,11 @@ This will only be displayed if the asset exists
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html">class ExampleService {
-  def assetResourceLocator
+    def assetResourceLocator
 
-  def someMethod() {
-    Resource myResource = assetResourceLocator.findAssetForURI('test.css')
-  }
+    def someMethod() {
+        Resource myResource = assetResourceLocator.findAssetForURI('test.css')
+    }
 }</code></pre>
 </div>
 </div>
@@ -451,10 +451,10 @@ This will only be displayed if the asset exists
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;asset:javascript</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">application.js</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">asset-defer</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  console.log(&quot;Hello World&quot;);
+    console.log(&quot;Hello World&quot;);
 <span class="tag">&lt;/asset:script&gt;</span>
 <span class="tag">&lt;asset:script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  console.log(&quot;Hello World 2&quot;);
+    console.log(&quot;Hello World 2&quot;);
 <span class="tag">&lt;/asset:script&gt;</span></code></pre>
 </div>
 </div>

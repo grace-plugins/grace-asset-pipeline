@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>4.2 Configuration 6.3.0</title>
+    <title>4.2 Configuration 6.3.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -90,7 +90,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>4.2 Configuration</h1>
 
-                    <p><strong>Version:</strong> 6.3.0</p>
+                    <p><strong>Version:</strong> 6.3.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -109,33 +109,33 @@ function addJsClass() {
 <div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">assets {
-  minifyJs = <span class="predefined-constant">true</span>
-  minifyCss = <span class="predefined-constant">true</span>
-  enableSourceMaps = <span class="predefined-constant">true</span>
-  maxThreads = <span class="integer">4</span> <span class="comment">//useful for concurrent asset processing during build</span>
-  configOptions = [:] <span class="comment">//useful for custom config on extension libraries</span>
+    minifyJs = <span class="predefined-constant">true</span>
+    minifyCss = <span class="predefined-constant">true</span>
+    enableSourceMaps = <span class="predefined-constant">true</span>
+    maxThreads = <span class="integer">4</span> <span class="comment">//useful for concurrent asset processing during build</span>
+    configOptions = [:] <span class="comment">//useful for custom config on extension libraries</span>
 
-  minifyOptions = [
-    <span class="key">optimizationLevel</span>: <span class="string"><span class="delimiter">'</span><span class="content">SIMPLE</span><span class="delimiter">'</span></span>,
-    <span class="key">angularPass</span>: <span class="predefined-constant">true</span> <span class="comment">// Can use @ngInject annotation for Angular Apps</span>
-    <span class="key">excludes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">**/bundle.js</span><span class="delimiter">'</span></span>] <span class="comment">// Example of excluding specific resources from minification, e.g., if it was minified externally</span>
-  ]
+    minifyOptions = [
+        <span class="key">optimizationLevel</span>: <span class="string"><span class="delimiter">'</span><span class="content">SIMPLE</span><span class="delimiter">'</span></span>,
+        <span class="key">angularPass</span>: <span class="predefined-constant">true</span> <span class="comment">// Can use @ngInject annotation for Angular Apps</span>
+        <span class="key">excludes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">**/bundle.js</span><span class="delimiter">'</span></span>] <span class="comment">// Example of excluding specific resources from minification, e.g., if it was minified externally</span>
+    ]
 
-  includes = <span class="type">[]</span>
-  excludes = [<span class="string"><span class="delimiter">'</span><span class="content">**/*.less</span><span class="delimiter">'</span></span>] <span class="comment">//Example Exclude GLOB pattern</span>
+    includes = <span class="type">[]</span>
+    excludes = [<span class="string"><span class="delimiter">'</span><span class="content">**/*.less</span><span class="delimiter">'</span></span>] <span class="comment">//Example Exclude GLOB pattern</span>
 
-  <span class="comment">//for plugin packaging</span>
-  packagePlugin=<span class="predefined-constant">false</span> <span class="comment">//set to true if this is a library</span>
+    <span class="comment">//for plugin packaging</span>
+    packagePlugin = <span class="predefined-constant">false</span> <span class="comment">//set to true if this is a library</span>
 
-  <span class="comment">//developmentRuntime can be turned off</span>
-  developmentRuntime=<span class="predefined-constant">true</span>
+    <span class="comment">//developmentRuntime can be turned off</span>
+    developmentRuntime=<span class="predefined-constant">true</span>
 
-  <span class="comment">//if you want to customize the jar task this task runs on you can specify a jarTaskName</span>
-  jarTaskName=<span class="predefined-constant">null</span>
+    <span class="comment">//if you want to customize the jar task this task runs on you can specify a jarTaskName</span>
+    jarTaskName=<span class="predefined-constant">null</span>
 
-  <span class="comment">// Can add custom asset locations (directories or individual jar files)</span>
-  from <span class="string"><span class="delimiter">'</span><span class="content">/vendor/lib</span><span class="delimiter">'</span></span>
-  from <span class="string"><span class="delimiter">'</span><span class="content">/path/to/file.jar</span><span class="delimiter">'</span></span>
+    <span class="comment">// Can add custom asset locations (directories or individual jar files)</span>
+    from <span class="string"><span class="delimiter">'</span><span class="content">/vendor/lib</span><span class="delimiter">'</span></span>
+    from <span class="string"><span class="delimiter">'</span><span class="content">/path/to/file.jar</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -164,10 +164,10 @@ Tuning the includes/excludes patterns can dramatically reduce the build time of 
 <div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">assets {
-  enableDigests = <span class="predefined-constant">true</span>
-  skipNonDigests = <span class="predefined-constant">false</span>
-  enableGzip = <span class="predefined-constant">true</span>
-  maxThreads = <span class="integer">4</span>
+    enableDigests = <span class="predefined-constant">true</span>
+    skipNonDigests = <span class="predefined-constant">false</span>
+    enableGzip = <span class="predefined-constant">true</span>
+    maxThreads = <span class="integer">4</span>
 }</code></pre>
 </div>
 </div>

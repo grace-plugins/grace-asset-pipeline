@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>6.2 Processors 6.3.0</title>
+    <title>6.2 Processors 6.3.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -88,7 +88,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>6.2 Processors</h1>
 
-                    <p><strong>Version:</strong> 6.3.0</p>
+                    <p><strong>Version:</strong> 6.3.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -112,30 +112,30 @@ for this is the SassProcessor in the SASS/SCSS Asset Pipeline Plugin. Image spri
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CoffeeScriptProcessor</span> <span class="directive">extends</span> AbstractProcessor {
 
-  Scriptable globalScope
-  <span class="predefined-type">ClassLoader</span> classLoader
+    Scriptable globalScope
+    <span class="predefined-type">ClassLoader</span> classLoader
 
-  CoffeeScriptProcessor(AssetCompiler precompiler){
-    <span class="local-variable">super</span>(precompiler)
-  }
+    CoffeeScriptProcessor(AssetCompiler precompiler){
+        <span class="local-variable">super</span>(precompiler)
+    }
 
-  <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
-    <span class="keyword">try</span> {
-      <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
-      <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
-      compileScope.setParentScope(globalScope)
-      compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
-      <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
-      <span class="keyword">return</span> result
-    } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
-      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+    <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
+        <span class="keyword">try</span> {
+            <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
+            <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
+            compileScope.setParentScope(globalScope)
+            compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
+            <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
+            <span class="keyword">return</span> result
+        } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
         CoffeeScript Engine compilation of coffeescript to javascript failed.
         </span><span class="inline"><span class="inline-delimiter">$</span>e</span><span class="content">
         </span><span class="delimiter">&quot;&quot;&quot;</span></span>)
-    } <span class="keyword">finally</span> {
-      <span class="predefined-type">Context</span>.exit()
+        } <span class="keyword">finally</span> {
+            <span class="predefined-type">Context</span>.exit()
+        }
     }
-  }
 }</code></pre>
 </div>
 </div>

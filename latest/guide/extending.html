@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>6 Extending Asset-Pipeline 6.3.0</title>
+    <title>6 Extending Asset-Pipeline 6.3.1-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -88,7 +88,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>6 Extending Asset-Pipeline</h1>
 
-                    <p><strong>Version:</strong> 6.3.0</p>
+                    <p><strong>Version:</strong> 6.3.1-SNAPSHOT</p>
                 </div>
 
                 
@@ -133,14 +133,14 @@ function addJsClass() {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CssAssetFile</span> <span class="directive">extends</span> AbstractAssetFile {
-  <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> contentType = <span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span>
-  <span class="directive">static</span> extensions = [<span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>]
-  <span class="directive">static</span> compiledExtension = <span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>
-  <span class="directive">static</span> processors = [CssProcessor]
+    <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> contentType = <span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span>
+    <span class="directive">static</span> extensions = [<span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>]
+    <span class="directive">static</span> compiledExtension = <span class="string"><span class="delimiter">'</span><span class="content">css</span><span class="delimiter">'</span></span>
+    <span class="directive">static</span> processors = [CssProcessor]
 
-  <span class="predefined-type">String</span> directiveForLine(<span class="predefined-type">String</span> line) {
-    line.find(<span class="regexp"><span class="delimiter">/</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span>) { fullMatch, directive -&gt; <span class="keyword">return</span> directive }
-  }
+    <span class="predefined-type">String</span> directiveForLine(<span class="predefined-type">String</span> line) {
+        line.find(<span class="regexp"><span class="delimiter">/</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span>) { fullMatch, directive -&gt; <span class="keyword">return</span> directive }
+    }
 }</code></pre>
 </div>
 </div>
@@ -163,7 +163,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">  <span class="predefined-type">Pattern</span> directivePattern = ~<span class="regexp"><span class="delimiter">/</span><span class="content">(?m)</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">    <span class="predefined-type">Pattern</span> directivePattern = ~<span class="regexp"><span class="delimiter">/</span><span class="content">(?m)</span><span class="content">\*</span><span class="content">=(.*)</span><span class="delimiter">/</span></span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -183,14 +183,14 @@ Used to there was a <code>directiveForLine</code> that matched on each individua
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">/*
+<pre class="CodeRay highlight"><code data-lang="css"><span class="comment">/*
 *= require_self
 *= require_file example_b
 *= require_tree .
 */</span>
 
-body {
-  margin-<span class="key">top</span>:<span class="integer">25</span>px;
+<span class="tag">body</span> {
+    <span class="key">margin-top</span>:<span class="float">25px</span>;
 }</code></pre>
 </div>
 </div>
@@ -203,32 +203,32 @@ body {
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> processedStream(<span class="predefined-type">Boolean</span> precompiler) {
-  <span class="keyword">def</span> fileText
-  <span class="keyword">def</span> skipCache = precompiler ?: (!processors || processors.size() == <span class="integer">0</span>)
+    <span class="keyword">def</span> fileText
+    <span class="keyword">def</span> skipCache = precompiler ?: (!processors || processors.size() == <span class="integer">0</span>)
 
-  <span class="keyword">if</span>(baseFile?.encoding || encoding) {
-    fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
-  } <span class="keyword">else</span> {
-    fileText = file?.text
-  }
-
-  <span class="keyword">def</span> md5 = AssetHelper.getByteDigest(fileText.bytes)
-  <span class="keyword">if</span>(!skipCache) {
-    <span class="keyword">def</span> cache = CacheManager.findCache(file.canonicalPath, md5)
-    <span class="keyword">if</span>(cache) {
-      <span class="keyword">return</span> cache
+    <span class="keyword">if</span> (baseFile?.encoding || encoding) {
+        fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
+    } <span class="keyword">else</span> {
+        fileText = file?.text
     }
-  }
-  <span class="keyword">for</span>(processor <span class="keyword">in</span> processors) {
-    <span class="keyword">def</span> processInstance = processor.newInstance(precompiler)
-    fileText = processInstance.process(fileText, <span class="local-variable">this</span>)
-  }
 
-  <span class="keyword">if</span>(!skipCache) {
-    CacheManager.createCache(file.canonicalPath,md5,fileText)
-  }
+    <span class="keyword">def</span> md5 = AssetHelper.getByteDigest(fileText.bytes)
+    <span class="keyword">if</span> (!skipCache) {
+        <span class="keyword">def</span> cache = CacheManager.findCache(file.canonicalPath, md5)
+        <span class="keyword">if</span> (cache) {
+            <span class="keyword">return</span> cache
+        }
+    }
+    <span class="keyword">for</span> (processor <span class="keyword">in</span> processors) {
+        <span class="keyword">def</span> processInstance = processor.newInstance(precompiler)
+        fileText = processInstance.process(fileText, <span class="local-variable">this</span>)
+    }
 
-  <span class="keyword">return</span> fileText
+    <span class="keyword">if</span> (!skipCache) {
+        CacheManager.createCache(file.canonicalPath,md5,fileText)
+    }
+
+    <span class="keyword">return</span> fileText
 }</code></pre>
 </div>
 </div>
@@ -247,7 +247,7 @@ Simply adding a list file <code>META-INF/asset-pipeline/asset.specs</code> to th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.HtmlAssetFile
+<pre class="CodeRay highlight"><code data-lang="properties">asset.pipeline.HtmlAssetFile
 asset.pipeline.JsAssetFile
 asset.pipeline.CssAssetFile</code></pre>
 </div>
@@ -261,7 +261,7 @@ This is a Properties file with the key being the class path of the Processor and
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">asset.pipeline.CssProcessor=asset.pipeline.CssAssetFile,asset.pipeline.LessAssetFile</code></pre>
+<pre class="CodeRay highlight"><code data-lang="properties">asset.pipeline.CssProcessor=asset.pipeline.CssAssetFile,asset.pipeline.LessAssetFile</code></pre>
 </div>
 </div>
 </div>
@@ -285,30 +285,30 @@ for this is the SassProcessor in the SASS/SCSS Asset Pipeline Plugin. Image spri
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">CoffeeScriptProcessor</span> <span class="directive">extends</span> AbstractProcessor {
 
-  Scriptable globalScope
-  <span class="predefined-type">ClassLoader</span> classLoader
+    Scriptable globalScope
+    <span class="predefined-type">ClassLoader</span> classLoader
 
-  CoffeeScriptProcessor(AssetCompiler precompiler){
-    <span class="local-variable">super</span>(precompiler)
-  }
+    CoffeeScriptProcessor(AssetCompiler precompiler){
+        <span class="local-variable">super</span>(precompiler)
+    }
 
-  <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
-    <span class="keyword">try</span> {
-      <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
-      <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
-      compileScope.setParentScope(globalScope)
-      compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
-      <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
-      <span class="keyword">return</span> result
-    } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
-      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+    <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> input, AssetFile assetFile) {
+        <span class="keyword">try</span> {
+            <span class="keyword">def</span> cx = <span class="predefined-type">Context</span>.enter()
+            <span class="keyword">def</span> compileScope = cx.newObject(globalScope)
+            compileScope.setParentScope(globalScope)
+            compileScope.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">coffeeScriptSrc</span><span class="delimiter">&quot;</span></span>, compileScope, input)
+            <span class="keyword">def</span> result = cx.evaluateString(compileScope, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript.compile(coffeeScriptSrc)</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CoffeeScript compile command</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="predefined-constant">null</span>)
+            <span class="keyword">return</span> result
+        } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">Exception</span>(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
         CoffeeScript Engine compilation of coffeescript to javascript failed.
         </span><span class="inline"><span class="inline-delimiter">$</span>e</span><span class="content">
         </span><span class="delimiter">&quot;&quot;&quot;</span></span>)
-    } <span class="keyword">finally</span> {
-      <span class="predefined-type">Context</span>.exit()
+        } <span class="keyword">finally</span> {
+            <span class="predefined-type">Context</span>.exit()
+        }
     }
-  }
 }</code></pre>
 </div>
 </div>
