@@ -1,57 +1,99 @@
-=== 6.3.0-RC2
+=== 6.3.0
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC2[release notes]
+link:{github}/releases/tag/v6.3.0[release notes]
+
+⭐️ New Features
+
+* Setup github docs workflow
+* Refine documentation
+  - Using Gradle task: org.graceframework.grace-doc
+  - Remove duplicated documentation in the asset-pipeline-plugin/src/docs
+  - Reorganize asset-pipeline-docs/docs link:{github}/issues/64[#64]
 
 🛠 Improvements
 
-* Correct branch 6.3.x for docs workflow 
+* Update README Add document badge
+* Remove LICENSE
+* Rename asset-pipeline-core/Readme.markdown to README.md Update README
+* Move LICENSE to root dir
+* Update docs: change Command Line to Gradle Tasks
+* Update README
+* Update release workflow: Correct the folder of generated docs
+* Update the original fork url of asset-pipeline
+* Update docs workflow: Correct the folder of generated docs
+* Add release notes for 6.3.0-RC2
+* Correct branch 6.3.x for docs workflow
 * Cleanup documentation dependencies
 * Update docs workflow - Update event paths
 * Update docs - Add releases
-* Generate docs for release workflow 
-* Setup github docs workflow 
-* Refine documentation * Using Gradle task: org.graceframework.grace-doc
-* Remove duplicated documentation in the asset-pipeline-plugin/src/docs
-* Reorganize asset-pipeline-docs/docs https://github.com/grace-plugins/grace-asset-pipeline/issues/64[#64]
-* Remove unused asset-pipeline-site https://github.com/grace-plugins/grace-asset-pipeline/issues/63[#63]
-* Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu 
+* Generate docs for release workflow
+* Remove unused asset-pipeline-site link:{github}/issues/63[#63]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.3.0-RC2 https://github.com/grace-plugins/grace-asset-pipeline/issues/61[#61]
-* Upgrade to Grace 2023.3.0-RC1 https://github.com/grace-plugins/grace-asset-pipeline/issues/60[#60]
-* Upgrade to Gradle 8.14 https://github.com/grace-plugins/grace-asset-pipeline/issues/62[#62]
+* Upgrade to Gradle 8.14 link:{github}/issues/62[#62]
+* Upgrade to Grace 2023.3.0-RC2 link:{github}/issues/61[#61]
+* Upgrade to Grace 2023.3.0-RC1 link:{github}/issues/60[#60]
+
+⚙️ Tasks
+
+* Release v6.3.0
+* Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu
+
+=== 6.3.0-RC2
+
+link:{github}/releases/tag/v6.3.0-RC2[release notes]
+
+🛠 Improvements
+
+* Correct branch 6.3.x for docs workflow
+* Cleanup documentation dependencies
+* Update docs workflow - Update event paths
+* Update docs - Add releases
+* Generate docs for release workflow
+* Setup github docs workflow
+* Refine documentation * Using Gradle task: org.graceframework.grace-doc
+* Remove duplicated documentation in the asset-pipeline-plugin/src/docs
+* Reorganize asset-pipeline-docs/docs link:{github}/issues/64[#64]
+* Remove unused asset-pipeline-site link:{github}/issues/63[#63]
+* Update .sdkmanrc to use Gradle 8.14 and 17.0.15-zulu
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2023.3.0-RC2 link:{github}/issues/61[#61]
+* Upgrade to Grace 2023.3.0-RC1 link:{github}/issues/60[#60]
+* Upgrade to Gradle 8.14 link:{github}/issues/62[#62]
 
 === 6.3.0-RC1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-RC1[release notes]
+link:{github}/releases/tag/v6.3.0-RC1[release notes]
 
 🛠 Improvements
 
 * Update README Update badge versions of Grace and Spring Boot
-* Streamline Gradle build scripts: using the Spring Dependency Management Plugin to manage dependencies and versions https://github.com/grace-plugins/grace-asset-pipeline/issues/58[#58]
-* Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM https://github.com/grace-plugins/grace-asset-pipeline/issues/59[#59]
-* Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM https://github.com/grace-plugins/grace-asset-pipeline/issues/57[#57]
+* Streamline Gradle build scripts: using the Spring Dependency Management Plugin to manage dependencies and versions link:{github}/issues/58[#58]
+* Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM link:{github}/issues/59[#59]
+* Remove the unnecessary workaround for removing the generated extra dependencyManagement of POM link:{github}/issues/57[#57]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.3.0-M2 https://github.com/grace-plugins/grace-asset-pipeline/issues/52[#52]
-* Upgrade to Gradle 8.13 https://github.com/grace-plugins/grace-asset-pipeline/issues/55[#55]
-* Upgrade to Groovy 4.0.26 https://github.com/grace-plugins/grace-asset-pipeline/issues/53[#53]
-* Upgrade to SLF4J 2.0.17 https://github.com/grace-plugins/grace-asset-pipeline/issues/54[#54]
+* Upgrade to Grace 2023.3.0-M2 link:{github}/issues/52[#52]
+* Upgrade to Gradle 8.13 link:{github}/issues/55[#55]
+* Upgrade to Groovy 4.0.26 link:{github}/issues/53[#53]
+* Upgrade to SLF4J 2.0.17 link:{github}/issues/54[#54]
 
 ⚙️ Tasks
 
 * Release v6.3.0-RC1
-* Update .sdkmanrc: Gradle 8.13 and Java 17.0.14-zulu https://github.com/grace-plugins/grace-asset-pipeline/issues/56[#56]
+* Update .sdkmanrc: Gradle 8.13 and Java 17.0.14-zulu link:{github}/issues/56[#56]
 
 === 6.3.0-M1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-M1[release notes]
+link:{github}/releases/tag/v6.3.0-M1[release notes]
 
 ⭐️ New Features
 
-* Add asset-pipeline-i18n module https://github.com/grace-plugins/grace-asset-pipeline/issues/51[#51]
+* Add asset-pipeline-i18n module link:{github}/issues/51[#51]
 
 🛠 Improvements
 
@@ -60,10 +102,10 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-M1[rel
 
 🚀 Dependency Upgrades
 
-* Upgrade to SLF4J 2.0.16 https://github.com/grace-plugins/grace-asset-pipeline/issues/50[#50]
-* Upgrade to Graal JavaScript Engine 23.0.6 https://github.com/grace-plugins/grace-asset-pipeline/issues/49[#49]
-* Upgrade to Graal SDK 23.0.6 https://github.com/grace-plugins/grace-asset-pipeline/issues/48[#48]
-* Upgrade to Grace 2023.3.0-M1 https://github.com/grace-plugins/grace-asset-pipeline/issues/47[#47]
+* Upgrade to SLF4J 2.0.16 link:{github}/issues/50[#50]
+* Upgrade to Graal JavaScript Engine 23.0.6 link:{github}/issues/49[#49]
+* Upgrade to Graal SDK 23.0.6 link:{github}/issues/48[#48]
+* Upgrade to Grace 2023.3.0-M1 link:{github}/issues/47[#47]
 
 ⚙️ Tasks
 
@@ -73,11 +115,11 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.3.0-M1[rel
 
 === 6.2.0
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0[release notes]
+link:{github}/releases/tag/v6.2.0[release notes]
 
 ⭐️ New Features
 
-* Add asset-pipeline-i18n module https://github.com/grace-plugins/grace-asset-pipeline/issues/51[#51]
+* Add asset-pipeline-i18n module link:{github}/issues/51[#51]
 
 🛠 Improvements
 
@@ -86,10 +128,10 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0[releas
 
 🚀 Dependency Upgrades
 
-* Upgrade to SLF4J 2.0.16 https://github.com/grace-plugins/grace-asset-pipeline/issues/50[#50]
-* Upgrade to Graal JavaScript Engine 23.0.6 https://github.com/grace-plugins/grace-asset-pipeline/issues/49[#49]
-* Upgrade to Graal SDK 23.0.6 https://github.com/grace-plugins/grace-asset-pipeline/issues/48[#48]
-* Upgrade to Grace 2023.3.0-M1 https://github.com/grace-plugins/grace-asset-pipeline/issues/47[#47]
+* Upgrade to SLF4J 2.0.16 link:{github}/issues/50[#50]
+* Upgrade to Graal JavaScript Engine 23.0.6 link:{github}/issues/49[#49]
+* Upgrade to Graal SDK 23.0.6 link:{github}/issues/48[#48]
+* Upgrade to Grace 2023.3.0-M1 link:{github}/issues/47[#47]
 
 ⚙️ Tasks
 
@@ -99,141 +141,141 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0[releas
 
 === 6.2.0-RC1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-RC1[release notes]
+link:{github}/releases/tag/v6.2.0-RC1[release notes]
 
 🛠 Improvements
 
-* Cleanup build scripts https://github.com/grace-plugins/grace-asset-pipeline/issues/39[#39]
-* Remove extra files https://github.com/grace-plugins/grace-asset-pipeline/issues/38[#38]
-* Rename to asset-pipeline-i18n https://github.com/grace-plugins/grace-asset-pipeline/issues/37[#37]
-* Remove unused submodules https://github.com/grace-plugins/grace-asset-pipeline/issues/36[#36]
-* Remove unused task `console` https://github.com/grace-plugins/grace-asset-pipeline/issues/35[#35]
+* Cleanup build scripts link:{github}/issues/39[#39]
+* Remove extra files link:{github}/issues/38[#38]
+* Rename to asset-pipeline-i18n link:{github}/issues/37[#37]
+* Remove unused submodules link:{github}/issues/36[#36]
+* Remove unused task `console` link:{github}/issues/35[#35]
 
 🐞 Bug Fixes
 
-* Remove dependencyManagement of generated POM https://github.com/grace-plugins/grace-asset-pipeline/issues/32[#32]
+* Remove dependencyManagement of generated POM link:{github}/issues/32[#32]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Gradle 8.12 https://github.com/grace-plugins/grace-asset-pipeline/issues/34[#34]
-* Upgrade to Groovy 4.0.24 https://github.com/grace-plugins/grace-asset-pipeline/issues/33[#33]
+* Upgrade to Gradle 8.12 link:{github}/issues/34[#34]
+* Upgrade to Groovy 4.0.24 link:{github}/issues/33[#33]
 
 === 6.2.0-M3
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M3[release notes]
+link:{github}/releases/tag/v6.2.0-M3[release notes]
 
 ⭐️ New Features
 
-* Setup GitHub Workflow to publish Grace plugins https://github.com/grace-plugins/grace-asset-pipeline/issues/30[#30]
-* Publish Asset Pipeline Plugin to the Gradle Plugin Portal https://github.com/grace-plugins/grace-asset-pipeline/issues/29[#29]
+* Setup GitHub Workflow to publish Grace plugins link:{github}/issues/30[#30]
+* Publish Asset Pipeline Plugin to the Gradle Plugin Portal link:{github}/issues/29[#29]
 
 🛠 Improvements
 
 * Corrent website and vcsUrl
-* Update Generated POM info of the artifacts https://github.com/grace-plugins/grace-asset-pipeline/issues/28[#28]
+* Update Generated POM info of the artifacts link:{github}/issues/28[#28]
 
 🐞 Bug Fixes
 
-* Fixes missing Signature when publishing Gradle plugin to Sonatype https://github.com/grace-plugins/grace-asset-pipeline/issues/31[#31]
+* Fixes missing Signature when publishing Gradle plugin to Sonatype link:{github}/issues/31[#31]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.2.0-M3 https://github.com/grace-plugins/grace-asset-pipeline/issues/27[#27]
-* Upgrade to Grace 2023.2.0-M2 https://github.com/grace-plugins/grace-asset-pipeline/issues/26[#26]
+* Upgrade to Grace 2023.2.0-M3 link:{github}/issues/27[#27]
+* Upgrade to Grace 2023.2.0-M2 link:{github}/issues/26[#26]
 
 === 6.2.0-M2
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M2[release notes]
+link:{github}/releases/tag/v6.2.0-M2[release notes]
 
 🛠 Improvements
 
-* Add bean aliases `linkGenerator`, `grailsLinkGenerator` for `LinkGenerator` https://github.com/grace-plugins/grace-asset-pipeline/issues/25[#25]
+* Add bean aliases `linkGenerator`, `grailsLinkGenerator` for `LinkGenerator` link:{github}/issues/25[#25]
 
 === 6.2.0-M1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.2.0-M1[release notes]
+link:{github}/releases/tag/v6.2.0-M1[release notes]
 
 🛠 Improvements
 
 * Update README update badges
-* build: Remove dependency on `commons-lang` https://github.com/grace-plugins/grace-asset-pipeline/issues/24[#24]
-* AssetProcessorService: remove dependency on `LinkGenerator` https://github.com/grace-plugins/grace-asset-pipeline/issues/23[#23]
+* build: Remove dependency on `commons-lang` link:{github}/issues/24[#24]
+* AssetProcessorService: remove dependency on `LinkGenerator` link:{github}/issues/23[#23]
 * Update README Update badge of Grace to current version
 * Update github workflows
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.2.0-M1 https://github.com/grace-plugins/grace-asset-pipeline/issues/22[#22]
-* Upgrade to Grace 2023.1.0 https://github.com/grace-plugins/grace-asset-pipeline/issues/21[#21]
+* Upgrade to Grace 2023.2.0-M1 link:{github}/issues/22[#22]
+* Upgrade to Grace 2023.1.0 link:{github}/issues/21[#21]
 
 === 6.1.1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.1[release notes]
+link:{github}/releases/tag/v6.1.1[release notes]
 
 🛠 Improvements
 
-* build: Remove dependency on `commons-lang` https://github.com/grace-plugins/grace-asset-pipeline/issues/42[#42]
-* Add bean aliases `linkGenerator`, `grailsLinkGenerator` for `LinkGenerator` https://github.com/grace-plugins/grace-asset-pipeline/issues/41[#41]
-* AssetProcessorService: remove dependency on `LinkGenerator` https://github.com/grace-plugins/grace-asset-pipeline/issues/40[#40]
+* build: Remove dependency on `commons-lang` link:{github}/issues/42[#42]
+* Add bean aliases `linkGenerator`, `grailsLinkGenerator` for `LinkGenerator` link:{github}/issues/41[#41]
+* AssetProcessorService: remove dependency on `LinkGenerator` link:{github}/issues/40[#40]
 * Update README Update badge of Grace to current version
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.1.0 https://github.com/grace-plugins/grace-asset-pipeline/issues/21[#21]
+* Upgrade to Grace 2023.1.0 link:{github}/issues/21[#21]
 
 === 6.1.0
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0[release notes]
+link:{github}/releases/tag/v6.1.0[release notes]
 
 🛠 Improvements
 
 * Rename to README.md
 * Update README
-* Remove `@ConditionalOnMissingBean` value of bean `assetResourceLocator` https://github.com/grace-plugins/grace-asset-pipeline/issues/20[#20]
-* Remove buildscript block 
-* Use `gradlePluginPortal()` https://github.com/grace-plugins/grace-asset-pipeline/issues/18[#18]
+* Remove `@ConditionalOnMissingBean` value of bean `assetResourceLocator` link:{github}/issues/20[#20]
+* Remove buildscript block
+* Use `gradlePluginPortal()` link:{github}/issues/18[#18]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.1.0-RC1 https://github.com/grace-plugins/grace-asset-pipeline/issues/17[#17]
-* Upgrade to Gradle Nexus Publish Plugin 2.0.0 https://github.com/grace-plugins/grace-asset-pipeline/issues/19[#19]
+* Upgrade to Grace 2023.1.0-RC1 link:{github}/issues/17[#17]
+* Upgrade to Gradle Nexus Publish Plugin 2.0.0 link:{github}/issues/19[#19]
 
 === 6.1.0-RC1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-RC1[release notes]
+link:{github}/releases/tag/v6.1.0-RC1[release notes]
 
 🛠 Improvements
 
-* Correct POM url https://github.com/grace-plugins/grace-asset-pipeline/issues/16[#16]
-* Remove repository `jcenter()` https://github.com/grace-plugins/grace-asset-pipeline/issues/15[#15]
-* Use `classesDirectory` property instead of deprecated `outputDir` https://github.com/grace-plugins/grace-asset-pipeline/issues/14[#14]
+* Correct POM url link:{github}/issues/16[#16]
+* Remove repository `jcenter()` link:{github}/issues/15[#15]
+* Use `classesDirectory` property instead of deprecated `outputDir` link:{github}/issues/14[#14]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.1.0-M3 https://github.com/grace-plugins/grace-asset-pipeline/issues/11[#11]
-* Upgrade to Groovy 3.0.23 https://github.com/grace-plugins/grace-asset-pipeline/issues/13[#13]
+* Upgrade to Grace 2023.1.0-M3 link:{github}/issues/11[#11]
+* Upgrade to Groovy 3.0.23 link:{github}/issues/13[#13]
 
 === 6.1.0-M2
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M2[release notes]
+link:{github}/releases/tag/v6.1.0-M2[release notes]
 
 🛠 Improvements
 
-* Simplify `AssetPipelineGrailsPlugin` https://github.com/grace-plugins/grace-asset-pipeline/issues/8[#8]
-* Update `grailsVersion` to allowed above `2023.0.0` https://github.com/grace-plugins/grace-asset-pipeline/issues/7[#7]
+* Simplify `AssetPipelineGrailsPlugin` link:{github}/issues/8[#8]
+* Update `grailsVersion` to allowed above `2023.0.0` link:{github}/issues/7[#7]
 
 🚀 Dependency Upgrades
 
-* Upgrade to Grace 2023.1.0-M1 https://github.com/grace-plugins/grace-asset-pipeline/issues/6[#6]
+* Upgrade to Grace 2023.1.0-M1 link:{github}/issues/6[#6]
 
 === 6.1.0-M1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M1[release notes]
+link:{github}/releases/tag/v6.1.0-M1[release notes]
 
 🛠 Improvements
 
-* Auto-Configure Asset Pipeline https://github.com/grace-plugins/grace-asset-pipeline/issues/4[#4]
-* Remove WARN from `LocalVariableTableParameterNameDiscoverer` https://github.com/grace-plugins/grace-asset-pipeline/issues/5[#5]
+* Auto-Configure Asset Pipeline link:{github}/issues/4[#4]
+* Remove WARN from `LocalVariableTableParameterNameDiscoverer` link:{github}/issues/5[#5]
 
 🚀 Dependency Upgrades
 
@@ -244,7 +286,7 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.1.0-M1[rel
 
 === 6.0.1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.1[release notes]
+link:{github}/releases/tag/v6.0.1[release notes]
 
 * Release v6.0.1
 * Change group of Asset Pipeline Gradle tasks
@@ -255,7 +297,7 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.1[releas
 
 === 6.0.0
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0[release notes]
+link:{github}/releases/tag/v6.0.0[release notes]
 
 * Release v6.0.0
 * Set group and description of Assets Gradle tasks
@@ -267,7 +309,7 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0[releas
 
 === 6.0.0-RC1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-RC1[release notes]
+link:{github}/releases/tag/v6.0.0-RC1[release notes]
 
 * Release v6.0.0-RC1
 * Upgrade to Groovy 3.0.22
@@ -281,7 +323,7 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-RC1[re
 
 === 6.0.0-M4
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M4[release notes]
+link:{github}/releases/tag/v6.0.0-M4[release notes]
 
 * Release v6.0.0-M4
 * Upgrade to Grace 2023.0.0-M6
@@ -290,7 +332,7 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M4[rel
 
 === 6.0.0-M3
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M3[release notes]
+link:{github}/releases/tag/v6.0.0-M3[release notes]
 
 * Release v6.0.0-M3
 * Upgrade to Grace 2023.0.0-M5
@@ -305,14 +347,14 @@ https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M3[rel
 
 === 6.0.0-M2
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M2[release notes]
+link:{github}/releases/tag/v6.0.0-M2[release notes]
 
 * Release v6.0.0-M2
 * Migrate to jakarta namespace
 
 === 6.0.0-M1
 
-https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v6.0.0-M1[release notes]
+link:{github}/releases/tag/v6.0.0-M1[release notes]
 
 * Release v6.0.0-M1
 * Update github workflows
