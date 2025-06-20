@@ -5,14 +5,14 @@ The `AssetFile` definition is where our journey begins. This is the defining fil
 [source,groovy]
 ----
 class CssAssetFile extends AbstractAssetFile {
-  static final String contentType = 'text/css'
-  static extensions = ['css']
-  static compiledExtension = 'css'
-  static processors = [CssProcessor]
+    static final String contentType = 'text/css'
+    static extensions = ['css']
+    static compiledExtension = 'css'
+    static processors = [CssProcessor]
 
-  String directiveForLine(String line) {
-    line.find(/\*=(.*)/) { fullMatch, directive -> return directive }
-  }
+    String directiveForLine(String line) {
+        line.find(/\*=(.*)/) { fullMatch, directive -> return directive }
+    }
 }
 ----
 
@@ -30,14 +30,14 @@ An `assetFile` can specify a REGEXP pattern for require directives. These direct
 
 [source,groovy]
 ----
-  Pattern directivePattern = ~/(?m)\*=(.*)/
+    Pattern directivePattern = ~/(?m)\*=(.*)/
 ----
 
 NOTE: Used to there was a `directiveForLine` that matched on each individual line. This was changed to support a multiline regex pattern for faster processing.
 
 The example above shows a match pattern for CSS files. This allows it to match require directives for the following example:
 
-[source,groovy]
+[source,css]
 ----
 /*
 *= require_self
@@ -46,7 +46,7 @@ The example above shows a match pattern for CSS files. This allows it to match r
 */
 
 body {
-  margin-top:25px;
+    margin-top:25px;
 }
 ----
 
@@ -57,32 +57,32 @@ Processors are used to precompile certain assets, and/or adjust the file path co
 [source,groovy]
 ----
 String processedStream(Boolean precompiler) {
-  def fileText
-  def skipCache = precompiler ?: (!processors || processors.size() == 0)
+    def fileText
+    def skipCache = precompiler ?: (!processors || processors.size() == 0)
 
-  if(baseFile?.encoding || encoding) {
-    fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
-  } else {
-    fileText = file?.text
-  }
-
-  def md5 = AssetHelper.getByteDigest(fileText.bytes)
-  if(!skipCache) {
-    def cache = CacheManager.findCache(file.canonicalPath, md5)
-    if(cache) {
-      return cache
+    if (baseFile?.encoding || encoding) {
+        fileText = file?.getText(baseFile?.encoding ? baseFile.encoding : encoding)
+    } else {
+        fileText = file?.text
     }
-  }
-  for(processor in processors) {
-    def processInstance = processor.newInstance(precompiler)
-    fileText = processInstance.process(fileText, this)
-  }
 
-  if(!skipCache) {
-    CacheManager.createCache(file.canonicalPath,md5,fileText)
-  }
+    def md5 = AssetHelper.getByteDigest(fileText.bytes)
+    if (!skipCache) {
+        def cache = CacheManager.findCache(file.canonicalPath, md5)
+        if (cache) {
+            return cache
+        }
+    }
+    for (processor in processors) {
+        def processInstance = processor.newInstance(precompiler)
+        fileText = processInstance.process(fileText, this)
+    }
 
-  return fileText
+    if (!skipCache) {
+        CacheManager.createCache(file.canonicalPath,md5,fileText)
+    }
+
+    return fileText
 }
 ----
 
@@ -95,7 +95,7 @@ Simply adding a list file `META-INF/asset-pipeline/asset.specs` to the classpath
 
 Example:
 
-[source,groovy]
+[source,properties]
 ----
 asset.pipeline.HtmlAssetFile
 asset.pipeline.JsAssetFile
@@ -107,7 +107,7 @@ This is a Properties file with the key being the class path of the Processor and
 
 Example:
 
-[source,groovy]
+[source,properties]
 ----
 asset.pipeline.CssProcessor=asset.pipeline.CssAssetFile,asset.pipeline.LessAssetFile
 ----

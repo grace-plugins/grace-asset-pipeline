@@ -10,14 +10,14 @@ In its simplest form the `build.gradle` file might look like this:
 .build.gradle
 ----
 buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-  }
-  dependencies {
-    classpath "org.graceframework.plugins:asset-pipeline-gradle:{project-version}"
-  }
+    dependencies {
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:{version}"
+    }
 }
 
 apply plugin: "org.graceframework.asset-pipeline"
@@ -30,7 +30,7 @@ Or even simpler:
 ----
 //Gradle 2.1+
 plugins {
-  id "org.graceframework.asset-pipeline" version "{project-version}"
+    id "org.graceframework.asset-pipeline" version "{version}"
 }
 ----
 

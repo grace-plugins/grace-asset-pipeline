@@ -5,8 +5,8 @@ Asset Pipeline adds a few new taglibs to properly reference your assets. These t
 [source,html]
 ----
 <head>
-  <asset:javascript src="application.js"/>
-  <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+    <asset:stylesheet src="application.css"/>
 </head>
 ----
 
@@ -56,11 +56,11 @@ As of version 0.8.2 a new bean exists called `assetResourceLocator` This can be 
 [source,html]
 ----
 class ExampleService {
-  def assetResourceLocator
+    def assetResourceLocator
 
-  def someMethod() {
-    Resource myResource = assetResourceLocator.findAssetForURI('test.css')
-  }
+    def someMethod() {
+        Resource myResource = assetResourceLocator.findAssetForURI('test.css')
+    }
 }
 ----
 
@@ -73,10 +73,10 @@ Asset-Pipeline provides a set of tags that can be used to ensure script blocks a
 ----
 <asset:javascript src="application.js" asset-defer="true"/>
 <asset:script type="text/javascript">
-  console.log("Hello World");
+    console.log("Hello World");
 </asset:script>
 <asset:script type="text/javascript">
-  console.log("Hello World 2");
+    console.log("Hello World 2");
 </asset:script>
 ----
 

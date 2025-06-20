@@ -49,7 +49,7 @@ This is a comment block in the top of a css file
 */
 
 body {
-  font-size: 12px;
+    font-size: 12px;
 }
 ----
 
@@ -87,7 +87,7 @@ As of asset-pipeline 2.10.x CommonJs support was added. This is automatically de
 .build.gradle
 ----
 assets {
-  configOptions = [commonJs: false] //useful for custom config on extension libraries
+    configOptions = [commonJs: false] //useful for custom config on extension libraries
 }
 ----
 
@@ -97,9 +97,9 @@ or:
 .application.groovy
 ----
 grails {
-  assets {
-    commonJs = false
-  }
+    assets {
+        commonJs = false
+    }
 }
 ----
 
