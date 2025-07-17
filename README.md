@@ -8,8 +8,8 @@
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
 [![Groovy Version](https://img.shields.io/badge/Groovy-4.0.27-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2023.3.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2023.3.0)
-[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.3.13-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.3.13)
+[![Grace Version](https://img.shields.io/badge/Grace-2024.0.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.0.0-M1)
+[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.4.7-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.4.7)
 
 > [!IMPORTANT]
 > This repository is a fork of [Asset-Pipeline](https://github.com/wondrify/asset-pipeline), only used to support Grace 2022/2023, but it has not been tested for Grails 5/6/7.
@@ -106,7 +106,7 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 
 ## Ducumentation
 
-* [6.3.x](https://plugins.graceframework.org/grace-asset-pipeline/6.3.x/)
+* [7.0.x](https://plugins.graceframework.org/grace-asset-pipeline/7.0.x/)
 
 ## Links
 
