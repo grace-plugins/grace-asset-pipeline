@@ -1,5 +1,5 @@
 /*
-* Copyright 2014 the original author or authors.
+* Copyright 2014-2025 the original author or authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package asset.pipeline.gradle
 
 import asset.pipeline.AssetPipelineConfigHolder
-import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.UnknownDomainObjectException
@@ -31,14 +30,17 @@ import org.gradle.api.tasks.bundling.Jar
 import org.gradle.language.jvm.tasks.ProcessResources
 
 /**
- * This is the Gradle Plugin implementation of asset-pipeline-core. It provides a set of tasks useful for working with your assets directly
+ * This is the Gradle Plugin implementation of asset-pipeline-core.
+ * It provides a set of tasks useful for working with your assets directly.
  *
  * task: assetCompile Compiles your assets into your build directory
  * task: assetClean Cleans the build/assets directory
  *
  * @author David Estes
  * @author Graeme Rocher
- * @author Craig Burke 
+ * @author Craig Burke
+ * @author Michael Yan
+ * @since 2.0
  */
 class AssetPipelinePlugin implements Plugin<Project> {
 
@@ -49,13 +51,13 @@ class AssetPipelinePlugin implements Plugin<Project> {
 
         def defaultConfiguration = project.extensions.create('assets', AssetPipelineExtensionImpl)
         def config = AssetPipelineConfigHolder.config != null ? AssetPipelineConfigHolder.config : [:]
-        config.cacheLocation = "${project.buildDir}/.assetcache"
+        config.cacheLocation = project.layout.buildDirectory.dir('.assetcache').get().asFile.absolutePath
         if (project.extensions.findByName('grails')) {
-            defaultConfiguration.assetsPath = "${project.projectDir}/app/assets"
+            defaultConfiguration.assetsPath = project.file('app/assets').absolutePath
         } else {
-            defaultConfiguration.assetsPath = "${project.projectDir}/src/assets"
+            defaultConfiguration.assetsPath = project.file('src/assets').absolutePath
         }
-        defaultConfiguration.compileDir = "${project.buildDir}/assets"
+        defaultConfiguration.compileDir = project.layout.buildDirectory.dir('assets').get().asFile.absolutePath
 
         project.tasks.create('assetCompile', AssetCompile)
         project.tasks.create('assetPluginPackage', AssetPluginPackage)
