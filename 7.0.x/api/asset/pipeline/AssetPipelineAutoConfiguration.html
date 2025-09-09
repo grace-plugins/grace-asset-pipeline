@@ -102,6 +102,7 @@ if (location.href.indexOf('is-external=true') == -1) {
             <hr>
 
 <pre>@org.springframework.boot.autoconfigure.AutoConfiguration
+@org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @org.springframework.boot.context.properties.EnableConfigurationProperties(AssetPipelineProperties.class)
 public class AssetPipelineAutoConfiguration
 extends java.lang.Object</pre>
