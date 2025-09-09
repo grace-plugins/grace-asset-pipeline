@@ -55,6 +55,8 @@ dependencies {
     compileOnly    "org.apache.groovy:groovy:$groovyVersion"
     compileOnly    "org.apache.groovy:groovy-json:$groovyVersion"
     compileOnly    "org.apache.groovy:groovy-templates:$groovyVersion"
+    // See gh-75: NoSuchMethodError
+    compileOnly gradleApi()
     doc         "org.apache.groovy:groovy-all:$groovyVersion"
     doc         'org.fusesource.jansi:jansi:1.18'
     api     'org.mozilla:rhino:1.7R4'
