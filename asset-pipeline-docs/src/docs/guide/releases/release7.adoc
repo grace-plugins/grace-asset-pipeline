@@ -1,3 +1,16 @@
+=== 7.0.0-M2
+
+link:{github}/releases/tag/v7.0.0-M2[release notes]
+
+🐞 Bug Fixes
+
+* Fix deprecation warnings due to tasks calling getProject() at execution time link:{github}/issues/78[#78]
+* Remove redundant dependency on 'grace-web-common' link:{github}/issues/77[#77]
+
+⚙️ Tasks
+
+* Release v7.0.0-M2
+
 === 7.0.0-M1
 
 link:{github}/releases/tag/v7.0.0-M1[release notes]
