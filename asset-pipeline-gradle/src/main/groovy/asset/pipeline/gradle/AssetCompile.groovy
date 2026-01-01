@@ -1,27 +1,5 @@
-package asset.pipeline.gradle
-
-import asset.pipeline.AssetCompiler
-import asset.pipeline.AssetPipelineConfigHolder
-import asset.pipeline.AssetSpecLoader
-import asset.pipeline.fs.FileSystemAssetResolver
-import asset.pipeline.fs.JarAssetResolver
-import groovy.transform.CompileDynamic
-import groovy.transform.CompileStatic
-import org.gradle.api.DefaultTask
-import org.gradle.api.file.FileTree
-import org.gradle.api.tasks.Classpath
-import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.PathSensitive
-import org.gradle.api.tasks.PathSensitivity
-import org.gradle.api.tasks.InputDirectory
-import org.gradle.api.tasks.InputFiles
-import org.gradle.api.tasks.Optional
-import org.gradle.api.tasks.OutputDirectory
-import org.gradle.api.tasks.TaskAction
-import org.gradle.api.file.FileCollection
-import org.gradle.api.tasks.CacheableTask
 /*
- * Copyright 2014 original authors
+ * Copyright 2014-2025 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,11 +13,37 @@ import org.gradle.api.tasks.CacheableTask
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package asset.pipeline.gradle
+
+import javax.inject.Inject
+
+import asset.pipeline.AssetCompiler
+import asset.pipeline.AssetPipelineConfigHolder
+import asset.pipeline.AssetSpecLoader
+import asset.pipeline.fs.FileSystemAssetResolver
+import asset.pipeline.fs.JarAssetResolver
+import groovy.transform.CompileDynamic
+import groovy.transform.CompileStatic
+import org.gradle.api.DefaultTask
+import org.gradle.api.Project
+import org.gradle.api.file.FileTree
+import org.gradle.api.tasks.Classpath
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.Optional
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.TaskAction
+import org.gradle.api.file.FileCollection
+import org.gradle.api.tasks.CacheableTask
 
 /**
  * A Gradle task for compiling assets
  *
  * @author Graeme Rocher
+ * @author Michael Yan
  */
 @CompileStatic
 @CacheableTask   
@@ -47,80 +51,80 @@ class AssetCompile extends DefaultTask {
     final String group = 'Asset Pipeline'
     final String description = 'Compiles assets.'
 
+    private Project project
+
     @Delegate(methodAnnotations = false) private AssetPipelineExtension pipelineExtension = new AssetPipelineExtensionImpl()
     //private FileCollection classpath;
 
     @Input
     boolean flattenResolvers = false
 
+    @Inject
+    AssetCompile(Project project) {
+        this.project = project
+    }
+
     @OutputDirectory
     File getDestinationDir() {
-        pipelineExtension.compileDir ? new File(pipelineExtension.compileDir) : null
+        this.pipelineExtension.compileDir ? new File(this.pipelineExtension.compileDir) : null
     }
     void setDestinationDir(File dir) {
-        pipelineExtension.compileDir = dir.absolutePath
+        this.pipelineExtension.compileDir = dir.absolutePath
     }
 
     @InputDirectory
     @PathSensitive(PathSensitivity.RELATIVE)
     File getAssetsDir() {
-        def path = pipelineExtension.assetsPath
+        def path = this.pipelineExtension.assetsPath
         return path ? new File(path) : null
     }
 
     void setAssetsDir(File assetsDir) {
-        pipelineExtension.assetsPath = assetsDir.absolutePath
+        this.pipelineExtension.assetsPath = assetsDir.absolutePath
     }
 
     @Classpath
     @Optional
-    public FileCollection getClasspath() {
+    FileCollection getClasspath() {
         try {
-            FileCollection runtimeFiles = getProject().configurations.getByName('runtimeClasspath') as FileCollection
-            
-            
+            FileCollection runtimeFiles = this.project.configurations.getByName('runtimeClasspath') as FileCollection
+
             FileCollection totalFiles = runtimeFiles
             try {
-                FileCollection providedFiles = getProject().configurations.getByName('provided') as FileCollection
+                FileCollection providedFiles = this.project.configurations.getByName('provided') as FileCollection
                 if(providedFiles) {
                     totalFiles += providedFiles
                 }    
-            } catch(ex) {
+            } catch(ignored) {
                 //no biggie if not there
             }
-            
+
             try {
-                FileCollection assetsFiles = getProject().configurations.getByName('assets') as FileCollection
+                FileCollection assetsFiles = this.project.configurations.getByName('assets') as FileCollection
                 if(assetsFiles) {
                     totalFiles += assetsFiles 
                 }
-            } catch(ex2) {
+            } catch(ignored) {
                 //no biggie if not there
             }
             return totalFiles
-        } catch(e) {
+        } catch(ignored) {
             return null as FileCollection
         }
     }
 
-    // public void setClasspath(FileCollection configuration) {
-    //     this.classpath = configuration;
-    // }
-
-
     @InputFiles
     @PathSensitive(PathSensitivity.RELATIVE)
     FileTree getSource() {
-        FileTree src = getProject().files(this.assetsDir).getAsFileTree();
+        FileTree src = this.project.files(this.assetsDir).getAsFileTree();
         pipelineExtension.resolvers.each { String path ->
-            def resolverFile = project.file(path)
+            def resolverFile = this.project.file(path)
             if(resolverFile.exists() && resolverFile.directory) {
-                src += getProject().files(path).getAsFileTree()
+                src += this.project.files(path).getAsFileTree()
             }
         }
         return src
     }
-
 
     @TaskAction
     @CompileDynamic
@@ -132,7 +136,7 @@ class AssetCompile extends DefaultTask {
         AssetPipelineConfigHolder.resolvers = []
         registerResolvers()     
         loadAssetSpecifications()
-        
+
         def listener = verbose ? new GradleEventListener() : null
         def assetCompiler = new AssetCompiler(pipelineExtension.toMap(), listener)
         assetCompiler.excludeRules.default = pipelineExtension.excludes
@@ -145,7 +149,7 @@ class AssetCompile extends DefaultTask {
         AssetPipelineConfigHolder.registerResolver(mainFileResolver)
 
         pipelineExtension.resolvers.each { String path ->
-            File resolverFile = project.file(path)
+            File resolverFile = this.project.file(path)
             boolean isJarFile = resolverFile.exists() && resolverFile.file && resolverFile.name.endsWith('.jar')
             boolean isAssetFolder = resolverFile.exists() && resolverFile.directory
             if (isJarFile) {
