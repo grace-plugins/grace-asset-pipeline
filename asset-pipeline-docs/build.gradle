@@ -53,8 +53,8 @@ tasks.withType(Groovydoc) {
     classpath += configurations.documentation
 }
 
-docs {
-    dependsOn groovydoc
+tasks.register('docs') { task ->
+    task.dependsOn groovydoc, publishGuide
 }
 
 def assembleTask = project.tasks.findByName('assemble')
