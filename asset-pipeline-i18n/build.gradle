@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     compileOnly "org.graceframework:grace-boot"
-    implementation "org.graceframework:grace-web-common"
+    implementation "org.graceframework:grace-web"
     implementation "org.graceframework:grace-web-taglib"
     implementation project(':asset-pipeline-core'), {
         exclude group:'org.mozilla', module:'rhino'
