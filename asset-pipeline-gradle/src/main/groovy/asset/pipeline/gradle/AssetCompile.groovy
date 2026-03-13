@@ -1,11 +1,11 @@
 /*
- * Copyright 2014-2025 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,8 +15,6 @@
  */
 package asset.pipeline.gradle
 
-import javax.inject.Inject
-
 import asset.pipeline.AssetCompiler
 import asset.pipeline.AssetPipelineConfigHolder
 import asset.pipeline.AssetSpecLoader
@@ -25,8 +23,8 @@ import asset.pipeline.fs.JarAssetResolver
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 import org.gradle.api.DefaultTask
-import org.gradle.api.Project
 import org.gradle.api.file.FileTree
+import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.Classpath
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.PathSensitive
@@ -37,7 +35,6 @@ import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.file.FileCollection
-import org.gradle.api.tasks.CacheableTask
 
 /**
  * A Gradle task for compiling assets
@@ -46,28 +43,30 @@ import org.gradle.api.tasks.CacheableTask
  * @author Michael Yan
  */
 @CompileStatic
-@CacheableTask   
+@CacheableTask
 class AssetCompile extends DefaultTask {
-    final String group = 'Asset Pipeline'
-    final String description = 'Compiles assets.'
 
-    private Project project
+    private FileCollection classpath
+    private FileCollection processorFiles
 
-    @Delegate(methodAnnotations = false) private AssetPipelineExtension pipelineExtension = new AssetPipelineExtensionImpl()
-    //private FileCollection classpath;
+    @Delegate(methodAnnotations = false)
+    private AssetPipelineExtensionImpl pipelineExtension = new AssetPipelineExtensionImpl()
 
     @Input
     boolean flattenResolvers = false
 
-    @Inject
-    AssetCompile(Project project) {
-        this.project = project
+    AssetCompile() {
+    }
+
+    void setProcessorFiles(FileCollection processorFiles) {
+        this.processorFiles = processorFiles
     }
 
     @OutputDirectory
     File getDestinationDir() {
         this.pipelineExtension.compileDir ? new File(this.pipelineExtension.compileDir) : null
     }
+
     void setDestinationDir(File dir) {
         this.pipelineExtension.compileDir = dir.absolutePath
     }
@@ -83,44 +82,28 @@ class AssetCompile extends DefaultTask {
         this.pipelineExtension.assetsPath = assetsDir.absolutePath
     }
 
-    @Classpath
     @Optional
+    @Classpath
     FileCollection getClasspath() {
-        try {
-            FileCollection runtimeFiles = this.project.configurations.getByName('runtimeClasspath') as FileCollection
+        return this.classpath
+    }
 
-            FileCollection totalFiles = runtimeFiles
-            try {
-                FileCollection providedFiles = this.project.configurations.getByName('provided') as FileCollection
-                if(providedFiles) {
-                    totalFiles += providedFiles
-                }    
-            } catch(ignored) {
-                //no biggie if not there
-            }
+    void setClasspath(FileCollection classpath) {
+        setClasspath((Object) classpath)
+    }
 
-            try {
-                FileCollection assetsFiles = this.project.configurations.getByName('assets') as FileCollection
-                if(assetsFiles) {
-                    totalFiles += assetsFiles 
-                }
-            } catch(ignored) {
-                //no biggie if not there
-            }
-            return totalFiles
-        } catch(ignored) {
-            return null as FileCollection
-        }
+    void setClasspath(Object classpath) {
+        this.classpath = getProject().files(classpath)
     }
 
     @InputFiles
     @PathSensitive(PathSensitivity.RELATIVE)
     FileTree getSource() {
-        FileTree src = this.project.files(this.assetsDir).getAsFileTree();
-        pipelineExtension.resolvers.each { String path ->
-            def resolverFile = this.project.file(path)
-            if(resolverFile.exists() && resolverFile.directory) {
-                src += this.project.files(path).getAsFileTree()
+        FileTree src = project.files(this.assetsDir).getAsFileTree();
+        this.pipelineExtension.resolvers.each { String path ->
+            File resolverFile = project.file(path)
+            if (resolverFile.exists() && resolverFile.directory) {
+                src += project.files(path).getAsFileTree()
             }
         }
         return src
@@ -130,26 +113,26 @@ class AssetCompile extends DefaultTask {
     @CompileDynamic
     void compile() {
         AssetPipelineConfigHolder.config = AssetPipelineConfigHolder.config ?: [:]
-        if(configOptions) {
+        if (configOptions) {
             AssetPipelineConfigHolder.config = AssetPipelineConfigHolder.config + configOptions
         }
         AssetPipelineConfigHolder.resolvers = []
         registerResolvers()     
         loadAssetSpecifications()
 
-        def listener = verbose ? new GradleEventListener() : null
-        def assetCompiler = new AssetCompiler(pipelineExtension.toMap(), listener)
-        assetCompiler.excludeRules.default = pipelineExtension.excludes
-        assetCompiler.includeRules.default = pipelineExtension.includes
+        GradleEventListener listener = verbose ? new GradleEventListener() : null
+        AssetCompiler assetCompiler = new AssetCompiler(this.pipelineExtension.toMap(), listener)
+        assetCompiler.excludeRules.default = this.pipelineExtension.excludes
+        assetCompiler.includeRules.default = this.pipelineExtension.includes
         assetCompiler.compile()
     }
 
     void registerResolvers() {
-        def mainFileResolver = new FileSystemAssetResolver('application', assetsDir.canonicalPath)
+        FileSystemAssetResolver mainFileResolver = new FileSystemAssetResolver('application', assetsDir.canonicalPath)
         AssetPipelineConfigHolder.registerResolver(mainFileResolver)
 
-        pipelineExtension.resolvers.each { String path ->
-            File resolverFile = this.project.file(path)
+        this.pipelineExtension.resolvers.each { String path ->
+            File resolverFile = project.file(path)
             boolean isJarFile = resolverFile.exists() && resolverFile.file && resolverFile.name.endsWith('.jar')
             boolean isAssetFolder = resolverFile.exists() && resolverFile.directory
             if (isJarFile) {
@@ -161,7 +144,7 @@ class AssetCompile extends DefaultTask {
             }
         }
 
-        this.getClasspath()?.files?.each { registerJarResolvers(it) }
+        getClasspath()?.files?.each { registerJarResolvers(it) }
     }
     
     void registerJarResolvers(File jarFile) {
@@ -174,7 +157,7 @@ class AssetCompile extends DefaultTask {
     }
     
     void loadAssetSpecifications() {
-        Set<File> processorFiles = project.configurations.getByName(AssetPipelinePlugin.ASSET_CONFIGURATION_NAME)?.files
+        Set<File> processorFiles = this.processorFiles?.files
 
         if (processorFiles) {
             List<URL> urls = processorFiles.collect { it.toURI().toURL() }
@@ -185,4 +168,5 @@ class AssetCompile extends DefaultTask {
             AssetSpecLoader.loadSpecifications()
         }
     }
+
 }
