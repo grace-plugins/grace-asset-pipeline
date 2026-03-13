@@ -160,6 +160,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/grails/LinkGenerator.html#asset(java.util.Map)" title="Method in LinkGenerator">asset(java.util.Map)</a></span> - Method in <a href="asset/pipeline/grails/LinkGenerator.html">LinkGenerator</a>
 </dt><dd> <div class="block">Finds an Asset from the asset-pipeline based on the file attribute.</div></dd>
+<dt><span class="strong"><a href="asset/pipeline/gradle/AssetPipelinePlugin.html#ASSET_TASK_GROUP" title="Property in AssetPipelinePlugin">ASSET_TASK_GROUP</a></span> - Property in <a href="asset/pipeline/gradle/AssetPipelinePlugin.html">AssetPipelinePlugin</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/grails/AssetAttributes.html" title="Class in asset.pipeline.grails">AssetAttributes</a></span> - Class in <a href="./asset/pipeline/grails/package-summary.html">asset.pipeline.grails</a>
 </dt><dd><div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/grails/AssetAttributes.html#AssetAttributes(boolean, java.lang.Boolean, java.lang.Boolean, java.lang.Long, java.lang.Long, java.util.Date, org.springframework.core.io.Resource, org.springframework.core.io.Resource)" title="Constructor in AssetAttributes">AssetAttributes(boolean, java.lang.Boolean, java.lang.Boolean, java.lang.Long, java.lang.Long, java.util.Date, org.springframework.core.io.Resource, org.springframework.core.io.Resource)</a></span> - Constructor in <a href="asset/pipeline/grails/AssetAttributes.html">AssetAttributes</a>
@@ -291,7 +293,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 <dl>
 
 <dt><span class="strong"><a href="asset/pipeline/processors/BabelJsProcessor.html" title="Class in asset.pipeline.processors">BabelJsProcessor</a></span> - Class in <a href="./asset/pipeline/processors/package-summary.html">asset.pipeline.processors</a>
-</dt><dd><div class="block"></div></dd>
+</dt><dd><div class="block">CoffeeScript engine will attempt to use Node.JS coffee if it is available on
+ the system path. </div></dd>
 <dt><span class="strong"><a href="asset/pipeline/processors/BabelJsProcessor.html#BabelJsProcessor(asset.pipeline.AssetCompiler)" title="Constructor in BabelJsProcessor">BabelJsProcessor(asset.pipeline.AssetCompiler)</a></span> - Constructor in <a href="asset/pipeline/processors/BabelJsProcessor.html">BabelJsProcessor</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/fs/FileSystemAssetResolver.html#baseDirectory" title="Property in FileSystemAssetResolver">baseDirectory</a></span> - Property in <a href="asset/pipeline/fs/FileSystemAssetResolver.html">FileSystemAssetResolver</a>
@@ -325,7 +328,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 <dt><span class="strong"><a href="asset/pipeline/grails/fs/SpringResourceAssetResolver.html#cacheAllResources()" title="Method in SpringResourceAssetResolver">cacheAllResources()</a></span> - Method in <a href="asset/pipeline/grails/fs/SpringResourceAssetResolver.html">SpringResourceAssetResolver</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/CacheManager.html" title="Class in asset.pipeline">CacheManager</a></span> - Class in <a href="./asset/pipeline/package-summary.html">asset.pipeline</a>
-</dt><dd><div class="block"></div></dd>
+</dt><dd><div class="block">A Cache Manager for the Asset-Pipeline runtime. </div></dd>
 <dt><span class="strong"><a href="asset/pipeline/CacheManager.html#CacheManager()" title="Constructor in CacheManager">CacheManager()</a></span> - Constructor in <a href="asset/pipeline/CacheManager.html">CacheManager</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/CachePersister.html" title="Class in asset.pipeline">CachePersister</a></span> - Class in <a href="./asset/pipeline/package-summary.html">asset.pipeline</a>
@@ -466,13 +469,9 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block">Asynchronously triggers a save with a debounce delay to reduce excessive persistence calls</div></dd>
 <dt><span class="strong"><a href="asset/pipeline/CachePersister.html#delay" title="Field in CachePersister">delay</a></span> - Field in <a href="asset/pipeline/CachePersister.html">CachePersister</a>
 </dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="asset/pipeline/gradle/AssetCompile.html#description" title="Property in AssetCompile">description</a></span> - Property in <a href="asset/pipeline/gradle/AssetCompile.html">AssetCompile</a>
-</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineGrailsPlugin.html#description" title="Property in AssetPipelineGrailsPlugin">description</a></span> - Property in <a href="asset/pipeline/AssetPipelineGrailsPlugin.html">AssetPipelineGrailsPlugin</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/i18n/AssetPipelineI18nGrailsPlugin.html#description" title="Property in AssetPipelineI18nGrailsPlugin">description</a></span> - Property in <a href="asset/pipeline/i18n/AssetPipelineI18nGrailsPlugin.html">AssetPipelineI18nGrailsPlugin</a>
-</dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="asset/pipeline/gradle/AssetPluginPackage.html#description" title="Property in AssetPluginPackage">description</a></span> - Property in <a href="asset/pipeline/gradle/AssetPluginPackage.html">AssetPluginPackage</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineGrailsPlugin.html#developers" title="Property in AssetPipelineGrailsPlugin">developers</a></span> - Property in <a href="asset/pipeline/AssetPipelineGrailsPlugin.html">AssetPipelineGrailsPlugin</a>
 </dt><dd> <div class="block"></div></dd>
@@ -890,10 +889,6 @@ if (location.href.indexOf('is-external=true') == -1) {
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineGrailsPlugin.html#grailsVersion" title="Property in AssetPipelineGrailsPlugin">grailsVersion</a></span> - Property in <a href="asset/pipeline/AssetPipelineGrailsPlugin.html">AssetPipelineGrailsPlugin</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/i18n/AssetPipelineI18nGrailsPlugin.html#grailsVersion" title="Property in AssetPipelineI18nGrailsPlugin">grailsVersion</a></span> - Property in <a href="asset/pipeline/i18n/AssetPipelineI18nGrailsPlugin.html">AssetPipelineI18nGrailsPlugin</a>
-</dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="asset/pipeline/gradle/AssetCompile.html#group" title="Property in AssetCompile">group</a></span> - Property in <a href="asset/pipeline/gradle/AssetCompile.html">AssetCompile</a>
-</dt><dd> <div class="block"></div></dd>
-<dt><span class="strong"><a href="asset/pipeline/gradle/AssetPluginPackage.html#group" title="Property in AssetPluginPackage">group</a></span> - Property in <a href="asset/pipeline/gradle/AssetPluginPackage.html">AssetPluginPackage</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/grails/AssetAttributes.html#gzipExists()" title="Method in AssetAttributes">gzipExists()</a></span> - Method in <a href="asset/pipeline/grails/AssetAttributes.html">AssetAttributes</a>
 </dt><dd> <div class="block"></div></dd>
@@ -1385,6 +1380,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 </dt><dd> <div class="block">Sets the base file</div></dd>
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineProperties.html#setBundle(boolean)" title="Method in AssetPipelineProperties">setBundle(boolean)</a></span> - Method in <a href="asset/pipeline/AssetPipelineProperties.html">AssetPipelineProperties</a>
 </dt><dd> <div class="block"></div></dd>
+<dt><span class="strong"><a href="asset/pipeline/gradle/AssetCompile.html#setClasspath(java.lang.Object)" title="Method in AssetCompile">setClasspath(java.lang.Object)</a></span> - Method in <a href="asset/pipeline/gradle/AssetCompile.html">AssetCompile</a>
+</dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/gradle/AssetPipelineExtension.html#setCompileDir(java.lang.String)" title="Method in AssetPipelineExtension">setCompileDir(java.lang.String)</a></span> - Method in <a href="asset/pipeline/gradle/AssetPipelineExtension.html">AssetPipelineExtension</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineConfigHolder.html#setConfig(java.util.Map)" title="Method in AssetPipelineConfigHolder">setConfig(java.util.Map)</a></span> - Method in <a href="asset/pipeline/AssetPipelineConfigHolder.html">AssetPipelineConfigHolder</a>
@@ -1432,6 +1429,8 @@ if (location.href.indexOf('is-external=true') == -1) {
 <dt><span class="strong"><a href="asset/pipeline/gradle/AssetPipelineExtension.html#setMinifyOptions(java.util.Map)" title="Method in AssetPipelineExtension">setMinifyOptions(java.util.Map)</a></span> - Method in <a href="asset/pipeline/gradle/AssetPipelineExtension.html">AssetPipelineExtension</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/gradle/AssetPipelineExtension.html#setPackagePlugin(boolean)" title="Method in AssetPipelineExtension">setPackagePlugin(boolean)</a></span> - Method in <a href="asset/pipeline/gradle/AssetPipelineExtension.html">AssetPipelineExtension</a>
+</dt><dd> <div class="block"></div></dd>
+<dt><span class="strong"><a href="asset/pipeline/gradle/AssetCompile.html#setProcessorFiles(org.gradle.api.file.FileCollection)" title="Method in AssetCompile">setProcessorFiles(org.gradle.api.file.FileCollection)</a></span> - Method in <a href="asset/pipeline/gradle/AssetCompile.html">AssetCompile</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/AssetPipelineConfigHolder.html#setResolvers(Collection<AssetResolver>)" title="Method in AssetPipelineConfigHolder">setResolvers(Collection&lt;AssetResolver&gt;)</a></span> - Method in <a href="asset/pipeline/AssetPipelineConfigHolder.html">AssetPipelineConfigHolder</a>
 </dt><dd> <div class="block"></div></dd>
@@ -1481,7 +1480,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 <dt><span class="strong"><a href="asset/pipeline/AbstractAssetFile.html#toString()" title="Method in AbstractAssetFile">toString()</a></span> - Method in <a href="asset/pipeline/AbstractAssetFile.html">AbstractAssetFile</a>
 </dt><dd> <div class="block">String representation of the object defaults to the full path of the file
  @return</div></dd>
-<dt><span class="strong"><a href="asset/pipeline/processors/ClosureCompilerProcessor.html#translateMinifyOptions(CompilerOptions, java.util.Map)" title="Method in ClosureCompilerProcessor">translateMinifyOptions(CompilerOptions, java.util.Map)</a></span> - Method in <a href="asset/pipeline/processors/ClosureCompilerProcessor.html">ClosureCompilerProcessor</a>
+<dt><span class="strong"><a href="asset/pipeline/processors/ClosureCompilerProcessor.html#translateMinifyOptions(com.google.javascript.jscomp.CompilerOptions, java.util.Map)" title="Method in ClosureCompilerProcessor">translateMinifyOptions(com.google.javascript.jscomp.CompilerOptions, java.util.Map)</a></span> - Method in <a href="asset/pipeline/processors/ClosureCompilerProcessor.html">ClosureCompilerProcessor</a>
 </dt><dd> <div class="block"></div></dd>
 <dt><span class="strong"><a href="asset/pipeline/gradle/GradleEventListener.html#triggerEvent(java.lang.Object, java.lang.Object)" title="Method in GradleEventListener">triggerEvent(java.lang.Object, java.lang.Object)</a></span> - Method in <a href="asset/pipeline/gradle/GradleEventListener.html">GradleEventListener</a>
 </dt><dd> <div class="block"></div></dd>

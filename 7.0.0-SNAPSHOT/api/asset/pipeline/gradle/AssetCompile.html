@@ -106,7 +106,7 @@ if (location.href.indexOf('is-external=true') == -1) {
 class AssetCompile
 extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
 
-    <p> A Gradle task for compiling assets <DL><DT><B>Authors:</B></DT><DD>Graeme Rocher</DD></DL></p>
+    <p> A Gradle task for compiling assets <DL><DT><B>Authors:</B></DT><DD>Graeme Rocher</DD><DD>Michael Yan</DD></DL></p>
 
           </li>
     </ul>
@@ -142,23 +142,23 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong>java.lang.String</strong></code>&nbsp;</td>
-                            <td class="colLast"><code><a href="#description">description</a></code><br></td>
+                            <td class="colFirst"><code><strong><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a></strong></code>&nbsp;</td>
+                            <td class="colLast"><code><a href="#classpath">classpath</a></code><br></td>
                         </tr>
                         
                         <tr class="altColor">
+                            <td class="colFirst"><code><strong><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a></strong></code>&nbsp;</td>
+                            <td class="colLast"><code><a href="#classpath">classpath</a></code><br></td>
+                        </tr>
+                        
+                        <tr class="rowColor">
                             <td class="colFirst"><code><strong>java.io.File</strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#destinationDir">destinationDir</a></code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code><strong>boolean</strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#flattenResolvers">flattenResolvers</a></code><br></td>
-                        </tr>
-                        
-                        <tr class="altColor">
-                            <td class="colFirst"><code><strong>java.lang.String</strong></code>&nbsp;</td>
-                            <td class="colLast"><code><a href="#group">group</a></code><br></td>
                         </tr>
                         
                     </table>
@@ -266,7 +266,25 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>void</code></td>
+                            <td class="colLast"><code><strong><a href="#setClasspath(org.gradle.api.file.FileCollection)">setClasspath</a></strong>(<a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> classpath)</code><br></td>
+                        </tr>
+                        
+                        <tr class="altColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>void</code></td>
+                            <td class="colLast"><code><strong><a href="#setClasspath(java.lang.Object)">setClasspath</a></strong>(java.lang.Object classpath)</code><br></td>
+                        </tr>
+                        
+                        <tr class="rowColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>void</code></td>
                             <td class="colLast"><code><strong><a href="#setDestinationDir(java.io.File)">setDestinationDir</a></strong>(java.io.File dir)</code><br></td>
+                        </tr>
+                        
+                        <tr class="altColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>void</code></td>
+                            <td class="colLast"><code><strong><a href="#setProcessorFiles(org.gradle.api.file.FileCollection)">setProcessorFiles</a></strong>(<a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> processorFiles)</code><br></td>
                         </tr>
                         
                     </table>
@@ -302,10 +320,18 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                             </li>
                         </ul>
                     
-                        <a name="description"><!-- --></a>
+                        <a name="classpath"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>final&nbsp;java.lang.String <strong>description</strong></h4>
+                                <h4><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> <strong>classpath</strong></h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="classpath"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> <strong>classpath</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -322,14 +348,6 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>@org.gradle.api.tasks.Input<br>boolean <strong>flattenResolvers</strong></h4>
-                                <p></p>
-                            </li>
-                        </ul>
-                    
-                        <a name="group"><!-- --></a>
-                        <ul class="blockListLast">
-                            <li class="blockList">
-                                <h4>final&nbsp;java.lang.String <strong>group</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -388,7 +406,7 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                         <a name="getClasspath()"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@org.gradle.api.tasks.Classpath<br>@java.util.Optional<br><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> <strong>getClasspath</strong>()</h4>
+                                <h4>@java.util.Optional<br>@org.gradle.api.tasks.Classpath<br><a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> <strong>getClasspath</strong>()</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -441,10 +459,34 @@ extends <a href='../../../org.gradle.api.DefaultTask.html'>DefaultTask</a></pre>
                             </li>
                         </ul>
                     
+                        <a name="setClasspath(org.gradle.api.file.FileCollection)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>void <strong>setClasspath</strong>(<a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> classpath)</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="setClasspath(java.lang.Object)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>void <strong>setClasspath</strong>(java.lang.Object classpath)</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
                         <a name="setDestinationDir(java.io.File)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>void <strong>setDestinationDir</strong>(java.io.File dir)</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="setProcessorFiles(org.gradle.api.file.FileCollection)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>void <strong>setProcessorFiles</strong>(<a href='../../../org.gradle.api.file.FileCollection.html'>FileCollection</a> processorFiles)</h4>
                                 <p></p>
                             </li>
                         </ul>
