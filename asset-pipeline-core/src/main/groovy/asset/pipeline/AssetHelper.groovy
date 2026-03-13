@@ -1,11 +1,11 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package asset.pipeline
 
 import java.nio.file.FileSystems
@@ -21,7 +20,7 @@ import java.nio.file.PathMatcher
 import java.nio.file.Paths
 import java.util.regex.Pattern
 import java.security.MessageDigest
-import java.nio.channels.FileChannel
+
 import groovy.transform.CompileStatic
 
 /**
@@ -31,7 +30,8 @@ import groovy.transform.CompileStatic
  * @author Graeme Rocher
  * @author Falk Meyer -- falk.meyer@it2media.de
  */
-public class AssetHelper {
+class AssetHelper {
+
     static final Collection<Class<AssetFile>> assetSpecs = AssetSpecLoader.loadSpecifications()
     static final String QUOTED_FILE_SEPARATOR = Pattern.quote(File.separator)
     static final String DIRECTIVE_FILE_SEPARATOR = '/'
@@ -81,7 +81,8 @@ public class AssetHelper {
         String matchedExtension = extensions.find { filename.endsWith(".${it}".toString()) }
         if (matchedExtension) {
             return extensionMap[matchedExtension]
-        } else {
+        }
+        else {
             return null
         }
     }
@@ -114,9 +115,9 @@ public class AssetHelper {
             return null
         }
         String lastUriComponent = uriComponents[uriComponents.length - 1]
-        List<String> extensions = (List<String>) (AssetHelper.assetSpecs.collect { Class<AssetFile> it -> it.extensions }.flatten().sort(false) { String a, String b -> -(a.size()) <=> -(b.size()) })
-        String extension = null
-        extension = extensions.find { lastUriComponent.endsWith(".${it}".toString()) }
+        List<String> extensions = (List<String>) AssetHelper.assetSpecs.collect { Class<AssetFile> it -> it.extensions}
+                .flatten().sort(false) { String a, String b -> -(a.size()) <=> -(b.size())}
+        String extension = extensions.find { lastUriComponent.endsWith(".${it}".toString()) }
         if (!extension) {
             if (lastUriComponent.lastIndexOf(".") >= 0) {
                 extension = uri.substring(uri.lastIndexOf(".") + 1)
@@ -201,7 +202,9 @@ public class AssetHelper {
      * @return The {@link AssetFile} classes
      */
     static Collection<Class<AssetFile>> getPossibleFileSpecs(String contentType) {
-        return assetFileClasses().findAll { Class<AssetFile> it -> (it.contentType instanceof String) ? it.contentType == contentType : contentType in it.contentType }
+        return assetFileClasses().findAll { Class<AssetFile> it ->
+            (it.contentType instanceof String) ? it.contentType == contentType : contentType in it.contentType
+        }
     }
 
     /**
@@ -210,17 +213,16 @@ public class AssetHelper {
      * @return md5 String
      */
     static String getByteDigest(byte[] fileBytes) {
-
-        def hashAlgorithm = AssetPipelineConfigHolder.getConfig()?.digestAlgorithm ?: 'MD5'
-        def salt = AssetPipelineConfigHolder.getConfig()?.digestSalt ?: ''
+        String hashAlgorithm = AssetPipelineConfigHolder.getConfig()?.digestAlgorithm ?: 'MD5'
+        String salt = AssetPipelineConfigHolder.getConfig()?.digestSalt ?: ''
 
         // Generate Checksum based on the file contents and the configuration settings
         MessageDigest md = MessageDigest.getInstance(hashAlgorithm)
 
         byte[] hashBytes = fileBytes
 
-        if(salt){
-            def saltBytes = salt.bytes
+        if (salt){
+            byte[] saltBytes = salt.bytes
             hashBytes = new byte[fileBytes.length + saltBytes.length]
             System.arraycopy(fileBytes, 0, hashBytes, 0, fileBytes.length)
             System.arraycopy(saltBytes, 0, hashBytes, fileBytes.length, saltBytes.length)
@@ -244,13 +246,16 @@ public class AssetHelper {
             if (pathElement == '..') {
                 if (newPath.size() > 0) {
                     newPath.remove(newPath.size() - 1)
-                } else if (counter < pathArgs.length - 1) {
+                }
+                else if (counter < pathArgs.length - 1) {
                     counter++
                     continue;
                 }
-            } else if (pathElement == '.') {
+            }
+            else if (pathElement == '.') {
                 // do nothing
-            } else {
+            }
+            else {
                 newPath << pathElement
             }
         }
@@ -268,19 +273,20 @@ public class AssetHelper {
     static boolean isFileMatchingPatterns(String filePath, List<String> patterns) {
         for(pattern in patterns) {
             String syntax = "glob"
-            if(pattern.startsWith('regex:')) {
+            if (pattern.startsWith('regex:')) {
                 syntax = "regex"
                 pattern = pattern.substring(6)
-            } else if(pattern.startsWith('glob:')) {
+            }
+            else if(pattern.startsWith('glob:')) {
                 pattern = pattern.substring(5)
             }
             PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("${syntax}:${pattern}")
-            if(pathMatcher.matches(Paths.get(filePath))) {
+            if (pathMatcher.matches(Paths.get(filePath))) {
                 return true
             }
-            if(syntax == "glob" && pattern.contains('**/')) {
+            if (syntax == "glob" && pattern.contains('**/')) {
                 pathMatcher = FileSystems.getDefault().getPathMatcher("${syntax}:${pattern.replace('**/','')}")
-                if(pathMatcher.matches(Paths.get(filePath))) {
+                if (pathMatcher.matches(Paths.get(filePath))) {
                     return true
                 }
             }

@@ -15,8 +15,8 @@
 */
 package asset.pipeline
 
-import groovy.util.logging.Slf4j
 import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
 
 /**
  * This processor is a base processor put in front of most asset processing. It is responsible for parsing directives
@@ -29,10 +29,11 @@ import groovy.transform.CompileStatic
 class DirectiveProcessor {
 
     /**
-    * References names of directives to implemented methods.
-    * This can be adjusted at run time to either override behavior or add custom directives
-    */
-    static DIRECTIVES = [require_self: "requireSelfDirective" ,require_tree: "requireTreeDirective", require_full_tree: "requireFullTreeDirective" , require: "requireFileDirective", encoding: "encodingTypeDirective"]
+     * References names of directives to implemented methods.
+     * This can be adjusted at run time to either override behavior or add custom directives
+     */
+    static DIRECTIVES = [require_self: "requireSelfDirective", require_tree: "requireTreeDirective", require_full_tree: "requireFullTreeDirective",
+                         require: "requireFileDirective", encoding: "encodingTypeDirective"]
 
     private String contentType
     private AssetCompiler precompiler
@@ -40,7 +41,7 @@ class DirectiveProcessor {
     private def baseFile
     ClassLoader classLoader
 
-    DirectiveProcessor(String contentType, AssetCompiler precompiler = null, ClassLoader classLoader=Thread.currentThread().contextClassLoader) {
+    DirectiveProcessor(String contentType, AssetCompiler precompiler = null, ClassLoader classLoader = Thread.currentThread().contextClassLoader) {
         this.classLoader = classLoader
         this.contentType = contentType
         this.precompiler = precompiler
@@ -48,31 +49,31 @@ class DirectiveProcessor {
 
 
     /**
-    * Takes an AssetFile and compiles it to a final result based on input directives and
-    * setup Processors. If a GenericAssetFile is passed in the raw byte array is returned.
-    * @param file an instance of an AbstractAssetFile (i.e. JsAssetFile or CssAssetFile)
-    */
+     * Takes an AssetFile and compiles it to a final result based on input directives and
+     * setup Processors. If a GenericAssetFile is passed in the raw byte array is returned.
+     * @param file an instance of an AbstractAssetFile (i.e. JsAssetFile or CssAssetFile)
+     */
     @CompileStatic
     def compile(AssetFile file) {
-        Long startTime =  new Date().time
-        if(file instanceof GenericAssetFile) {
+        Long startTime = new Date().time
+        if (file instanceof GenericAssetFile) {
             return file.getBytes()
         }
         this.baseFile = file
         this.files = [:]
         Map tree = getDependencyTree(file)
         StringBuilder buffer = new StringBuilder(64000)
-        loadContentsForTree(tree,buffer)
+        loadContentsForTree(tree, buffer)
         return buffer.toString()
     }
 
     /**
-    * Returns a Flattened list of files based on the require tree
-    * This is useful for converting a script tag into several script tags for debugging
-    * @param file an instance of an AbstractAssetFile (i.e. JsAssetFile or CssAssetFile)
-    */
+     * Returns a Flattened list of files based on the require tree
+     * This is useful for converting a script tag into several script tags for debugging
+     * @param file an instance of an AbstractAssetFile (i.e. JsAssetFile or CssAssetFile)
+     */
     def getFlattenedRequireList(file) {
-        if(file instanceof GenericAssetFile) {
+        if (file instanceof GenericAssetFile) {
             return [[path: file.path, encoding: null]]
         }
         def flattenedList = []
@@ -82,91 +83,89 @@ class DirectiveProcessor {
         return flattenedList
     }
 
-
     /**
-    * Scans through a generated tree and builds a flatted list of requirements recursively
-    */
+     * Scans through a generated tree and builds a flatted list of requirements recursively
+     */
     protected loadRequiresForTree(treeSet, flattenedList) {
         def selfLoaded = false
-        for(childTree in treeSet.tree) {
-            if(childTree == "self") {
+        for (childTree in treeSet.tree) {
+            if (childTree == "self") {
                 def extension = treeSet.file.compiledExtension
-                def fileName = AssetHelper.fileNameWithoutExtensionFromArtefact(treeSet.file.path,treeSet.file)
+                def fileName = AssetHelper.fileNameWithoutExtensionFromArtefact(treeSet.file.path, treeSet.file)
                 flattenedList << [path: "${fileName}.${extension}", encoding: treeSet.file.encoding]
                 selfLoaded = true
-            } else {
+            }
+            else {
                 flattenedList = loadRequiresForTree(childTree, flattenedList)
             }
         }
 
-        if(!selfLoaded) {
+        if (!selfLoaded) {
             def extension = treeSet.file.compiledExtension
-            def fileName = AssetHelper.fileNameWithoutExtensionFromArtefact(treeSet.file.path,treeSet.file)
+            def fileName = AssetHelper.fileNameWithoutExtensionFromArtefact(treeSet.file.path, treeSet.file)
             flattenedList << [path: "${fileName}.${extension}", encoding: treeSet.file.encoding]
         }
         return flattenedList
     }
 
-
     /**
-    * Scans through a generated tree and builds a files contents recursively
-    */
-    protected void loadContentsForTree(Map treeSet,StringBuilder buffer) {
-
+     * Scans through a generated tree and builds a files contents recursively
+     */
+    protected void loadContentsForTree(Map treeSet, StringBuilder buffer) {
         Boolean selfLoaded = false
-        for(childTree in treeSet.tree) {
-            if(childTree == "self") {
+        for (childTree in treeSet.tree) {
+            if (childTree == "self") {
                 buffer.append(fileContents(treeSet.file)).append('\n')
                 selfLoaded = true
-            } else {
-                loadContentsForTree(childTree,buffer)
+            }
+            else {
+                loadContentsForTree(childTree, buffer)
             }
         }
 
-        if(!selfLoaded) {
+        if (!selfLoaded) {
             buffer.append(fileContents(treeSet.file)).append('\n')
         }
     }
 
     /**
-    * Builds a dependency tree for a particular file
-    */
+     * Builds a dependency tree for a particular file
+     */
     @CompileStatic
     protected Map getDependencyTree(AssetFile file) {
         this.files[file.path] = file
-        Map tree = [file:file,tree:[]]
-        if(!(file instanceof GenericAssetFile)) {
-            this.findDirectives(file as AssetFile,tree)
+        Map tree = [file: file, tree: []]
+        if (!(file instanceof GenericAssetFile)) {
+            this.findDirectives(file as AssetFile, tree)
         }
 
         return tree
     }
 
     /**
-    * Scans an AssetFile for directive patterns and builds a dependency tree
-    * @param fileSpec The assetFile we wish to scan
-    * @param tree The tree object we use to build the graph (should be a List)
-    */
+     * Scans an AssetFile for directive patterns and builds a dependency tree
+     * @param fileSpec The assetFile we wish to scan
+     * @param tree The tree object we use to build the graph (should be a List)
+     */
     @CompileStatic
     protected findDirectives(AssetFile fileSpec, Map tree) {
-
         String line = fileSpec.inputStream.getText("UTF-8")
         List directives = []
-        if(fileSpec.directivePattern) {
+        if (fileSpec.directivePattern) {
             directives = (line =~ fileSpec.directivePattern)?.collect { List it -> it[1] as String }
         }
-        for(String directive in directives) {
+        for (String directive in directives) {
             directive = directive.trim()
             String[] unprocessedArgs = directive.split(/\s+/)
             String processor = DIRECTIVES[unprocessedArgs[0].toLowerCase()]
-            if(processor) {
+            if (processor) {
                 String[] directiveArguments = unprocessedArgs
-                if(directive.indexOf('$') >= 0) {
-                        directiveArguments = directiveArgumentsFromGString(directive)
+                if (directive.indexOf('$') >= 0) {
+                    directiveArguments = directiveArgumentsFromGString(directive)
 
                 }
                 directiveArguments[0] = directiveArguments[0].toLowerCase()
-                callDirective(processor,directiveArguments, fileSpec, tree)
+                callDirective(processor, directiveArguments, fileSpec, tree)
             }
             else {
                 // No matching processor means its a matched directive
@@ -175,35 +174,36 @@ class DirectiveProcessor {
         }
     }
 
-
-    public String[] directiveArgumentsFromGString(String directive) {
+    String[] directiveArgumentsFromGString(String directive) {
         try {
-            return new groovy.text.GStringTemplateEngine(classLoader ?: this.class.classLoader).createTemplate(directive).make().toString().split(/\s+/)
-        } catch(ex) {
+            return new groovy.text.GStringTemplateEngine(classLoader ?: this.class.classLoader).createTemplate(directive).make().toString().split(
+                    /\s+/)
+        }
+        catch (ex) {
             println "Error Processing GString Template Engine ${ex}"
-            log.error("Error Processing GString Template Engine",ex)
+            log.error("Error Processing GString Template Engine", ex)
             return directive
         }
     }
 
-    public void callDirective(String name, String[] directiveArguments, AssetFile fileSpec, Map tree) {
-        this."${name}"(directiveArguments, fileSpec,tree)
+    void callDirective(String name, String[] directiveArguments, AssetFile fileSpec, Map tree) {
+        this."${name}"(directiveArguments, fileSpec, tree)
     }
     /**
-    * Used to control file order for when content within your manifest exists
-    */
+     * Used to control file order for when content within your manifest exists
+     */
     def requireSelfDirective(command, file, tree) {
         tree.tree << "self"
     }
 
     /**
-    * Set your file encoding within your manifest
-    */
+     * Set your file encoding within your manifest
+     */
     def encodingTypeDirective(command, fileSpec, tree) {
-        if(!command[1]) {
+        if (!command[1]) {
             return;
         }
-        if(fileSpec.baseFile) {
+        if (fileSpec.baseFile) {
             fileSpec.baseFile.encoding = command[1]
         }
         fileSpec.encoding = command[1]
@@ -211,32 +211,31 @@ class DirectiveProcessor {
 
 
     /**
-    * Loads files recursively within the specified folder within the same source resolver
-    * Example: //=require_tree .
-    */
+     * Loads files recursively within the specified folder within the same source resolver
+     * Example: //=require_tree .
+     */
     def requireTreeDirective(command, fileSpec, tree) {
         String directivePath = command[1]
         def resolver = fileSpec.sourceResolver
-        def files = resolver.getAssets(directivePath,contentType,null,true ,fileSpec,baseFile)
+        def files = resolver.getAssets(directivePath, contentType, null, true, fileSpec, baseFile)
 
         files.each { file ->
-            if(!isFileInTree(file)) {
+            if (!isFileInTree(file)) {
                 tree.tree << getDependencyTree(file)
             }
         }
     }
 
-
     /**
-    * Loads files recursively within the specified relative path across ALL resolvers
-    * Example: //=require_full_tree /spud/admin
-    */
+     * Loads files recursively within the specified relative path across ALL resolvers
+     * Example: //=require_full_tree /spud/admin
+     */
     def requireFullTreeDirective(command, fileSpec, tree) {
         String directivePath = command[1]
-        for(resolver in AssetPipelineConfigHolder.resolvers) {
-            def files = resolver.getAssets(directivePath,contentType,null,true ,fileSpec,baseFile)
+        for (resolver in AssetPipelineConfigHolder.resolvers) {
+            def files = resolver.getAssets(directivePath, contentType, null, true, fileSpec, baseFile)
             files.each { file ->
-                if(!isFileInTree(file)) {
+                if (!isFileInTree(file)) {
                     tree.tree << getDependencyTree(file)
                 }
             }
@@ -244,39 +243,39 @@ class DirectiveProcessor {
     }
 
     /**
-    * Directive which allows inclusion of individual files
-    * Example: //=require sample.js
-    */
+     * Directive which allows inclusion of individual files
+     * Example: //=require sample.js
+     */
     def requireFileDirective(command, file, tree) {
         def fileName = command[1]
 
         List fileNameList = fileName.tokenize(',')
-        if( fileNameList.size() > 1 ) {
-            fileNameList.each{ thisListItem ->
-                requireFileDirective( [ command[0], thisListItem ], file, tree )
+        if (fileNameList.size() > 1) {
+            fileNameList.each { thisListItem ->
+                requireFileDirective([command[0], thisListItem], file, tree)
             }
         }
         else {
             def newFile
-            if( fileName.startsWith( AssetHelper.DIRECTIVE_FILE_SEPARATOR ) ) {
-                newFile = AssetHelper.fileForUri( fileName, this.contentType, null, this.baseFile )
+            if (fileName.startsWith(AssetHelper.DIRECTIVE_FILE_SEPARATOR)) {
+                newFile = AssetHelper.fileForUri(fileName, this.contentType, null, this.baseFile)
             }
             else {
-                def relativeFileName = [ file.parentPath, fileName ].join( AssetHelper.DIRECTIVE_FILE_SEPARATOR )
-                newFile = AssetHelper.fileForUri( relativeFileName, this.contentType, null, this.baseFile )
+                def relativeFileName = [file.parentPath, fileName].join(AssetHelper.DIRECTIVE_FILE_SEPARATOR)
+                newFile = AssetHelper.fileForUri(relativeFileName, this.contentType, null, this.baseFile)
             }
 
-            if( newFile ) {
-                if( !isFileInTree( newFile ) ) {
-                    tree.tree << getDependencyTree( newFile )
+            if (newFile) {
+                if (!isFileInTree(newFile)) {
+                    tree.tree << getDependencyTree(newFile)
                 }
             }
-            else if( !fileName.startsWith( AssetHelper.DIRECTIVE_FILE_SEPARATOR ) ) {
-                command[ 1 ] = AssetHelper.DIRECTIVE_FILE_SEPARATOR + command[ 1 ]
-                requireFileDirective( command, file, tree )
+            else if (!fileName.startsWith(AssetHelper.DIRECTIVE_FILE_SEPARATOR)) {
+                command[1] = AssetHelper.DIRECTIVE_FILE_SEPARATOR + command[1]
+                requireFileDirective(command, file, tree)
             }
             else {
-                log.warn( "Unable to Locate Asset: ${ command[ 1 ] }" )
+                log.warn("Unable to Locate Asset: ${command[1]}")
             }
         }
     }
@@ -289,17 +288,18 @@ class DirectiveProcessor {
     @CompileStatic
     protected boolean isFileInTree(AssetFile file) {
         AssetFile result = files[file.path] as AssetFile
-        if(result) {
+        if (result) {
             return true
-        } else {
+        }
+        else {
             return false
         }
     }
 
     /**
-    * Used for fetching the contents of a file be it a Generic unprocessable entity
-    * or an AssetFile with a processable stream
-    */
+     * Used for fetching the contents of a file be it a Generic unprocessable entity
+     * or an AssetFile with a processable stream
+     */
     @CompileStatic
     String fileContents(AssetFile file) {
         return file.processedStream(this.precompiler)

@@ -1,11 +1,11 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,16 +15,10 @@
  */
 package asset.pipeline.processors
 
-
-import asset.pipeline.AssetCompiler
-import asset.pipeline.AssetHelper
-import asset.pipeline.AssetFile
 import asset.pipeline.AbstractProcessor
+import asset.pipeline.AssetCompiler
+import asset.pipeline.AssetFile
 import asset.pipeline.AssetPipelineConfigHolder
-import java.util.regex.Pattern
-
-import static asset.pipeline.utils.net.Urls.isRelative
-
 
 /**
  * This Processor iterates over a js file looking for asset_path directive sand
@@ -33,26 +27,22 @@ import static asset.pipeline.utils.net.Urls.isRelative
  *
  * @author David Estes
  */
-class JsNodeInjectProcessor extends AbstractProcessor  {
+class JsNodeInjectProcessor extends AbstractProcessor {
 
+    JsNodeInjectProcessor(final AssetCompiler precompiler) {
+        super(precompiler)
+    }
 
-	JsNodeInjectProcessor(final AssetCompiler precompiler) {
-		super(precompiler)
-	}
+    @Override
+    String process(final String inputText, final AssetFile assetFile) {
+        String nodeEnv = 'development'
 
+        if (AssetPipelineConfigHolder.config != null
+                && AssetPipelineConfigHolder.config.nodeEnv != null) {
+            nodeEnv = AssetPipelineConfigHolder.config.nodeEnv
+        }
 
-	String process(final String inputText, final AssetFile assetFile) {
-		String nodeEnv = 'development'
-		
-		if (AssetPipelineConfigHolder.config != null 
-				&& AssetPipelineConfigHolder.config.nodeEnv != null) {
-			nodeEnv = AssetPipelineConfigHolder.config.nodeEnv
-		}
+        return "var process = process || {env: {NODE_ENV: \"$nodeEnv\"}};\n${inputText}"
+    }
 
-		// if(!assetFile.baseFile) {
-			return "var process = process || {env: {NODE_ENV: \"$nodeEnv\"}};\n${inputText}"	
-		// } else {
-		// 	return inputText
-		// }		
-	}
 }

@@ -1,11 +1,11 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,13 +15,12 @@
  */
 package asset.pipeline.processors
 
+import java.util.regex.Pattern
 
 import asset.pipeline.AssetCompiler
 import asset.pipeline.AssetFile
-import java.util.regex.Pattern
 
 import static asset.pipeline.utils.net.Urls.isRelative
-
 
 /**
  * This Processor iterates over relative image paths in a CSS file and
@@ -35,34 +34,36 @@ class CssProcessor extends AbstractUrlRewritingProcessor {
 
     private static final Pattern URL_CALL_PATTERN = ~/url\((?:\s*)(['"]?)([a-zA-Z0-9\-_.:\/@#? &+%=$]++)\1?(?:\s*)\)/
 
-
     CssProcessor(final AssetCompiler precompiler) {
         super(precompiler)
     }
 
-
     String process(final String inputText, final AssetFile assetFile) {
         final Map<String, String> cachedPaths = [:]
-        return \
-            inputText.replaceAll(URL_CALL_PATTERN) { final String urlCall, final String quote, final String assetPath ->
-                String cachedPath = cachedPaths[assetPath]
+        return  \
+             inputText.replaceAll(URL_CALL_PATTERN) { final String urlCall, final String quote, final String assetPath ->
+            String cachedPath = cachedPaths[assetPath]
 
-                String replacementPath = null
-                if (cachedPath != null) {
-                    replacementPath = cachedPath
-                } else if (assetPath.size() > 0 && isRelative(assetPath)) {
-                    replacementPath = replacementUrl(assetFile, assetPath)
-                    if (replacementPath) {
-                        cachedPaths[assetPath] = replacementPath
-                    } else {
-                        cachedPaths[assetPath] = assetPath
-                        return urlCall
-                    }
-                } else {
+            String replacementPath = null
+            if (cachedPath != null) {
+                replacementPath = cachedPath
+            }
+            else if (assetPath.size() > 0 && isRelative(assetPath)) {
+                replacementPath = replacementUrl(assetFile, assetPath)
+                if (replacementPath) {
+                    cachedPaths[assetPath] = replacementPath
+                }
+                else {
+                    cachedPaths[assetPath] = assetPath
                     return urlCall
                 }
-
-                return "url(${quote}${replacementPath}${quote})"
             }
+            else {
+                return urlCall
+            }
+
+            return "url(${quote}${replacementPath}${quote})"
+        }
     }
+
 }

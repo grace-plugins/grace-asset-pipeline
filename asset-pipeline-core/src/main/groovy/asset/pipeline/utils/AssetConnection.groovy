@@ -1,41 +1,54 @@
-package asset.pipeline.utils;
+/*
+ * Copyright 2014-2026 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package asset.pipeline.utils
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import groovy.transform.CompileStatic;
-import asset.pipeline.AssetFile;
-import asset.pipeline.AssetHelper;
+import asset.pipeline.AssetFile
+import asset.pipeline.AssetHelper
+import groovy.transform.CompileStatic
 
 @CompileStatic
-public class AssetConnection extends URLConnection
-{
-	public AssetConnection(URL u) {
-		super(u);
-	}
+class AssetConnection extends URLConnection {
 
-	@Override
-	public void connect()  throws IOException {
-		connected = true;
-		return;
-	}
+    AssetConnection(URL u) {
+        super(u)
+    }
 
-	@Override
-	public Object getContent() throws IOException {
-	throw new UnsupportedOperationException(
-		"The getContent() method is not supported"
-			);
-	}
+    @Override
+    void connect() throws IOException {
+        connected = true
+        return
+    }
 
-	@Override
-	public InputStream getInputStream()
-	throws IOException {
-		AssetFile newFile = AssetHelper.fileForUri( url.path, null, null, null)
-		if(newFile) {
-			return newFile.inputStream
-		} else {
-			throw new IOException("File not Found")
-		}
-	}
+    @Override
+    Object getContent() throws IOException {
+        throw new UnsupportedOperationException(
+                "The getContent() method is not supported"
+        )
+    }
+
+    @Override
+    InputStream getInputStream()
+            throws IOException {
+        AssetFile newFile = AssetHelper.fileForUri(url.path, null, null, null)
+        if (newFile) {
+            return newFile.inputStream
+        }
+        else {
+            throw new IOException("File not Found")
+        }
+    }
+
 }

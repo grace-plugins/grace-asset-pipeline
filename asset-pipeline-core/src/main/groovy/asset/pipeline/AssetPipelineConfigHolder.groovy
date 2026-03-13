@@ -1,3 +1,18 @@
+/*
+ * Copyright 2014-2026 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package asset.pipeline
 
 import asset.pipeline.fs.AssetResolver
@@ -8,6 +23,7 @@ import asset.pipeline.fs.AssetResolver
  * @author David Estes
  */
 class AssetPipelineConfigHolder {
+
     public static Collection<AssetResolver> resolvers = []
     public static Properties manifest
     public static Map config = [:]
@@ -17,51 +33,49 @@ class AssetPipelineConfigHolder {
     private static String digestString
     private static Object configMutexLock = new Object()
 
-    public static Map<String,AssetPipelineClassLoaderEntry> classLoaderRegistry = [:]
+    public static Map<String, AssetPipelineClassLoaderEntry> classLoaderRegistry = [:]
 
-    public static registerResolver(AssetResolver resolver) {
+    static registerResolver(AssetResolver resolver) {
         resolvers << resolver
     }
 
-    public static Properties getManifest() {
+    static Properties getManifest() {
         return this.manifest
     }
 
-    public static void setManifest(Properties manifest) {
+    static void setManifest(Properties manifest) {
         this.manifest = manifest
     }
 
-    public static Map getConfig() {
+    static Map getConfig() {
         return this.config
     }
 
-    public static void setConfig(Map config) {
-        synchronized(configMutexLock) {
-            this.config = config;
+    static void setConfig(Map config) {
+        synchronized (configMutexLock) {
+            this.config = config
         }
     }
 
-    public static Collection<AssetResolver> getResolvers() {
-        return this.resolvers;
+    static Collection<AssetResolver> getResolvers() {
+        return this.resolvers
     }
 
-    public static void setResolvers(Collection<AssetResolver> resolvers) {
+    static void setResolvers(Collection<AssetResolver> resolvers) {
         this.resolvers = resolvers
     }
 
-
-
-    public static registerClassLoader(String prefixPath, ClassLoader classLoader) {
+    static registerClassLoader(String prefixPath, ClassLoader classLoader) {
         classLoaderRegistry[prefixPath] = new AssetPipelineClassLoaderEntry(classLoader)
     }
 
-    public static unregisterClassLoader(String prefixPath) {
+    static unregisterClassLoader(String prefixPath) {
         classLoaderRegistry.remove(prefixPath)
     }
 
-    public static String classLoaderKeyForUri(String fileUri) {
-        for(String key in classLoaderRegistry.keySet()) {
-            if(fileUri.startsWith(key)) {
+    static String classLoaderKeyForUri(String fileUri) {
+        for (String key in classLoaderRegistry.keySet()) {
+            if (fileUri.startsWith(key)) {
                 return key
                 break
             }
@@ -69,16 +83,19 @@ class AssetPipelineConfigHolder {
         return null
     }
 
-    public static String getDigestString() {
-        synchronized(configMutexLock) {
+    static String getDigestString() {
+        synchronized (configMutexLock) {
             //check if the maps or arrays have changed to reset the digest
-            if(resolvers?.hashCode() != resolverHashCode || config?.hashCode() != configHashCode) {
-                digestString = AssetHelper.getByteDigest([config: config?.sort(),resolvers: resolvers?.collect{AssetResolver resolver -> resolver.name}?.sort()].sort().toString().bytes)
+            if (resolvers?.hashCode() != resolverHashCode || config?.hashCode() != configHashCode) {
+                digestString = AssetHelper.getByteDigest([
+                        config   : config?.sort(),
+                        resolvers: resolvers?.collect { AssetResolver resolver -> resolver.name }?.sort()
+                ].sort().toString().bytes)
                 resolverHashCode = resolvers?.hashCode()
                 configHashCode = config?.hashCode()
             }
             return digestString
         }
-        
     }
+
 }

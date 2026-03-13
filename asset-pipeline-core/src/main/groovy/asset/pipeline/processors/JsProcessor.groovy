@@ -1,11 +1,11 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,14 +15,11 @@
  */
 package asset.pipeline.processors
 
-
-import asset.pipeline.AssetCompiler
-import asset.pipeline.AssetHelper
-import asset.pipeline.AssetFile
 import java.util.regex.Pattern
 
-import static asset.pipeline.utils.net.Urls.isRelative
-
+import asset.pipeline.AssetCompiler
+import asset.pipeline.AssetFile
+import asset.pipeline.AssetHelper
 
 /**
  * This Processor iterates over a js file looking for asset_path directive sand
@@ -33,41 +30,42 @@ import static asset.pipeline.utils.net.Urls.isRelative
  */
 class JsProcessor extends AbstractUrlRewritingProcessor {
 
-	private static final Pattern URL_CALL_PATTERN = ~/asset_url\((?:\s*)(['"]?)([a-zA-Z0-9\-_.:\/@#? $&+%=]++)\1?(?:\s*)\)/
+    private static final Pattern URL_CALL_PATTERN = ~/asset_url\((?:\s*)(['"]?)([a-zA-Z0-9\-_.:\/@#? $&+%=]++)\1?(?:\s*)\)/
 
-	static {
+    static {
         doNotInsertCacheDigestIntoUrlForCompiledExtension('html')
     }
 
+    JsProcessor(final AssetCompiler precompiler) {
+        super(precompiler)
+    }
 
-	JsProcessor(final AssetCompiler precompiler) {
-		super(precompiler)
-	}
+    String process(final String inputText, final AssetFile assetFile) {
+        final Map<String, String> cachedPaths = [:]
+        return inputText.replaceAll(URL_CALL_PATTERN) { final String urlCall, final String quote, final String assetPath ->
+            final String cachedPath = cachedPaths[assetPath]
 
+            String replacementPath
+            if (cachedPath != null) {
+                replacementPath = cachedPath
+            }
+            else if (assetPath.size() > 0) {
+                final AssetFile currFile = AssetHelper.fileForUri(assetPath)
+                if (!currFile) {
+                    cachedPaths[assetPath] = assetPath
+                    return "${quote}${assetPath}${quote}"
+                }
+                else {
+                    replacementPath = replacementAssetPath(assetFile, currFile)
+                    cachedPaths[assetPath] = replacementPath
+                }
+            }
+            else {
+                return "${quote}${assetPath}${quote}"
+            }
 
-	String process(final String inputText, final AssetFile assetFile) {
-		final Map<String, String> cachedPaths = [:]
-		return \
-			inputText.replaceAll(URL_CALL_PATTERN) { final String urlCall, final String quote, final String assetPath ->
-				final String cachedPath = cachedPaths[assetPath]
+            return "${quote}${replacementPath}${quote}"
+        }
+    }
 
-				String replacementPath
-				if (cachedPath != null) {
-					replacementPath = cachedPath
-				} else if(assetPath.size() > 0) {
-					final AssetFile currFile = AssetHelper.fileForUri(assetPath)
-					if(!currFile) {
-						cachedPaths[assetPath] = assetPath
-						return "${quote}${assetPath}${quote}"	
-					} else {
-						replacementPath = replacementAssetPath(assetFile,currFile)
-						cachedPaths[assetPath] = replacementPath
-					}
-				} else {
-					return "${quote}${assetPath}${quote}"
-				}
-
-				return "${quote}${replacementPath}${quote}"
-			}
-	}
 }
