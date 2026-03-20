@@ -46,7 +46,7 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     compileOnly "org.graceframework:grace-boot"
-    implementation "org.graceframework:grace-web-taglib"
+    implementation "org.graceframework:grace-plugin-taglibs"
     implementation "org.graceframework:grace-web-url-mappings"
     implementation "com.github.ben-manes.caffeine:caffeine"
     implementation project(':asset-pipeline-core'), {
