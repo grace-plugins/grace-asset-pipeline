@@ -1,3 +1,27 @@
+=== 7.0.0
+
+link:{github}/releases/tag/v7.0.0[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.0.0
+* Update README - Update badge versions of Grace and Groovy
+* Migrate to Grace app/boot and app/taglibs 
+* Update .sdkmanrc 
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.0.0-RC1 link:{github}/issues/84[#84]
+* Upgrade to Gradle Plugin Publish Plugin 2.1.1 link:{github}/issues/86[#86]
+* Upgrade to Groovy 4.0.30 link:{github}/issues/85[#85]
+
+⚙️ Tasks
+
+* Release v7.0.0
+* Upgrade to gradle/actions/setup-gradle@v5.0.2 
+* Upgrade to actions/setup-java@v5 
+* Upgrade to actions/checkout@v6 
+
 === 7.0.0-RC1
 
 link:{github}/releases/tag/v7.0.0-RC1[release notes]
