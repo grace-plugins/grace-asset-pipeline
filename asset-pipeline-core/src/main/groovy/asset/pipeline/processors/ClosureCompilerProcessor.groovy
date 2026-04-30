@@ -47,7 +47,7 @@ class ClosureCompilerProcessor {
 
     ClosureCompilerProcessor(AssetCompiler compiler) {
         this.assetCompiler = compiler
-        com.google.javascript.jscomp.Compiler.setLoggingLevel(Level.INFO);
+        com.google.javascript.jscomp.Compiler.setLoggingLevel(Level.INFO)
     }
 
     String process(String fileName, String inputText, Map minifyOptions = [:]) {
@@ -83,7 +83,7 @@ class ClosureCompilerProcessor {
                 FileWriter outputWriter = new FileWriter(mapFile)
                 compiler.sourceMap.setWrapperPrefix("//# sourceMappingURL=${baseFileName + '.js.map'}\n")
                 compiler.sourceMap.appendTo(outputWriter, baseFileName + ".js")
-                outputWriter.close();
+                outputWriter.close()
                 output = "//# sourceMappingURL=${baseFileName + '.js.map'}\n" + output
             }
         }
@@ -162,10 +162,10 @@ class ClosureCompilerProcessor {
             case 'WHITESPACE':
             case 'WHITESPACE_ONLY':
                 CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options)
-                break;
+                break
             case 'ADVANCED':
                 CompilationLevel.ADVANCED_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
-                break;
+                break
             case 'SIMPLE':
             default:
                 CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel(options)
@@ -173,8 +173,8 @@ class ClosureCompilerProcessor {
     }
 
     private void setSourceMapOptions(CompilerOptions compilerOptions, Map minifyOptions, String filename) {
-        compilerOptions.sourceMapDetailLevel = SourceMap.DetailLevel.ALL;
-        compilerOptions.sourceMapFormat = SourceMap.Format.DEFAULT;
+        compilerOptions.sourceMapDetailLevel = SourceMap.DetailLevel.ALL
+        compilerOptions.sourceMapFormat = SourceMap.Format.DEFAULT
         //compilerOptions.sourceMapLocationMappings =
         compilerOptions.sourceMapOutputPath = "${filename}.js.map"
     }

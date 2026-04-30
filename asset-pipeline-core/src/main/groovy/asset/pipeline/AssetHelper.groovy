@@ -60,7 +60,7 @@ class AssetHelper {
      * @return The classes that implement the {@link AssetFile} interface
      */
     static Collection<Class<AssetFile>> assetFileClasses() {
-        return assetSpecs;
+        return assetSpecs
     }
 
     /**
@@ -249,7 +249,7 @@ class AssetHelper {
                 }
                 else if (counter < pathArgs.length - 1) {
                     counter++
-                    continue;
+                    continue
                 }
             }
             else if (pathElement == '.') {

@@ -126,7 +126,7 @@ class AssetCompiler {
         File assetDir = initializeWorkspace()
 
         threadPool = Executors.newFixedThreadPool(options.maxThreads ?: Runtime.getRuntime().availableProcessors())
-        CompletionService completionService = new ExecutorCompletionService(threadPool);
+        CompletionService completionService = new ExecutorCompletionService(threadPool)
         try {
             def minifyCssProcessor = new CssMinifyPostProcessor()
 
@@ -136,7 +136,7 @@ class AssetCompiler {
             def futures = []
             for (int index = 0; index < filesToProcess.size(); index++) {
                 def assetFile = filesToProcess[index]
-                def indexPosition = new Integer(index)
+                def indexPosition = Integer.valueOf(index)
                 futures << completionService.submit({ ->
                     String fileName = assetFile.path
                     String futureResult = assetFile.path
@@ -221,7 +221,7 @@ class AssetCompiler {
                             parentTree.mkdirs()
 
                             byte[] outputBytes
-                            InputStream writeInputStream;
+                            InputStream writeInputStream
                             if (fileData) {
                                 writeInputStream = new ByteArrayInputStream(fileData)
                                 // outputBytes = fileData
@@ -287,9 +287,9 @@ class AssetCompiler {
                             }
                             while ((nRead = writeInputStream.read(buffer, 0, buffer.length)) != -1) {
                                 // noop (just to complete the stream)
-                                outputFileStream?.write(buffer, 0, nRead);
-                                digestFileStream?.write(buffer, 0, nRead);
-                                gzipFileStream?.write(buffer, 0, nRead);
+                                outputFileStream?.write(buffer, 0, nRead)
+                                digestFileStream?.write(buffer, 0, nRead)
+                                gzipFileStream?.write(buffer, 0, nRead)
                             }
                             if (gzipFileStream) {
                                 gzipFileStream.finish()
@@ -317,11 +317,11 @@ class AssetCompiler {
                 // Wait for up to 100ms to see if anything has completed.
                 // The completed future is returned if one is found; otherwise null.
                 // (Tune 100ms as desired)
-                def completed = completionService.poll(100, TimeUnit.MILLISECONDS);
+                def completed = completionService.poll(100, TimeUnit.MILLISECONDS)
 
                 if (completed != null) {
                     completed.get() //need this to throw exceptions on main thread it seems
-                    --pending;
+                    --pending
                 }
             }
             // Integer futureCounter = 1

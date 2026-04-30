@@ -1,5 +1,5 @@
 /*
-* Copyright 2014 the original author or authors.
+* Copyright 2014-2026 the original author or authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ class DirectiveProcessor {
      */
     def encodingTypeDirective(command, fileSpec, tree) {
         if (!command[1]) {
-            return;
+            return
         }
         if (fileSpec.baseFile) {
             fileSpec.baseFile.encoding = command[1]

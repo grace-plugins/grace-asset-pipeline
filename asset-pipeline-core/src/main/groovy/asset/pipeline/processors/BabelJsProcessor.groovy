@@ -97,7 +97,7 @@ class BabelJsProcessor extends AbstractProcessor {
         }
         try {
             synchronized ($LOCK) {
-                bindings.putMember("input", input);
+                bindings.putMember("input", input)
                 def result = context.eval("js", "Babel.transform(input, options).code")
                 return result
             }
