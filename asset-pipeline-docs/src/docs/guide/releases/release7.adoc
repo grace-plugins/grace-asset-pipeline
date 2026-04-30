@@ -1,3 +1,27 @@
+=== 7.1.0-M1
+
+link:{github}/releases/tag/v7.1.0-M1[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.1.0-M1
+* Code formatting 
+* Update release-notes.yml link:{github}/issues/92[#92]
+* Upgrade Release Drafter Gradle Action to v7 link:{github}/issues/92[#92]
+* Upgrade GitHub workflows: migrate java distribution from `adopt` to `temurin` link:{github}/issues/91[#91]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Graal JavaScript Engine 23.0.12 link:{github}/issues/90[#90]
+* Upgrade to Graal SDK 23.0.12 link:{github}/issues/89[#89]
+* Upgrade to Grace 2024.1.0-M2 link:{github}/issues/88[#88]
+
+⚙️ Tasks
+
+* Release v7.1.0-M1
+* Switch to '7.1.x' Update github workflows
+* Bump version: 7.1.0-SNAPSHOT
+
 === 7.0.0
 
 link:{github}/releases/tag/v7.0.0[release notes]
