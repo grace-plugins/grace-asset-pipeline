@@ -5,6 +5,9 @@ plugins {
 
 def DOCUMENTATION_GROUP = 'Documentation'
 
+ext['springBootVersion'] = '3.5.14'
+ext['springFrameworkVersion'] = '6.2.18'
+
 repositories {
     mavenCentral()
 }
@@ -17,6 +20,9 @@ dependencies {
     documentation 'com.github.javaparser:javaparser-core:3.26.4'
     documentation "org.apache.groovy:groovy:$groovyVersion"
     documentation "org.apache.groovy:groovy-ant:$groovyVersion"
+    documentation "org.graceframework:grace-web-url-mappings:$graceVersion"
+    documentation "org.springframework:spring-web:$springFrameworkVersion"
+    documentation "org.springframework.boot:spring-boot:$springBootVersion"
 }
 
 def cleanTask = project.tasks.findByName('clean')
@@ -51,6 +57,11 @@ tasks.withType(Groovydoc) {
     }
     source = files
     classpath += configurations.documentation
+    link('https://docs.oracle.com/en/java/javase/17/docs/api/java.base/', 'java.', 'jakarta.')
+    link("https://docs.groovy-lang.org/docs/groovy-${groovyVersion}/html/gapi/",  'groovy.', 'org.codehaus.groovy.', 'org.apache.groovy.')
+    link('https://docs.spring.io/spring-boot/3.5/api/java',  'org.springframework.boot.')
+    link("https://docs.spring.io/spring-framework/docs/${springFrameworkVersion}/javadoc-api",  'org.springframework.core.', 'org.springframework.context.', 'org.springframework.beans.')
+    link("https://graceframework.org/grace-framework/${graceVersion}/api/", 'grails.web.', 'grails.web.mapping.', 'org.graceframework.')
 }
 
 tasks.register('docs') { task ->
