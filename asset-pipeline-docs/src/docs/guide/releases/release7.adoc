@@ -1,3 +1,21 @@
+=== 7.1.0-RC1
+
+link:{github}/releases/tag/v7.1.0-RC1[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.1.0-RC1
+* Add more `documentation` dependencies to fix wrong javadoc links link:{github}/issues/95[#95]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.1.0-M3 link:{github}/issues/93[#93]
+* Upgrade to Groovy 4.0.31 link:{github}/issues/94[#94]
+
+⚙️ Tasks
+
+* Release v7.1.0-RC1
+
 === 7.1.0-M1
 
 link:{github}/releases/tag/v7.1.0-M1[release notes]
