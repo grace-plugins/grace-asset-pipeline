@@ -101,11 +101,11 @@ if (location.href.indexOf('is-external=true') == -1) {
             <!-- todo: direct known subclasses -->
             <hr>
 
-<pre>@org.springframework.boot.autoconfigure.AutoConfiguration
-@org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@org.springframework.boot.context.properties.EnableConfigurationProperties(AssetPipelineProperties.class)
+<pre>@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/autoconfigure/AutoConfiguration.html' title='AutoConfiguration'>AutoConfiguration</a>
+@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/autoconfigure/condition/ConditionalOnWebApplication.html' title='ConditionalOnWebApplication'>ConditionalOnWebApplication</a>(type = ConditionalOnWebApplication.Type.SERVLET)
+@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/context/properties/EnableConfigurationProperties.html' title='EnableConfigurationProperties'>EnableConfigurationProperties</a>(AssetPipelineProperties.class)
 public class AssetPipelineAutoConfiguration
-extends java.lang.Object</pre>
+extends <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html' title='Object'>Object</a></pre>
 
     <p> EnableAutoConfiguration for Asset Pipeline
   <DL><DT><B>Authors:</B></DT><DD>Michael Yan</DD></DL><DL><DT><B>Since:</B></DT><DD>6.1</DD></DL></p>
@@ -150,20 +150,20 @@ extends java.lang.Object</pre>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;<a href='../../grails.web.mapping.LinkGenerator.html'>LinkGenerator</a></code></td>
-                            <td class="colLast"><code><strong><a href="#assetLinkGenerator(ObjectProvider, ObjectProvider, ObjectProvider)">assetLinkGenerator</a></strong>(ObjectProvider&lt;GrailsApplication&gt; grailsApplication, ObjectProvider&lt;UrlMappingsHolder&gt; grailsUrlMappingsHolder, ObjectProvider&lt;<a href='../../asset/pipeline/grails/AssetProcessorService.html' title='AssetProcessorService'>AssetProcessorService</a>&gt; assetProcessorService)</code><br></td>
+                            <td class="colLast"><code>public&nbsp;<a href='https://graceframework.org/grace-framework/2024.1.0-M3/api/grails/web/mapping/LinkGenerator.html' title='LinkGenerator'>LinkGenerator</a></code></td>
+                            <td class="colLast"><code><strong><a href="#assetLinkGenerator(ObjectProvider, ObjectProvider, ObjectProvider)">assetLinkGenerator</a></strong>(<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;<a href='https://graceframework.org/grace-framework/2024.1.0-M3/api/grails/web/mapping/UrlMappingsHolder.html' title='UrlMappingsHolder'>UrlMappingsHolder</a>&gt; grailsUrlMappingsHolder, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;<a href='../../asset/pipeline/grails/AssetProcessorService.html' title='AssetProcessorService'>AssetProcessorService</a>&gt; assetProcessorService)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>public&nbsp;FilterRegistrationBean&lt;<a href='../../asset/pipeline/AssetPipelineFilter.html' title='AssetPipelineFilter'>AssetPipelineFilter</a>&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#assetPipelineFilter(asset.pipeline.AssetPipelineProperties, ObjectProvider, ObjectProvider, org.springframework.context.ApplicationContext)">assetPipelineFilter</a></strong>(<a href='../../asset/pipeline/AssetPipelineProperties.html'>AssetPipelineProperties</a> assetPipelineProperties, ObjectProvider&lt;GrailsApplication&gt; grailsApplication, ObjectProvider&lt;GrailsPluginManager&gt; grailsPluginManager, <a href='../../org.springframework.context.ApplicationContext.html'>ApplicationContext</a> applicationContext)</code><br></td>
+                            <td class="colLast"><code>public&nbsp;<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/web/servlet/FilterRegistrationBean.html' title='FilterRegistrationBean'>FilterRegistrationBean</a>&lt;<a href='../../asset/pipeline/AssetPipelineFilter.html' title='AssetPipelineFilter'>AssetPipelineFilter</a>&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#assetPipelineFilter(asset.pipeline.AssetPipelineProperties, ObjectProvider, ObjectProvider, org.springframework.context.ApplicationContext)">assetPipelineFilter</a></strong>(<a href='../../asset/pipeline/AssetPipelineProperties.html'>AssetPipelineProperties</a> assetPipelineProperties, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;GrailsPluginManager&gt; grailsPluginManager, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/ApplicationContext.html' title='ApplicationContext'>ApplicationContext</a> applicationContext)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>public&nbsp;<a href='../../asset/pipeline/grails/AssetProcessorService.html'>AssetProcessorService</a></code></td>
-                            <td class="colLast"><code><strong><a href="#assetProcessorService(ObjectProvider)">assetProcessorService</a></strong>(ObjectProvider&lt;GrailsApplication&gt; grailsApplication)</code><br></td>
+                            <td class="colLast"><code><strong><a href="#assetProcessorService(ObjectProvider)">assetProcessorService</a></strong>(<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
@@ -187,8 +187,8 @@ extends java.lang.Object</pre>
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code>class java.lang.Object</code></td>
-                            <td class="colLast"><code>java.lang.Object#equals(java.lang.Object), java.lang.Object#getClass(), java.lang.Object#hashCode(), java.lang.Object#notify(), java.lang.Object#notifyAll(), java.lang.Object#toString(), java.lang.Object#wait(), java.lang.Object#wait(long), java.lang.Object#wait(long, int)</code></td>
+                            <td class="colFirst"><code>class <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html' title='Object'>Object</a></code></td>
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)' title='equals'>equals</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()' title='getClass'>getClass</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()' title='hashCode'>hashCode</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()' title='notify'>notify</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()' title='notifyAll'>notifyAll</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()' title='toString'>toString</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()' title='wait'>wait</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)' title='wait'>wait</a>, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long, int)' title='wait'>wait</a></code></td>
                         </tr>
                     </table>
                    </ul>
@@ -225,7 +225,7 @@ extends java.lang.Object</pre>
                         <a name="assetLinkGenerator(ObjectProvider, ObjectProvider, ObjectProvider)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@org.springframework.core.annotation.Order(-20)<br>@org.springframework.context.annotation.Bean({"linkGenerator", "grailsLinkGenerator", "assetLinkGenerator"})<br>@org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean<br>public&nbsp;<a href='../../grails.web.mapping.LinkGenerator.html'>LinkGenerator</a> <strong>assetLinkGenerator</strong>(ObjectProvider&lt;GrailsApplication&gt; grailsApplication, ObjectProvider&lt;UrlMappingsHolder&gt; grailsUrlMappingsHolder, ObjectProvider&lt;<a href='../../asset/pipeline/grails/AssetProcessorService.html' title='AssetProcessorService'>AssetProcessorService</a>&gt; assetProcessorService)</h4>
+                                <h4>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/core/annotation/Order.html' title='Order'>Order</a>(-20)<br>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/annotation/Bean.html' title='Bean'>Bean</a>({"linkGenerator", "grailsLinkGenerator", "assetLinkGenerator"})<br>@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/autoconfigure/condition/ConditionalOnMissingBean.html' title='ConditionalOnMissingBean'>ConditionalOnMissingBean</a><br>public&nbsp;<a href='https://graceframework.org/grace-framework/2024.1.0-M3/api/grails/web/mapping/LinkGenerator.html' title='LinkGenerator'>LinkGenerator</a> <strong>assetLinkGenerator</strong>(<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;<a href='https://graceframework.org/grace-framework/2024.1.0-M3/api/grails/web/mapping/UrlMappingsHolder.html' title='UrlMappingsHolder'>UrlMappingsHolder</a>&gt; grailsUrlMappingsHolder, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;<a href='../../asset/pipeline/grails/AssetProcessorService.html' title='AssetProcessorService'>AssetProcessorService</a>&gt; assetProcessorService)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -233,7 +233,7 @@ extends java.lang.Object</pre>
                         <a name="assetPipelineFilter(asset.pipeline.AssetPipelineProperties, ObjectProvider, ObjectProvider, org.springframework.context.ApplicationContext)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@org.springframework.context.annotation.Bean<br>@java.lang.SuppressWarnings("rawtypes")<br>public&nbsp;FilterRegistrationBean&lt;<a href='../../asset/pipeline/AssetPipelineFilter.html' title='AssetPipelineFilter'>AssetPipelineFilter</a>&gt; <strong>assetPipelineFilter</strong>(<a href='../../asset/pipeline/AssetPipelineProperties.html'>AssetPipelineProperties</a> assetPipelineProperties, ObjectProvider&lt;GrailsApplication&gt; grailsApplication, ObjectProvider&lt;GrailsPluginManager&gt; grailsPluginManager, <a href='../../org.springframework.context.ApplicationContext.html'>ApplicationContext</a> applicationContext)</h4>
+                                <h4>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/annotation/Bean.html' title='Bean'>Bean</a><br>@<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/SuppressWarnings.html' title='SuppressWarnings'>SuppressWarnings</a>("rawtypes")<br>public&nbsp;<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/web/servlet/FilterRegistrationBean.html' title='FilterRegistrationBean'>FilterRegistrationBean</a>&lt;<a href='../../asset/pipeline/AssetPipelineFilter.html' title='AssetPipelineFilter'>AssetPipelineFilter</a>&gt; <strong>assetPipelineFilter</strong>(<a href='../../asset/pipeline/AssetPipelineProperties.html'>AssetPipelineProperties</a> assetPipelineProperties, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;GrailsPluginManager&gt; grailsPluginManager, <a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/ApplicationContext.html' title='ApplicationContext'>ApplicationContext</a> applicationContext)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -241,7 +241,7 @@ extends java.lang.Object</pre>
                         <a name="assetProcessorService(ObjectProvider)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@org.springframework.context.annotation.Bean<br>@org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean<br>public&nbsp;<a href='../../asset/pipeline/grails/AssetProcessorService.html'>AssetProcessorService</a> <strong>assetProcessorService</strong>(ObjectProvider&lt;GrailsApplication&gt; grailsApplication)</h4>
+                                <h4>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/annotation/Bean.html' title='Bean'>Bean</a><br>@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/autoconfigure/condition/ConditionalOnMissingBean.html' title='ConditionalOnMissingBean'>ConditionalOnMissingBean</a><br>public&nbsp;<a href='../../asset/pipeline/grails/AssetProcessorService.html'>AssetProcessorService</a> <strong>assetProcessorService</strong>(<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/beans/factory/ObjectProvider.html' title='ObjectProvider'>ObjectProvider</a>&lt;grails.core.GrailsApplication&gt; grailsApplication)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -249,7 +249,7 @@ extends java.lang.Object</pre>
                         <a name="assetResourceLocator()"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@org.springframework.context.annotation.Bean<br>@org.springframework.core.annotation.Order<br>@org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean<br>public&nbsp;<a href='../../asset/pipeline/grails/AssetResourceLocator.html'>AssetResourceLocator</a> <strong>assetResourceLocator</strong>()</h4>
+                                <h4>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/context/annotation/Bean.html' title='Bean'>Bean</a><br>@<a href='https://docs.spring.io/spring-framework/docs/6.2.18/javadoc-api/org/springframework/core/annotation/Order.html' title='Order'>Order</a><br>@<a href='https://docs.spring.io/spring-boot/3.5/api/java/org/springframework/boot/autoconfigure/condition/ConditionalOnMissingBean.html' title='ConditionalOnMissingBean'>ConditionalOnMissingBean</a><br>public&nbsp;<a href='../../asset/pipeline/grails/AssetResourceLocator.html'>AssetResourceLocator</a> <strong>assetResourceLocator</strong>()</h4>
                                 <p></p>
                             </li>
                         </ul>

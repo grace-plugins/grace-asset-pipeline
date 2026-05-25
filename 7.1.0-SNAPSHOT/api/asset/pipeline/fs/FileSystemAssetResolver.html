@@ -101,9 +101,9 @@ if (location.href.indexOf('is-external=true') == -1) {
             <!-- todo: direct known subclasses -->
             <hr>
 
-<pre>@groovy.util.logging.Slf4j
+<pre>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/util/logging/Slf4j.html' title='Slf4j'>Slf4j</a>
 class FileSystemAssetResolver
-extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='AbstractAssetResolver'>AbstractAssetResolver</a>&lt;java.io.File&gt;</pre>
+extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='AbstractAssetResolver'>AbstractAssetResolver</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a>&gt;</pre>
 
     <p> Implementation of the <a href='../../../asset/pipeline/fs/AssetResolver.html' title='AssetResolver'>AssetResolver</a> interface for the file system <DL><DT><B>Authors:</B></DT><DD>David Estes</DD><DD>Graeme Rocher</DD></DL></p>
 
@@ -136,27 +136,27 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong>static&nbsp;java.lang.String</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#DIRECTIVE_FILE_SEPARATOR">DIRECTIVE_FILE_SEPARATOR</a></code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong>static&nbsp;java.lang.String</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#QUOTED_FILE_SEPARATOR">QUOTED_FILE_SEPARATOR</a></code><br></td>
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong>java.io.File</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#baseDirectory">baseDirectory</a></code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong>java.util.List&lt;<a href='../../../asset/pipeline/fs/FileSystemAssetResolver.html' title='FileSystemAssetResolver'>FileSystemAssetResolver</a>&gt;</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='../../../asset/pipeline/fs/FileSystemAssetResolver.html' title='FileSystemAssetResolver'>FileSystemAssetResolver</a>&gt;</strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#resolvers">resolvers</a></code><br></td>
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong>java.util.List&lt;java.lang.String&gt;</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt;</strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#scanDirectories">scanDirectories</a></code><br></td>
                         </tr>
                         
@@ -184,7 +184,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         
                         <tr class="altColor">
                             <td class="colFirst">
-                                <code><strong><a href="#FileSystemAssetResolver(java.lang.String, java.lang.String, boolean)">FileSystemAssetResolver</a></strong>(java.lang.String name, java.lang.String basePath, boolean flattenSubDirectories)</code><br></td>
+                                <code><strong><a href="#FileSystemAssetResolver(java.lang.String, java.lang.String, boolean)">FileSystemAssetResolver</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, boolean flattenSubDirectories)</code><br></td>
                         </tr>
                         
                     </table>
@@ -210,57 +210,57 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;groovy.lang.Closure&lt;java.io.InputStream&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#createInputStreamClosure(java.io.File)">createInputStreamClosure</a></strong>(java.io.File file)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/lang/Closure.html' title='Closure'>Closure</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html' title='InputStream'>InputStream</a>&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#createInputStreamClosure(java.io.File)">createInputStreamClosure</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a></code></td>
-                            <td class="colLast"><code><strong><a href="#getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)">getAsset</a></strong>(java.lang.String relativePath, java.lang.String contentType, java.lang.String extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
+                            <td class="colLast"><code><strong><a href="#getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)">getAsset</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>java.util.List&lt;AssetFile&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)">getAssets</a></strong>(java.lang.String basePath, java.lang.String contentType, java.lang.String extension, java.lang.Boolean recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br>Implementation Requirements
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)">getAssets</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html' title='Boolean'>Boolean</a> recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br>Implementation Requirements
  Should be able to take a relative to baseFile scenario</td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.lang.String</code></td>
-                            <td class="colLast"><code><strong><a href="#getFileName(java.io.File)">getFileName</a></strong>(java.io.File file)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></code></td>
+                            <td class="colLast"><code><strong><a href="#getFileName(java.io.File)">getFileName</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.io.File</code></td>
-                            <td class="colLast"><code><strong><a href="#getRelativeFile(java.lang.String, java.lang.String)">getRelativeFile</a></strong>(java.lang.String relativePath, java.lang.String name)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a></code></td>
+                            <td class="colLast"><code><strong><a href="#getRelativeFile(java.lang.String, java.lang.String)">getRelativeFile</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.lang.Object</code></td>
-                            <td class="colLast"><code><strong><a href="#iterateOverFileSystem(java.io.File, List, List, List, java.lang.String)">iterateOverFileSystem</a></strong>(java.io.File dir, java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns, java.util.List&lt;AssetFile&gt; fileList, java.lang.String sourcePath)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html' title='Object'>Object</a></code></td>
+                            <td class="colLast"><code><strong><a href="#iterateOverFileSystem(java.io.File, List, List, List, java.lang.String)">iterateOverFileSystem</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> dir, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; fileList, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> sourcePath)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>protected&nbsp;void</code></td>
-                            <td class="colLast"><code><strong><a href="#recursiveTreeAppend(java.io.File, List, java.lang.String, asset.pipeline.AssetFile, boolean, java.lang.String)">recursiveTreeAppend</a></strong>(java.io.File directory, java.util.List&lt;AssetFile&gt; tree, java.lang.String contentType, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile, boolean recursive, java.lang.String sourceDirectory)</code><br></td>
+                            <td class="colLast"><code><strong><a href="#recursiveTreeAppend(java.io.File, List, java.lang.String, asset.pipeline.AssetFile, boolean, java.lang.String)">recursiveTreeAppend</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> directory, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; tree, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile, boolean recursive, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> sourceDirectory)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.lang.String</code></td>
-                            <td class="colLast"><code><strong><a href="#relativePathToResolver(java.io.File, java.lang.String)">relativePathToResolver</a></strong>(java.io.File file, java.lang.String scanDirectoryPath)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></code></td>
+                            <td class="colLast"><code><strong><a href="#relativePathToResolver(java.io.File, java.lang.String)">relativePathToResolver</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> scanDirectoryPath)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>java.util.Collection&lt;AssetFile&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#scanForFiles(List, List)">scanForFiles</a></strong>(java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns)</code><br>Uses file globbing to scan for files that need precompiled</td>
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html' title='Collection'>Collection</a>&lt;AssetFile&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#scanForFiles(List, List)">scanForFiles</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns)</code><br>Uses file globbing to scan for files that need precompiled</td>
                         </tr>
                         
                     </table>
@@ -291,7 +291,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="DIRECTIVE_FILE_SEPARATOR"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>static&nbsp;java.lang.String <strong>DIRECTIVE_FILE_SEPARATOR</strong></h4>
+                                <h4>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>DIRECTIVE_FILE_SEPARATOR</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -299,7 +299,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="QUOTED_FILE_SEPARATOR"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>static&nbsp;java.lang.String <strong>QUOTED_FILE_SEPARATOR</strong></h4>
+                                <h4>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>QUOTED_FILE_SEPARATOR</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -307,7 +307,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="baseDirectory"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.io.File <strong>baseDirectory</strong></h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> <strong>baseDirectory</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -315,7 +315,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="resolvers"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.util.List&lt;<a href='../../../asset/pipeline/fs/FileSystemAssetResolver.html' title='FileSystemAssetResolver'>FileSystemAssetResolver</a>&gt; <strong>resolvers</strong></h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='../../../asset/pipeline/fs/FileSystemAssetResolver.html' title='FileSystemAssetResolver'>FileSystemAssetResolver</a>&gt; <strong>resolvers</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -323,7 +323,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="scanDirectories"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.util.List&lt;java.lang.String&gt; <strong>scanDirectories</strong></h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; <strong>scanDirectories</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -345,7 +345,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="FileSystemAssetResolver(java.lang.String, java.lang.String, boolean)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4><strong>FileSystemAssetResolver</strong>(java.lang.String name, java.lang.String basePath, boolean flattenSubDirectories)</h4>
+                                <h4><strong>FileSystemAssetResolver</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, boolean flattenSubDirectories)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -366,7 +366,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="createInputStreamClosure(java.io.File)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@java.lang.Override<br>protected&nbsp;groovy.lang.Closure&lt;java.io.InputStream&gt; <strong>createInputStreamClosure</strong>(java.io.File file)</h4>
+                                <h4>@<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Override.html' title='Override'>Override</a><br>protected&nbsp;<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/lang/Closure.html' title='Closure'>Closure</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html' title='InputStream'>InputStream</a>&gt; <strong>createInputStreamClosure</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -374,7 +374,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> <strong>getAsset</strong>(java.lang.String relativePath, java.lang.String contentType, java.lang.String extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
+                                <h4><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> <strong>getAsset</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -382,7 +382,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>java.util.List&lt;AssetFile&gt; <strong>getAssets</strong>(java.lang.String basePath, java.lang.String contentType, java.lang.String extension, java.lang.Boolean recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; <strong>getAssets</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html' title='Boolean'>Boolean</a> recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
                                 <p> Implementation Requirements
  Should be able to take a relative to baseFile scenario</p>
                             </li>
@@ -391,7 +391,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getFileName(java.io.File)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@java.lang.Override<br>@groovy.transform.CompileStatic<br>protected&nbsp;java.lang.String <strong>getFileName</strong>(java.io.File file)</h4>
+                                <h4>@<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Override.html' title='Override'>Override</a><br>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>getFileName</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -399,7 +399,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getRelativeFile(java.lang.String, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@java.lang.Override<br>protected&nbsp;java.io.File <strong>getRelativeFile</strong>(java.lang.String relativePath, java.lang.String name)</h4>
+                                <h4>@<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Override.html' title='Override'>Override</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> <strong>getRelativeFile</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -407,7 +407,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="iterateOverFileSystem(java.io.File, List, List, List, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>protected&nbsp;java.lang.Object <strong>iterateOverFileSystem</strong>(java.io.File dir, java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns, java.util.List&lt;AssetFile&gt; fileList, java.lang.String sourcePath)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html' title='Object'>Object</a> <strong>iterateOverFileSystem</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> dir, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; fileList, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> sourcePath)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -415,7 +415,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="recursiveTreeAppend(java.io.File, List, java.lang.String, asset.pipeline.AssetFile, boolean, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>protected&nbsp;void <strong>recursiveTreeAppend</strong>(java.io.File directory, java.util.List&lt;AssetFile&gt; tree, java.lang.String contentType, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile, boolean recursive, java.lang.String sourceDirectory)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;void <strong>recursiveTreeAppend</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> directory, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; tree, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile, boolean recursive, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> sourceDirectory)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -423,7 +423,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="relativePathToResolver(java.io.File, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>protected&nbsp;java.lang.String <strong>relativePathToResolver</strong>(java.io.File file, java.lang.String scanDirectoryPath)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>relativePathToResolver</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html' title='File'>File</a> file, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> scanDirectoryPath)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -431,7 +431,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="scanForFiles(List, List)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>java.util.Collection&lt;AssetFile&gt; <strong>scanForFiles</strong>(java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html' title='Collection'>Collection</a>&lt;AssetFile&gt; <strong>scanForFiles</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns)</h4>
                                 <p> Uses file globbing to scan for files that need precompiled</p>
                             </li>
                         </ul>

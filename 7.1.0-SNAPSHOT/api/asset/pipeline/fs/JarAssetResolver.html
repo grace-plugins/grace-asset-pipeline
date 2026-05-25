@@ -101,9 +101,9 @@ if (location.href.indexOf('is-external=true') == -1) {
             <!-- todo: direct known subclasses -->
             <hr>
 
-<pre>@groovy.util.logging.Slf4j
+<pre>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/util/logging/Slf4j.html' title='Slf4j'>Slf4j</a>
 class JarAssetResolver
-extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='AbstractAssetResolver'>AbstractAssetResolver</a>&lt;java.util.zip.ZipEntry&gt;</pre>
+extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='AbstractAssetResolver'>AbstractAssetResolver</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a>&gt;</pre>
 
     <p> Implementation of the <a href='../../../asset/pipeline/fs/AssetResolver.html' title='AssetResolver'>AssetResolver</a> interface for resolving from JAR files or ZIP files <DL><DT><B>Authors:</B></DT><DD>David Estes</DD><DD>Graeme Rocher</DD></DL></p>
 
@@ -136,22 +136,22 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong>static&nbsp;java.lang.String</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#DIRECTIVE_FILE_SEPARATOR">DIRECTIVE_FILE_SEPARATOR</a></code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong>static&nbsp;java.lang.String</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#QUOTED_FILE_SEPARATOR">QUOTED_FILE_SEPARATOR</a></code><br></td>
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong>java.util.jar.JarFile</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/jar/JarFile.html' title='JarFile'>JarFile</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#baseJar">baseJar</a></code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong>java.lang.String</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#prefixPath">prefixPath</a></code><br></td>
                         </tr>
                         
@@ -179,7 +179,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         
                         <tr class="altColor">
                             <td class="colFirst">
-                                <code><strong><a href="#JarAssetResolver(java.lang.String, java.lang.String, java.lang.String)">JarAssetResolver</a></strong>(java.lang.String name, java.lang.String jarPath, java.lang.String prefixPath)</code><br></td>
+                                <code><strong><a href="#JarAssetResolver(java.lang.String, java.lang.String, java.lang.String)">JarAssetResolver</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> jarPath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> prefixPath)</code><br></td>
                         </tr>
                         
                     </table>
@@ -205,44 +205,44 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;groovy.lang.Closure&lt;java.io.InputStream&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#createInputStreamClosure(java.util.zip.ZipEntry)">createInputStreamClosure</a></strong>(java.util.zip.ZipEntry file)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/lang/Closure.html' title='Closure'>Closure</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html' title='InputStream'>InputStream</a>&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#createInputStreamClosure(java.util.zip.ZipEntry)">createInputStreamClosure</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a></code></td>
-                            <td class="colLast"><code><strong><a href="#getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)">getAsset</a></strong>(java.lang.String relativePath, java.lang.String contentType, java.lang.String extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
+                            <td class="colLast"><code><strong><a href="#getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)">getAsset</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>java.util.List&lt;AssetFile&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)">getAssets</a></strong>(java.lang.String basePath, java.lang.String contentType, java.lang.String extension, java.lang.Boolean recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)">getAssets</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html' title='Boolean'>Boolean</a> recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.lang.String</code></td>
-                            <td class="colLast"><code><strong><a href="#getFileName(java.util.zip.ZipEntry)">getFileName</a></strong>(java.util.zip.ZipEntry file)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></code></td>
+                            <td class="colLast"><code><strong><a href="#getFileName(java.util.zip.ZipEntry)">getFileName</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.util.zip.ZipEntry</code></td>
-                            <td class="colLast"><code><strong><a href="#getRelativeFile(java.lang.String, java.lang.String)">getRelativeFile</a></strong>(java.lang.String relativePath, java.lang.String name)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a></code></td>
+                            <td class="colLast"><code><strong><a href="#getRelativeFile(java.lang.String, java.lang.String)">getRelativeFile</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name)</code><br></td>
                         </tr>
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>protected&nbsp;java.lang.String</code></td>
-                            <td class="colLast"><code><strong><a href="#relativePathToResolver(java.util.zip.ZipEntry, java.lang.String)">relativePathToResolver</a></strong>(java.util.zip.ZipEntry file, java.lang.String scanDirectoryPath)</code><br></td>
+                            <td class="colLast"><code>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a></code></td>
+                            <td class="colLast"><code><strong><a href="#relativePathToResolver(java.util.zip.ZipEntry, java.lang.String)">relativePathToResolver</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> scanDirectoryPath)</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code>java.util.Collection&lt;AssetFile&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#scanForFiles(List, List)">scanForFiles</a></strong>(java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns)</code><br>Uses file globbing to scan for files that need precompiled</td>
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html' title='Collection'>Collection</a>&lt;AssetFile&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#scanForFiles(List, List)">scanForFiles</a></strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns)</code><br>Uses file globbing to scan for files that need precompiled</td>
                         </tr>
                         
                     </table>
@@ -273,7 +273,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="DIRECTIVE_FILE_SEPARATOR"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>static&nbsp;java.lang.String <strong>DIRECTIVE_FILE_SEPARATOR</strong></h4>
+                                <h4>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>DIRECTIVE_FILE_SEPARATOR</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -281,7 +281,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="QUOTED_FILE_SEPARATOR"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>static&nbsp;java.lang.String <strong>QUOTED_FILE_SEPARATOR</strong></h4>
+                                <h4>static&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>QUOTED_FILE_SEPARATOR</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -289,7 +289,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="baseJar"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.util.jar.JarFile <strong>baseJar</strong></h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/jar/JarFile.html' title='JarFile'>JarFile</a> <strong>baseJar</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -297,7 +297,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="prefixPath"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.lang.String <strong>prefixPath</strong></h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>prefixPath</strong></h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -319,7 +319,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="JarAssetResolver(java.lang.String, java.lang.String, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4><strong>JarAssetResolver</strong>(java.lang.String name, java.lang.String jarPath, java.lang.String prefixPath)</h4>
+                                <h4><strong>JarAssetResolver</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> jarPath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> prefixPath)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -340,7 +340,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="createInputStreamClosure(java.util.zip.ZipEntry)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>protected&nbsp;groovy.lang.Closure&lt;java.io.InputStream&gt; <strong>createInputStreamClosure</strong>(java.util.zip.ZipEntry file)</h4>
+                                <h4>protected&nbsp;<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/lang/Closure.html' title='Closure'>Closure</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html' title='InputStream'>InputStream</a>&gt; <strong>createInputStreamClosure</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -348,7 +348,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getAsset(java.lang.String, java.lang.String, java.lang.String, asset.pipeline.AssetFile)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> <strong>getAsset</strong>(java.lang.String relativePath, java.lang.String contentType, java.lang.String extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
+                                <h4><a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> <strong>getAsset</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -356,7 +356,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getAssets(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, asset.pipeline.AssetFile, asset.pipeline.AssetFile)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>java.util.List&lt;AssetFile&gt; <strong>getAssets</strong>(java.lang.String basePath, java.lang.String contentType, java.lang.String extension, java.lang.Boolean recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;AssetFile&gt; <strong>getAssets</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> basePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> contentType, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> extension, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html' title='Boolean'>Boolean</a> recursive, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> relativeFile, <a href='../../../asset/pipeline/AssetFile.html'>AssetFile</a> baseFile)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -364,7 +364,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getFileName(java.util.zip.ZipEntry)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@java.lang.Override<br>@groovy.transform.CompileStatic<br>protected&nbsp;java.lang.String <strong>getFileName</strong>(java.util.zip.ZipEntry file)</h4>
+                                <h4>@<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Override.html' title='Override'>Override</a><br>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>getFileName</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -372,7 +372,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="getRelativeFile(java.lang.String, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>protected&nbsp;java.util.zip.ZipEntry <strong>getRelativeFile</strong>(java.lang.String relativePath, java.lang.String name)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> <strong>getRelativeFile</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> relativePath, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> name)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -380,7 +380,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="relativePathToResolver(java.util.zip.ZipEntry, java.lang.String)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@groovy.transform.CompileStatic<br>protected&nbsp;java.lang.String <strong>relativePathToResolver</strong>(java.util.zip.ZipEntry file, java.lang.String scanDirectoryPath)</h4>
+                                <h4>@<a href='https://docs.groovy-lang.org/docs/groovy-4.0.31/html/gapi/groovy/transform/CompileStatic.html' title='CompileStatic'>CompileStatic</a><br>protected&nbsp;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> <strong>relativePathToResolver</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/ZipEntry.html' title='ZipEntry'>ZipEntry</a> file, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a> scanDirectoryPath)</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -388,7 +388,7 @@ extends <a href='../../../asset/pipeline/fs/AbstractAssetResolver.html' title='A
                         <a name="scanForFiles(List, List)"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>java.util.Collection&lt;AssetFile&gt; <strong>scanForFiles</strong>(java.util.List&lt;java.lang.String&gt; excludePatterns, java.util.List&lt;java.lang.String&gt; includePatterns)</h4>
+                                <h4><a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html' title='Collection'>Collection</a>&lt;AssetFile&gt; <strong>scanForFiles</strong>(<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; excludePatterns, <a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html' title='List'>List</a>&lt;<a href='https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html' title='String'>String</a>&gt; includePatterns)</h4>
                                 <p> Uses file globbing to scan for files that need precompiled</p>
                             </li>
                         </ul>
