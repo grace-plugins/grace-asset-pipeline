@@ -1,3 +1,25 @@
+=== 7.1.0
+
+link:{github}/releases/tag/v7.1.0[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.1.0
+* Update README - Update badge versions of Grace and Groovy
+* Update gradle.properties links link:{github}/issues/96[#96]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.1.0-RC2 links link:{github}/issues/97[#97]
+* Upgrade to Gradle 8.14.5 links link:{github}/issues/99[#99]
+* Upgrade to Groovy 4.0.32 links link:{github}/issues/98[#98]
+* Upgrade to Rhino 1.9.1 links link:{github}/issues/101[#101]
+* Upgrade to SLF4J 2.0.18 links link:{github}/issues/100[#100]
+
+⚙️ Tasks
+
+* Release v7.1.0
+
 === 7.1.0-RC1
 
 link:{github}/releases/tag/v7.1.0-RC1[release notes]
