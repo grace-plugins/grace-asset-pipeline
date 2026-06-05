@@ -59,7 +59,7 @@ dependencies {
     compileOnly gradleApi()
     doc         "org.apache.groovy:groovy-all:$groovyVersion"
     doc         'org.fusesource.jansi:jansi:1.18'
-    api     'org.mozilla:rhino:1.7R4'
+    api     'org.mozilla:rhino:1.9.1'
     api("org.graalvm.sdk:graal-sdk:23.0.12")
     compileOnly("org.graalvm.js:js:23.0.12")
     compileOnly("org.graalvm.js:js-scriptengine:23.0.12")
