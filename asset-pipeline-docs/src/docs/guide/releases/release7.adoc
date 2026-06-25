@@ -1,3 +1,21 @@
+=== 7.1.1
+
+link:{github}/releases/tag/v7.1.1[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.1.1
+* Update README - Update badge versions of Grace and Groovy
+* AssetCompile: invocation of 'Task.project' at execution time is unsupported when enabling the Configuration Cache link:{github}/issues/103[#103]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.1.0 links link:{github}/issues/102[#102]
+
+⚙️ Tasks
+
+* Release v7.1.1
+
 === 7.1.0
 
 link:{github}/releases/tag/v7.1.0[release notes]
