@@ -8,8 +8,8 @@
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
 [![Groovy Version](https://img.shields.io/badge/Groovy-4.0.32-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2024.1.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.1.0-RC2)
-[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.5.14-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.5.14)
+[![Grace Version](https://img.shields.io/badge/Grace-2024.1.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.1.0)
+[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.5.15-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.5.15)
 
 > [!IMPORTANT]
 > This repository is a fork of [Asset-Pipeline](https://github.com/wondrify/asset-pipeline), only used to support Grace Framework, but it has not been tested for Grails.
