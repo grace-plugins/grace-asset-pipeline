@@ -23,6 +23,7 @@ import asset.pipeline.fs.JarAssetResolver
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.Directory
 import org.gradle.api.file.FileTree
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.Classpath
@@ -46,6 +47,7 @@ import org.gradle.api.file.FileCollection
 @CacheableTask
 class AssetCompile extends DefaultTask {
 
+    private Directory projectDirectory
     private FileCollection classpath
     private FileCollection processorFiles
 
@@ -56,6 +58,7 @@ class AssetCompile extends DefaultTask {
     boolean flattenResolvers = false
 
     AssetCompile() {
+        this.projectDirectory = project.layout.projectDirectory
     }
 
     void setProcessorFiles(FileCollection processorFiles) {
@@ -93,17 +96,17 @@ class AssetCompile extends DefaultTask {
     }
 
     void setClasspath(Object classpath) {
-        this.classpath = getProject().files(classpath)
+        this.classpath = this.projectDirectory.files(classpath)
     }
 
     @InputFiles
     @PathSensitive(PathSensitivity.RELATIVE)
     FileTree getSource() {
-        FileTree src = project.files(this.assetsDir).getAsFileTree();
+        FileTree src = this.projectDirectory.files(this.assetsDir).getAsFileTree()
         this.pipelineExtension.resolvers.each { String path ->
-            File resolverFile = project.file(path)
+            File resolverFile = this.projectDirectory.file(path).asFile
             if (resolverFile.exists() && resolverFile.directory) {
-                src += project.files(path).getAsFileTree()
+                src += this.projectDirectory.files(path).getAsFileTree()
             }
         }
         return src
