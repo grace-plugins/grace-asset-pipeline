@@ -54,6 +54,7 @@ dependencies {
         exclude group:'com.google.javascript', module:'closure-compiler-unshaded'
     }
     testImplementation("org.graceframework:grace-test-support")
+    testImplementation 'org.spockframework:spock-core:2.4-groovy-4.0'
 }
 
 bootRun {
@@ -72,6 +73,14 @@ jar {
     enabled = true
     archiveClassifier.set('')
     includeEmptyDirs = false
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
 }
 
 publishing {

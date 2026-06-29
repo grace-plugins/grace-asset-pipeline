@@ -38,10 +38,9 @@ class AssetMethodTagLibSpec extends Specification implements TagLibUnitTest<Asse
 		assetProcessorService.grailsApplication   = grailsApplication
 		grails.web.mapping.LinkGenerator linkGenerator = Mock(grails.web.mapping.LinkGenerator)
 		linkGenerator.getServerBaseURL() >> MOCK_BASE_SERVER_URL
-		assetProcessorService.grailsLinkGenerator = linkGenerator
-
 
 		tagLib.assetProcessorService = assetProcessorService
+		tagLib.grailsLinkGenerator = linkGenerator
 	}
 
 	void "should return assetPath"() {

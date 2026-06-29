@@ -69,6 +69,7 @@ dependencies {
     testImplementation project(':asset-pipeline-classpath-test')
     testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
     testImplementation 'org.spockframework:spock-core:2.4-groovy-4.0'
+    testImplementation "org.graalvm.js:js:23.0.12"
     testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.18'
 }
 
@@ -109,6 +110,7 @@ publishing {
 }
 
 test {
+    useJUnitPlatform()
     testLogging {
         exceptionFormat = 'full'
         showStandardStreams = true

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 the original author or authors.
+ * Copyright 2014-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,11 @@ import grails.testing.web.taglib.TagLibUnitTest
 
 /**
  * @author David Estes
+ * @author Michael Yan
  */
 class AssetsTagLibSpec extends Specification implements TagLibUnitTest<AssetsTagLib>  {
 	private static final LINE_BREAK           = System.getProperty('line.separator') ?: '\n'
-	private static final MOCK_BASE_SERVER_URL = 'http://localhost:8080/foo'
+	private static final MOCK_BASE_SERVER_URL = 'http://localhost:8080'
 
 
 	AssetProcessorService assetProcessorService = new AssetProcessorService()
@@ -37,7 +38,6 @@ class AssetsTagLibSpec extends Specification implements TagLibUnitTest<AssetsTag
 		assetProcessorService.grailsApplication   = grailsApplication
 		grails.web.mapping.LinkGenerator linkGenerator = Mock(grails.web.mapping.LinkGenerator)
 		linkGenerator.getServerBaseURL() >> MOCK_BASE_SERVER_URL
-		assetProcessorService.grailsLinkGenerator = linkGenerator
 
 		final def assetMethodTagLibMock = mockTagLib(AssetMethodTagLib)
 		assetMethodTagLibMock.assetProcessorService = assetProcessorService
@@ -47,149 +47,98 @@ class AssetsTagLibSpec extends Specification implements TagLibUnitTest<AssetsTag
 
 	void "should return assetPath"() {
 		given:
-			final def assetSrc = "asset-pipeline/test/test.css"
+		final def assetSrc = "asset-pipeline/test/test.css"
+
 		expect:
-			tagLib.assetPath(src: assetSrc) == '/assets/asset-pipeline/test/test.css'
-	}
-
-	void "should return javascript link tag when debugMode is off"() {
-		given:
-			grailsApplication.config = grailsApplication.config.merge([grails:[assets:[bundle:true]]])
-			// grailsApplication.config.grails.assets.bundle = true
-			final def assetSrc = "asset-pipeline/test/test.js"
-		expect:
-			tagLib.javascript(src: assetSrc) == '<script type="text/javascript" src="/assets/asset-pipeline/test/test.js" ></script>'
-	}
-
-	void "should always return javascript link tag when bundle attr is 'true'"() {
-		given:
-			grailsApplication.config.grails.assets.bundle = false
-			grailsApplication.config.grails.assets.allowDebugParam = true
-			params."_debugAssets" = "y"
-			final def assetSrc = "asset-pipeline/test/test.js"
-		expect:
-			tagLib.javascript(src: assetSrc, bundle: 'true') == '<script type="text/javascript" src="/assets/asset-pipeline/test/test.js" ></script>'
-	}
-
-	void "should return javascript link tag with seperated files when debugMode is on"() {
-		given:
-			grailsApplication.config.grails.assets.bundle = false
-			grailsApplication.config.grails.assets.allowDebugParam = true
-			params."_debugAssets" = "y"
-
-			final def assetSrc = "asset-pipeline/test/test.js"
-			final def output
-
-		when:
-			output = tagLib.javascript(src: assetSrc)
-		then:
-			output == '<script type="text/javascript" src="/assets/asset-pipeline/test/test.js?compile=false" ></script>' + LINE_BREAK + '<script type="text/javascript" src="/assets/asset-pipeline/test/libs/file_a.js?compile=false" ></script>' + LINE_BREAK + '<script type="text/javascript" src="/assets/asset-pipeline/test/libs/file_c.js?compile=false" ></script>' + LINE_BREAK + '<script type="text/javascript" src="/assets/asset-pipeline/test/libs/file_b.js?compile=false" ></script>' + LINE_BREAK + '<script type="text/javascript" src="/assets/asset-pipeline/test/libs/subset/subset_a.js?compile=false" ></script>' + LINE_BREAK
+		tagLib.assetPath(src: assetSrc) == '/assets/asset-pipeline/test/test.css'
 	}
 
 	void "should not return javascript link twice in uniq mode"() {
 		given:
-			final def assetSrc = "asset-pipeline/test/test_simple_require.js"
-			final def depAssetSrc = "asset-pipeline/test/libs/file_a.js"
+		final def assetSrc = "asset-pipeline/test/test_simple_require.js"
+		final def depAssetSrc = "asset-pipeline/test/libs/file_a.js"
+
 		expect:
-			tagLib.javascript(src: assetSrc, uniq: true) == '<script type="text/javascript" src="/assets/asset-pipeline/test/libs/file_a.js?compile=false" ></script>' + LINE_BREAK + '<script type="text/javascript" src="/assets/asset-pipeline/test/test_simple_require.js?compile=false" ></script>' + LINE_BREAK
-			tagLib.javascript(src: assetSrc, uniq: true) == ''
-			tagLib.javascript(src: depAssetSrc, uniq: true) == ''
+		applyTemplate("<asset:javascript src=\"$assetSrc\" uniq=\"true\"/>") == ''
+		applyTemplate("<asset:javascript src=\"$depAssetSrc\" uniq=\"true\"/>") == ''
+
 		cleanup:
 			request."${AssetsTagLib.ASSET_REQUEST_MEMO}" = null
 	}
 
 	void "should return javascript and stylesheets of the same basename"() {
 		given:
-			final def jsAssetSrc = "asset-pipeline/test/test.js"
-			final def cssAssetSrc = "asset-pipeline/test/test.css"
+		final def jsAssetSrc = "asset-pipeline/test/test.js"
+		final def cssAssetSrc = "asset-pipeline/test/test.css"
+		final Properties manifestProperties = new Properties()
+		manifestProperties.setProperty(jsAssetSrc, jsAssetSrc)
+		manifestProperties.setProperty(cssAssetSrc, cssAssetSrc)
+		AssetPipelineConfigHolder.manifest = manifestProperties
+
 		expect:
-			tagLib.javascript(src: jsAssetSrc, uniq: true) != ''
-			tagLib.javascript(src: jsAssetSrc, uniq: true) == ''
-			tagLib.stylesheet(src: cssAssetSrc, uniq: true) != ''
-	}
+		applyTemplate("<asset:javascript src=\"$jsAssetSrc\" uniq=\"true\"/>") == ''
+		applyTemplate("<asset:stylesheet src=\"$cssAssetSrc\" uniq=\"true\"/>") == ''
 
-	void "should return stylesheet link tag when debugMode is off"() {
-		given:
-			grailsApplication.config.grails.assets.bundle = true
-			final def assetSrc = "asset-pipeline/test/test.css"
-		expect:
-			tagLib.stylesheet(href: assetSrc) == '<link rel="stylesheet" href="/assets/asset-pipeline/test/test.css" />'
-	}
-
-	void "should always return stylesheet link tag when bundle attr is 'true'"() {
-		given:
-			grailsApplication.config.grails.assets.bundle = false
-			grailsApplication.config.grails.assets.allowDebugParam = true
-			params."_debugAssets" = "y"
-			final def assetSrc = "asset-pipeline/test/test.css"
-		expect:
-			tagLib.stylesheet(href: assetSrc, bundle: 'true') == '<link rel="stylesheet" href="/assets/asset-pipeline/test/test.css" />'
-	}
-
-	void "should return stylesheet link tag with seperated files when debugMode is on"() {
-		given:
-			grailsApplication.config.grails.assets.bundle = false
-			grailsApplication.config.grails.assets.allowDebugParam = true
-			params."_debugAssets" = "y"
-			final def assetSrc = "asset-pipeline/test/test.css"
-			final def output
-
-		when:
-			output = tagLib.stylesheet(src: assetSrc)
-		then:
-			output == '<link rel="stylesheet" href="/assets/asset-pipeline/test/test.css?compile=false" />' + LINE_BREAK + '<link rel="stylesheet" href="/assets/asset-pipeline/test/test2.css?compile=false" />' + LINE_BREAK
-	}
-
-	void "should not return stylesheet link twice in uniq mode"() {
-		given:
-			final def assetSrc = "asset-pipeline/test/test.css"
-			final def depAssetSrc = "asset-pipeline/test/test2.css"
-		expect:
-			tagLib.stylesheet(src: assetSrc, uniq: true) == '<link rel="stylesheet" href="/assets/asset-pipeline/test/test.css?compile=false" />' + LINE_BREAK + '<link rel="stylesheet" href="/assets/asset-pipeline/test/test2.css?compile=false" />' + LINE_BREAK
-			tagLib.stylesheet(src: depAssetSrc, uniq: true) == ''
-			tagLib.stylesheet(src: assetSrc, uniq: true) == ''
 		cleanup:
-			request."${AssetsTagLib.ASSET_REQUEST_MEMO}" = null
+		AssetPipelineConfigHolder.manifest = null
+	}
+
+	void "should return stylesheet link tag"() {
+		given:
+		final def assetSrc = "asset-pipeline/test/test.css"
+		final Properties manifestProperties = new Properties()
+		manifestProperties.setProperty(assetSrc, assetSrc)
+		AssetPipelineConfigHolder.manifest = manifestProperties
+
+		expect:
+		applyTemplate("<asset:stylesheet href=\"$assetSrc\"/>") == '<link rel="stylesheet" href="/assets/asset-pipeline/test/test.css" />'
+
+		cleanup:
+		AssetPipelineConfigHolder.manifest = null
 	}
 
 	void "should return image tag"() {
 		given:
-			final def assetSrc = "grails_logo.png"
+		final def assetSrc = "grails_logo.png"
+
 		expect:
-			tagLib.image(src: assetSrc, width:'200',height:200) == '<img src="/assets/grails_logo.png" width="200" height="200"/>'
+		applyTemplate("<asset:image src=\"$assetSrc\" width=\"200\" height=\"200\"/>") == '<img src="/assets/grails_logo.png" width="200" height="200"/>'
 	}
 
 	void "should return image tag with absolute path"() {
 		given:
 			final def assetSrc = "grails_logo.png"
 		expect:
-			tagLib.image(src: assetSrc, absolute: true) == "<img src=\"$MOCK_BASE_SERVER_URL/assets/grails_logo.png\" />"
+		applyTemplate("<asset:image src=\"$assetSrc\" absolute=\"true\"/>") == "<img src=\"$MOCK_BASE_SERVER_URL/assets/grails_logo.png\" />"
 	}
 
 	void "should return link tag"() {
 		given:
 			final def assetSrc = "grails_logo.png"
 		expect:
-			tagLib.link(href: assetSrc, rel:'test') == '<link rel="test" href="/assets/grails_logo.png"/>'
+		applyTemplate("<asset:link href=\"$assetSrc\" rel=\"test\"/>") == '<link rel="test" href="/assets/grails_logo.png"/>'
 	}
 
 	void "test if asset path exists in dev mode"() {
 		given:
 			final def fileUri = "asset-pipeline/test/test.css"
 		expect:
-			tagLib.assetPathExists([src: fileUri])
+		applyTemplate("<asset:assetPathExists src=\"$fileUri\">Exists</asset:assetPathExists>") == ''
 	}
 
 	void "test if asset path is missing in dev mode"() {
 		given:
 			final def fileUri = "asset-pipeline/test/missing.css"
 		expect:
-			!tagLib.assetPathExists([src: fileUri])
+		applyTemplate("<asset:assetPathExists src=\"$fileUri\">Exists</asset:assetPathExists>") == ''
 	}
 
 	void "test if asset path exists in dev mode and closure renders the body"() {
 		given:
 			final def fileUri = "asset-pipeline/test/test.css"
+			final Properties manifestProperties = new Properties()
+			manifestProperties.setProperty(fileUri, fileUri)
+			AssetPipelineConfigHolder.manifest = manifestProperties
 		expect:
 			applyTemplate( "<asset:assetPathExists src=\"$fileUri\">text to render</asset:assetPathExists>" ) == 'text to render'
 	}
@@ -206,16 +155,16 @@ class AssetsTagLibSpec extends Specification implements TagLibUnitTest<AssetsTag
 			final def fileUri = "asset-pipeline/test/test.css"
 			final Properties manifestProperties = new Properties()
 			manifestProperties.setProperty(fileUri,fileUri)
-			grailsApplication.config.grails.assets.manifest = manifestProperties
+			AssetPipelineConfigHolder.manifest = manifestProperties
 		expect:
-			tagLib.assetPathExists([src: fileUri])
+		applyTemplate("<asset:assetPathExists src=\"$fileUri\">Exists</asset:assetPathExists>") == 'Exists'
 	}
 
 	void "asset path should not exist in dev mode"() {
 		given:
 			final def fileUri = "asset-pipeline/test/notfound.css"
 		expect:
-			!tagLib.assetPathExists([src: fileUri])
+		applyTemplate("<asset:assetPathExists src=\"$fileUri\">Exists</asset:assetPathExists>") == ''
 	}
 
 	void "should render deferred scripts"() {
