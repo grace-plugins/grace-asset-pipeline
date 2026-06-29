@@ -2,7 +2,7 @@ name: Grace Doc
 on:
   push:
     branches:
-      - 7.1.x
+      - 7.2.x
     paths:
       - 'asset-pipeline-docs/**'
 jobs:
