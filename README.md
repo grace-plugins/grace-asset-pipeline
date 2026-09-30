@@ -7,8 +7,8 @@
 [![Grace on Gradle](https://img.shields.io/badge/Gradle_Plugin_Portal--blue?style=social&logo=gradle)](https://plugins.gradle.org/u/grace)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
-[![Groovy Version](https://img.shields.io/badge/Groovy-4.0.32-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2024.1.1-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.1.1)
+[![Groovy Version](https://img.shields.io/badge/Groovy-4.0.33-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2024.1.2-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.1.2)
 [![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.5.16-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.5.16)
 
 > [!IMPORTANT]
@@ -17,14 +17,16 @@
 
 ## Overview
 
-The Asset-Pipeline is a plugin used for managing and processing static assets in Grace applications primarily via Gradle. Asset-Pipeline functions include processing and minification of both CSS and JavaScript files.
+The Asset-Pipeline is a plugin used for managing and processing static assets in Grace applications primarily via Gradle.
+
+Asset-Pipeline functions include processing and minification of both CSS and JavaScript files.
 
 **Features:**
 
 * Asset Bundling
-* Css Minification / Relative Path assertion
-* Js Minification
-* Js SourceMap Generation
+* CSS Minification / Relative Path assertion
+* JavaScript Minification
+* JavaScript SourceMap Generation
 * File Encoding Support
 * GZIP File Generation
 * Last-Modified Header
@@ -32,7 +34,7 @@ The Asset-Pipeline is a plugin used for managing and processing static assets in
 
 ## Gradle Usage
 
-If using gradle, this plugin adds a series of tasks directly to your gradle plugin. 
+If using Gradle, this plugin adds a series of tasks directly to your Gradle plugin. 
 
 All you have to do is `apply plugin: 'org.graceframework.asset-pipeline'` after confirming this is in the classpath of your `buildscript` block. i.e.:
 
