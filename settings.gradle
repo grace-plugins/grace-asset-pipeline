@@ -1,6 +1,10 @@
-include 'asset-pipeline-core',
+rootProject.name = "Grace Asset Pipeline"
+
+include (
+        'asset-pipeline-core',
         'asset-pipeline-docs',
         'asset-pipeline-gradle',
         'asset-pipeline-plugin',
         'asset-pipeline-i18n',
         'asset-pipeline-classpath-test'
+)
