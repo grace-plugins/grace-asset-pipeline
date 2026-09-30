@@ -1,3 +1,27 @@
+=== 7.2.0-RC1
+
+link:{github}/releases/tag/v7.2.0-RC1[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.2.0-RC1
+* Update README - Update versions of Grace and Groovy badges - Formating
+* Set the name for Gradle root project 
+* Upgrade babel.min.js to Babel 7 link:{github}/issues/112[#112]
+
+* Add required dependencies for BabelJs processor link:{github}/issues/111[#111]
+* Upgrade Gradle version in sdkmanrc to 8.14.5 link:{github}/issues/108[#108]
+* Upgrade Java version in sdkmanrc to 17.0.20-tem link:{github}/issues/107[#107]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.1.2 link:{github}/issues/109[#109]
+* Upgrade to Groovy 4.0.33 link:{github}/issues/110[#110]
+
+⚙️ Tasks
+
+* Release v7.2.0-RC1
+
 === 7.2.0-M1
 
 link:{github}/releases/tag/v7.2.0-M1[release notes]
