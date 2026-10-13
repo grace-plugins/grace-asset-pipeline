@@ -63,6 +63,14 @@ jar {
     includeEmptyDirs = false
 }
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
+}
+
 publishing {
     publications {
         maven(MavenPublication) {

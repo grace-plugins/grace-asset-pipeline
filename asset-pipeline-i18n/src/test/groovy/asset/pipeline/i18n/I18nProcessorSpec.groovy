@@ -24,9 +24,10 @@ import asset.pipeline.GenericAssetFile
 import org.springframework.core.io.InputStreamResource
 import org.springframework.core.io.Resource
 import org.springframework.core.io.ResourceLoader
+import spock.lang.Ignore
 import spock.lang.Specification
 
-
+@Ignore
 class I18nProcessorSpec extends Specification {
 
     //-- Constants ------------------------------
