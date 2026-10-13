@@ -4,7 +4,7 @@ on:
     types: [closed,reopened]
   push:
     branches:
-      - 7.2.x
+      - 8.0.x
   workflow_dispatch:
 jobs:
   release_notes:
