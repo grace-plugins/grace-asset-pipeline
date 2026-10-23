@@ -9,32 +9,6 @@ plugins {
 group = 'org.graceframework.plugins'
 
 ext.isReleaseVersion = !version.endsWith('SNAPSHOT')
-ext.pomInfo = {
-    delegate.url 'https://github.com/grace-plugins/grace-asset-pipeline'
-
-    delegate.licenses {
-        delegate.license {
-            delegate.name 'The Apache Software License, Version 2.0'
-            delegate.url 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-            delegate.distribution 'repo'
-        }
-    }
-
-    delegate.scm {
-        delegate.url 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
-        delegate.connection 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
-        delegate.developerConnection 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
-    }
-
-    delegate.developers {
-        delegate.developer {
-            delegate.id 'rainboyan'
-            delegate.name 'Michael Yan'
-            delegate.email 'rain@rainboyan.com'
-        }
-    }
-}
-
 
 repositories {
     // mavenLocal()
@@ -101,9 +75,28 @@ project.afterEvaluate {
             }
 
             if (publication.name == "pluginMaven" || publication.name.endsWith("PluginMarkerMaven")) {
-                withXml {
-                    def xml = asNode()
-                    xml.children().last() + pomInfo
+                url = 'https://github.com/grace-plugins/grace-asset-pipeline'
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                scm {
+                    url = 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
+                    connection = 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
+                    developerConnection = 'scm:git@github.com:grace-plugins/grace-asset-pipeline.git'
+                }
+
+                developers {
+                    developer {
+                        id = 'rainboyan'
+                        name = 'Michael Yan'
+                        email = 'rain@rainboyan.com'
+                    }
                 }
             }
         }
