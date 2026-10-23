@@ -7,9 +7,9 @@
 [![Grace on Gradle](https://img.shields.io/badge/Gradle_Plugin_Portal--blue?style=social&logo=gradle)](https://plugins.gradle.org/u/grace)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
-[![Groovy Version](https://img.shields.io/badge/Groovy-4.0.33-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2024.1.2-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.1.2)
-[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.5.16-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.5.16)
+[![Groovy Version](https://img.shields.io/badge/Groovy-5.0.8-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-5.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2025.0.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2025.0.0-M1)
+[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-4.0.8-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v4.0.8)
 
 > [!IMPORTANT]
 > This repository is a fork of [Asset-Pipeline](https://github.com/wondrify/asset-pipeline), only used to support Grace Framework, but it has not been tested for Grails.
@@ -97,6 +97,7 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 
 | Plugin Version | Grace Version |
 |----------------|---------------|
+| 8.0.x          | 2025.0.x      |
 | 7.2.x          | 2024.2.x      |
 | 7.1.x          | 2024.1.x      |
 | 7.0.x          | 2024.0.x      |
@@ -110,7 +111,7 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 
 ## Ducumentation
 
-* [7.2.x](https://plugins.graceframework.org/grace-asset-pipeline/7.2.x/)
+* [8.0.x](https://plugins.graceframework.org/grace-asset-pipeline/8.0.x/)
 
 ## Links
 
