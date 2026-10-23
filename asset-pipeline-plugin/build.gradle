@@ -54,7 +54,7 @@ dependencies {
         exclude group:'com.google.javascript', module:'closure-compiler-unshaded'
     }
     testImplementation("org.graceframework:grace-test-support")
-    testImplementation 'org.spockframework:spock-core:2.4-groovy-4.0'
+    testImplementation 'org.spockframework:spock-core:2.4-groovy-5.0'
 }
 
 bootRun {

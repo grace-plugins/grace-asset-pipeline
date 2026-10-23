@@ -58,7 +58,7 @@ dependencies {
     implementation 'org.graalvm.js:js:23.0.12'
     implementation 'org.graalvm.js:js-scriptengine:23.0.12'
     api 'com.google.javascript:closure-compiler-unshaded:v20240317'
-    testImplementation('org.spockframework:spock-core:2.4-groovy-4.0')
+    testImplementation('org.spockframework:spock-core:2.4-groovy-5.0')
 }
 
 test {
