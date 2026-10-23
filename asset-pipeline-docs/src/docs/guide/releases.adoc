@@ -9,6 +9,9 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 | Plugin Version
 | Grace Version
 
+| link:{github}/tree/8.0.x[8.0.x]
+| 2025.0.x
+
 | link:{github}/tree/7.2.x[7.2.x]
 | 2024.2.x
 
