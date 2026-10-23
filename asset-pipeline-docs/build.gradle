@@ -5,8 +5,8 @@ plugins {
 
 def DOCUMENTATION_GROUP = 'Documentation'
 
-ext['springBootVersion'] = '3.5.14'
-ext['springFrameworkVersion'] = '6.2.18'
+ext['springBootVersion'] = '4.0.8'
+ext['springFrameworkVersion'] = '7.0.9'
 
 repositories {
     mavenCentral()
@@ -59,7 +59,7 @@ tasks.withType(Groovydoc) {
     classpath += configurations.documentation
     link('https://docs.oracle.com/en/java/javase/17/docs/api/java.base/', 'java.', 'jakarta.')
     link("https://docs.groovy-lang.org/docs/groovy-${groovyVersion}/html/gapi/",  'groovy.', 'org.codehaus.groovy.', 'org.apache.groovy.')
-    link('https://docs.spring.io/spring-boot/3.5/api/java',  'org.springframework.boot.')
+    link('https://docs.spring.io/spring-boot/4.0/api/java',  'org.springframework.boot.')
     link("https://docs.spring.io/spring-framework/docs/${springFrameworkVersion}/javadoc-api",  'org.springframework.core.', 'org.springframework.context.', 'org.springframework.beans.')
     link("https://graceframework.org/grace-framework/${graceVersion}/api/", 'grails.web.', 'grails.web.mapping.', 'org.graceframework.')
 }
