@@ -6,7 +6,7 @@ plugins {
 def DOCUMENTATION_GROUP = 'Documentation'
 
 ext['springBootVersion'] = '3.5.16'
-ext['springFrameworkVersion'] = '6.2.18'
+ext['springFrameworkVersion'] = '6.2.19'
 
 repositories {
     mavenCentral()
