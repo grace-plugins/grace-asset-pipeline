@@ -17,7 +17,7 @@ configurations {
 }
 
 dependencies {
-    documentation 'com.github.javaparser:javaparser-core:3.26.4'
+    documentation 'com.github.javaparser:javaparser-core:3.28.2'
     documentation "org.apache.groovy:groovy:$groovyVersion"
     documentation "org.apache.groovy:groovy-ant:$groovyVersion"
     documentation "org.graceframework:grace-web-url-mappings:$graceVersion"
