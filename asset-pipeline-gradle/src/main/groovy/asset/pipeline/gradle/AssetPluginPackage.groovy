@@ -21,10 +21,8 @@ import asset.pipeline.fs.FileSystemAssetResolver
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 import org.gradle.api.DefaultTask
-import org.gradle.api.file.FileTree
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.InputDirectory
-import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
@@ -59,13 +57,6 @@ class AssetPluginPackage extends DefaultTask {
 
     void setDestinationDir(File dir) {
         destinationDirectoryPath = dir.canonicalPath
-    }
-
-    @InputFiles
-    @PathSensitive(PathSensitivity.RELATIVE)
-    FileTree getSource() {
-        FileTree src = getProject().files(this.assetsDir).getAsFileTree()
-        return src
     }
 
     @TaskAction
