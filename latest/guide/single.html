@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-        <title>Grace Asset Pipeline 7.2.0-RC2</title>
+        <title>Grace Asset Pipeline 8.0.0-M2</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
@@ -28,7 +28,7 @@ function addJsClass(el) {
                 <div class="docHeader">
                     <h1 class="docTitle">Grace Asset Pipeline</h1>
                     <h3 class="docSubTitle">The Grace Asset-Pipeling plugin providing asset transpiling to Grace</h3>
-                    <span class="docVersion">7.2.0-RC2</span>
+                    <span class="docVersion">8.0.0-M2</span>
                 </div>
             </div>
             <div class="navLinks">
@@ -74,7 +74,7 @@ function addJsClass(el) {
                         <div class="project">
                             <h1>Grace Asset Pipeline</h1>
                             <p><strong>Authors:</strong> Michael Yan</p>
-                            <p><strong>Version:</strong> 7.2.0-RC2</p>
+                            <p><strong>Version:</strong> 8.0.0-M2</p>
                             
                         </div>
 
@@ -86,9 +86,11 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#releases"><strong>2</strong><span>Release History</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:10px"><a href="#release7"><strong>2.1</strong><span>What's new in 7.x</span></a></div>
+                            <div class="toc-item" style="margin-left:10px"><a href="#release8"><strong>2.1</strong><span>What's new in 8.x</span></a></div>
                             
-                            <div class="toc-item" style="margin-left:10px"><a href="#release6"><strong>2.2</strong><span>What's new in 6.x</span></a></div>
+                            <div class="toc-item" style="margin-left:10px"><a href="#release7"><strong>2.2</strong><span>What's new in 7.x</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#release6"><strong>2.3</strong><span>What's new in 6.x</span></a></div>
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#concepts"><strong>3</strong><span>Concepts</span></a></div>
                             
@@ -211,6 +213,10 @@ Since Grails does not currently support Spring Boot 3.0+, this plugin does not s
 <td class="tableblock halign-left valign-top"><p class="tableblock">Grace Version</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/grace-plugins/grace-asset-pipeline/tree/8.0.x">8.0.x</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2025.0.x</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/grace-plugins/grace-asset-pipeline/tree/7.2.x">7.2.x</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2024.2.x</p></td>
 </tr>
@@ -256,7 +262,137 @@ Since Grails does not currently support Spring Boot 3.0+, this plugin does not s
 </div>
 
 
-<h2 id="release7"><a class="anchor" href="#release7"></a>2.1 What's new in 7.x</h2>
+<h2 id="release8"><a class="anchor" href="#release8"></a>2.1 What's new in 8.x</h2>
+
+
+<div class="sect2">
+<h3 id="_8_0_0_m1">8.0.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v8.0.0-M2">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add release notes for 8.0.0-M2</p>
+</li>
+<li>
+<p>Update README</p>
+</li>
+<li>
+<p>Remove unused AssetPluginPackage.getSource() <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/128">#128</a></p>
+</li>
+<li>
+<p>Upgrade Gradle version in sdkmanrc to 9.8.2</p>
+</li>
+<li>
+<p>Enable Gradle Configuration Cache <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/117">#117</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Graal JavaScript Engine 23.0.14 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/119">#119</a></p>
+</li>
+<li>
+<p>Upgrade to Graal SDK 23.0.14 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/118">#118</a></p>
+</li>
+<li>
+<p>Upgrade to Graal Truffle API 23.0.14 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/125">#125</a></p>
+</li>
+<li>
+<p>Upgrade to Grace 2024.1.4 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/124">#124</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 9.8.2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/129">#129</a></p>
+</li>
+<li>
+<p>Upgrade to JavaParser 3.28.2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/126">#126</a></p>
+</li>
+<li>
+<p>Upgrade to Rhino 1.9.2 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/120">#120</a></p>
+</li>
+<li>
+<p>Upgrade to SLF4J 2.0.20 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/121">#121</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_0_0_m1_2">8.0.0-M1</h3>
+<div class="paragraph">
+<p><a href="https://github.com/grace-plugins/grace-asset-pipeline/releases/tag/v8.0.0-M1">release notes</a></p>
+</div>
+<div class="paragraph">
+<p>🛠 Improvements</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add release notes for 8.0.0-M1</p>
+</li>
+<li>
+<p>Update README - Update badge versions of Grace, Groovy and Spring Boot</p>
+</li>
+<li>
+<p>Update dependencies for docs</p>
+</li>
+<li>
+<p>Update GitHub workflows - Just build</p>
+</li>
+<li>
+<p>Ignore failed tests</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>🚀 Dependency Upgrades</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Upgrade to Grace 2025.0.0-M1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/115">#115</a></p>
+</li>
+<li>
+<p>Upgrade to Gradle 9.8.1 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/114">#114</a></p>
+</li>
+<li>
+<p>Upgrade to Groovy 5.0.8 <a href="https://github.com/grace-plugins/grace-asset-pipeline/issues/116">#116</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>⚙️ Tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Release v8.0.0-M1</p>
+</li>
+<li>
+<p>Upgrade to gradle/actions/setup-gradle@v6.4.0</p>
+</li>
+<li>
+<p>Upgrade to actions/setup-java@v6</p>
+</li>
+<li>
+<p>Update GitHub workflows - Switch to '8.0.x'</p>
+</li>
+<li>
+<p>Bump version: 8.0.0-SNAPSHOT</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+<h2 id="release7"><a class="anchor" href="#release7"></a>2.2 What's new in 7.x</h2>
 
 
 <div class="sect2">
@@ -863,7 +999,7 @@ Since Grails does not currently support Spring Boot 3.0+, this plugin does not s
 </div>
 
 
-<h2 id="release6"><a class="anchor" href="#release6"></a>2.2 What's new in 6.x</h2>
+<h2 id="release6"><a class="anchor" href="#release6"></a>2.3 What's new in 6.x</h2>
 
 
 <div class="sect2">
@@ -2110,7 +2246,7 @@ Asset-Pipelines build classes are not directly dependent on Gradle and can be ea
         }
     }
     dependencies {
-        classpath "org.graceframework.plugins:asset-pipeline-gradle:7.2.0-RC2"
+        classpath "org.graceframework.plugins:asset-pipeline-gradle:8.0.0-M2"
     }
 }
 
@@ -2125,7 +2261,7 @@ apply plugin: "org.graceframework.asset-pipeline"</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">//Gradle 2.1+
 plugins {
-    id "org.graceframework.asset-pipeline" version "7.2.0-RC2"
+    id "org.graceframework.asset-pipeline" version "8.0.0-M2"
 }</code></pre>
 </div>
 </div>
@@ -2327,7 +2463,7 @@ If a library is simply a webjar or asset library, these packages are not needed 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    implementation 'org.graceframework.plugins:asset-pipeline-plugin:7.2.0-RC2'
+    implementation 'org.graceframework.plugins:asset-pipeline-plugin:8.0.0-M2'
 }</code></pre>
 </div>
 </div>
