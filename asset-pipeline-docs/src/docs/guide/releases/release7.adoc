@@ -1,3 +1,22 @@
+=== 7.2.0
+
+link:{github}/releases/tag/v7.2.0[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.2.0
+* Disable warnings from GraalJS link:{github}/issues/134[#134]
+
+🚀 Dependency Upgrades
+
+* Upgrade to Graal JS 24.2.2 link:{github}/issues/131[#131]
+* Upgrade to Graal SDK 24.2.2 link:{github}/issues/130[#130]
+* Upgrade to Gradle 8.14.7 link:{github}/issues/136[#136]
+
+⚙️ Tasks
+
+* Release v7.2.0
+
 === 7.2.0-RC2
 
 link:{github}/releases/tag/v7.2.0-RC2[release notes]
