@@ -38,6 +38,7 @@ subprojects { project ->
         }
 
         tasks.withType(Sign) {
+            notCompatibleWithConfigurationCache("Not worth caching")
             onlyIf { isReleaseVersion }
         }
     }
