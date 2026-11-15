@@ -48,8 +48,9 @@ class BabelJsProcessor extends AbstractProcessor {
         if (!context) {
             synchronized ($LOCK) {
                 if (!context) {
+                    System.setProperty('polyglotimpl.AttachLibraryFailureAction', 'ignore')
                     def babelJsResource = classLoader.getResource('asset/pipeline/babel.min.js')
-                    context = Context.newBuilder().allowExperimentalOptions(true).allowHostAccess(
+                    context = Context.newBuilder().option('engine.WarnInterpreterOnly', 'false').allowExperimentalOptions(true).allowHostAccess(
                             HostAccess.newBuilder().allowListAccess(true).allowMapAccess(true).allowArrayAccess(true).build()).build()
 
                     context.eval("js", babelJsResource.getText('UTF-8'))
