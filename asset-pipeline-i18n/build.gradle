@@ -4,20 +4,19 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
     }
-    dependencies {
-        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-    }
+}
+
+plugins {
+    id 'groovy'
+    id 'java-library'
+    id 'signing'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'org.graceframework.grace-plugin' version "$graceVersion"
 }
 
 group = "org.graceframework.plugins"
-
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'groovy'
-apply plugin: 'java-library'
-apply plugin: "org.graceframework.grace-plugin"
-apply plugin: 'maven-publish'
-apply plugin: 'signing'
 
 ext {
     isReleaseVersion = !version.endsWith('SNAPSHOT')
@@ -30,6 +29,7 @@ repositories {
 
 dependencies {
     compileOnly "org.graceframework:grace-boot"
+    compileOnly "org.slf4j:slf4j-simple:2.0.20"
     implementation "org.graceframework:grace-web"
     implementation "org.graceframework:grace-plugin-taglibs"
     implementation project(':asset-pipeline-core'), {

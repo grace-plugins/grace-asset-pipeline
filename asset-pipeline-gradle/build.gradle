@@ -19,15 +19,16 @@ dependencies {
     api gradleApi()
     api localGroovy()
 
-    api project(':asset-pipeline-core')
-    implementation platform('org.graalvm.polyglot:js-community:24.2.2')
-    implementation 'org.graalvm.polyglot:polyglot:24.2.2'
-    implementation 'org.graalvm.js:js-language:24.2.2'
-    implementation 'org.graalvm.js:js-scriptengine:24.2.2'
-    implementation 'org.graalvm.truffle:truffle-api:24.2.2'
-    implementation 'org.graalvm.truffle:truffle-runtime:24.2.2'
-    api 'com.google.javascript:closure-compiler-unshaded:v20240317'
-    testImplementation('org.spockframework:spock-core:2.4-groovy-5.0')
+    api project(":asset-pipeline-core")
+    implementation platform("org.graalvm.polyglot:js-community:24.2.2")
+    implementation "org.graalvm.polyglot:polyglot:24.2.2"
+    implementation "org.graalvm.js:js-language:24.2.2"
+    implementation "org.graalvm.js:js-scriptengine:24.2.2"
+    implementation "org.graalvm.truffle:truffle-api:24.2.2"
+    implementation "org.graalvm.truffle:truffle-runtime:24.2.2"
+    api "com.google.javascript:closure-compiler-unshaded:v20240317"
+    compileOnly "org.slf4j:slf4j-simple:2.0.20"
+    testImplementation "org.spockframework:spock-core:2.4-groovy-5.0"
 }
 
 java {

@@ -1,16 +1,10 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-    }
+plugins {
+    id 'groovy'
+    id 'java-library'
+    id 'signing'
+    id 'idea'
+    id 'maven-publish'
 }
-
-apply plugin: 'java-library'
-apply plugin: 'groovy'
-apply plugin: 'maven-publish'
-apply plugin: 'idea'
-apply plugin: 'signing'
 
 group = 'org.graceframework.plugins'
 
@@ -18,19 +12,6 @@ ext.isReleaseVersion = !version.endsWith('SNAPSHOT')
 
 repositories {
     mavenCentral()
-}
-
-configurations {
-    provided
-    doc.extendsFrom(runtime)
-}
-
-sourceSets {
-    main {
-        compileClasspath += configurations.provided
-        groovy.srcDirs   += ['src/main/java']
-        java.srcDirs      = []
-    }
 }
 
 java {
@@ -55,36 +36,24 @@ jar {
     }
 }
 
-groovydoc {
-    docTitle = "Asset Pipeline Core"
-    windowTitle = "Asset Pipeline For the JVM API Doc"
-    groovyClasspath = configurations.doc
-    classpath = configurations.runtime
-    // Links to external Javadoc, currently only the J2SE links are working properly 
-      link('http://download.oracle.com/javase/8/docs/api/', 'java.', 'org.xml', 'javax.', 'org.xml.') 
-      link('http://groovy.codehaus.org/api/',  'groovy.', 'org.codehaus.groovy.') 
-}
-
 dependencies {
-    compileOnly    "org.apache.groovy:groovy:$groovyVersion"
-    compileOnly    "org.apache.groovy:groovy-json:$groovyVersion"
-    compileOnly    "org.apache.groovy:groovy-templates:$groovyVersion"
+    compileOnly "org.apache.groovy:groovy:$groovyVersion"
+    compileOnly "org.apache.groovy:groovy-json:$groovyVersion"
+    compileOnly "org.apache.groovy:groovy-templates:$groovyVersion"
     // See gh-75: NoSuchMethodError
     compileOnly gradleApi()
-    doc         "org.apache.groovy:groovy-all:$groovyVersion"
-    doc         'org.fusesource.jansi:jansi:1.18'
-    api     'org.mozilla:rhino:1.9.2'
-    api("org.graalvm.sdk:graal-sdk:24.2.2")
-    compileOnly("org.graalvm.js:js:24.2.2")
-    compileOnly("org.graalvm.js:js-scriptengine:24.2.2")
-
-    compileOnly     'com.google.javascript:closure-compiler-unshaded:v20240317'
+    api 'org.mozilla:rhino:1.9.2'
+    api "org.graalvm.sdk:graal-sdk:24.2.2"
+    compileOnly "org.graalvm.js:js:24.2.2"
+    compileOnly "org.graalvm.js:js-scriptengine:24.2.2"
+    compileOnly "com.google.javascript:closure-compiler-unshaded:v20240317"
+    compileOnly "org.slf4j:slf4j-simple:2.0.20"
     api 'org.slf4j:slf4j-api:2.0.20'
     testImplementation project(':asset-pipeline-classpath-test')
     testImplementation "org.apache.groovy:groovy-all:$groovyVersion"
-    testImplementation 'org.spockframework:spock-core:2.4-groovy-5.0'
+    testImplementation "org.spockframework:spock-core:2.4-groovy-5.0"
     testImplementation "org.graalvm.js:js:24.2.2"
-    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.20'
+    testRuntimeOnly "org.slf4j:slf4j-simple:2.0.20"
 }
 
 publishing {
