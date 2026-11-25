@@ -41,6 +41,20 @@ java {
     withJavadocJar()
 }
 
+jar {
+    manifest.attributes["Implementation-Title"] = project.name
+    manifest.attributes["Implementation-Version"] = project.version
+    manifest.attributes["Automatic-Module-Name"] = project.name.replace('-', '.')
+    manifest.attributes["Created-By"] =
+            "${System.getProperty("java.version")} (${System.getProperty("java.specification.vendor")})"
+
+    from("${rootProject.projectDir}/src/main/resources/legal") {
+        include "LICENSE.txt", "NOTICE.txt"
+        into "META-INF"
+        expand(copyright: new Date().format("yyyy"), version: project.version)
+    }
+}
+
 groovydoc {
     docTitle = "Asset Pipeline Core"
     windowTitle = "Asset Pipeline For the JVM API Doc"
