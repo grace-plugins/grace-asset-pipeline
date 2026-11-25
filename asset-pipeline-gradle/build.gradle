@@ -15,14 +15,6 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-    withSourcesJar()
-    withJavadocJar()
-}
-
 dependencies {
     api gradleApi()
     api localGroovy()
@@ -36,6 +28,28 @@ dependencies {
     implementation 'org.graalvm.truffle:truffle-runtime:24.2.2'
     api 'com.google.javascript:closure-compiler-unshaded:v20240317'
     testImplementation('org.spockframework:spock-core:2.4-groovy-5.0')
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+jar {
+    manifest.attributes["Implementation-Title"] = project.name
+    manifest.attributes["Implementation-Version"] = project.version
+    manifest.attributes["Automatic-Module-Name"] = project.name.replace('-', '.')
+    manifest.attributes["Created-By"] =
+            "${System.getProperty("java.version")} (${System.getProperty("java.specification.vendor")})"
+
+    from("${rootProject.projectDir}/src/main/resources/legal") {
+        include "LICENSE.txt", "NOTICE.txt"
+        into "META-INF"
+        expand(copyright: new Date().format("yyyy"), version: project.version)
+    }
 }
 
 test {
