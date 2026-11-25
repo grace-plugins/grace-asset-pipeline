@@ -4,21 +4,20 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
     }
-    dependencies {
-        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-    }
+}
+
+plugins {
+    id 'groovy'
+    id 'java-library'
+    id 'signing'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'org.graceframework.grace-plugin' version "$graceVersion"
+    id 'org.graceframework.grace-gsp' version "$graceVersion"
 }
 
 group = "org.graceframework.plugins"
-
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'groovy'
-apply plugin: 'java-library'
-apply plugin: "org.graceframework.grace-plugin"
-apply plugin: "org.graceframework.grace-gsp"
-apply plugin: 'maven-publish'
-apply plugin: 'signing'
 
 ext {
     isReleaseVersion = !version.endsWith('SNAPSHOT')
@@ -30,23 +29,23 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.springframework.boot:spring-boot-starter-logging'
     compileOnly "org.springframework.boot:spring-boot-starter-actuator"
-    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
-    compileOnly "org.springframework.boot:spring-boot-starter-tomcat"
+    compileOnly "org.springframework.boot:spring-boot-starter-logging"
+    compileOnly "org.springframework.boot:spring-boot-starter-web"
     api "org.springframework.boot:spring-boot-autoconfigure"
     annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     compileOnly "org.graceframework:grace-boot"
+    compileOnly "org.slf4j:slf4j-simple:2.0.20"
     implementation "org.graceframework:grace-plugin-taglibs"
     implementation "org.graceframework:grace-web-url-mappings"
     implementation "com.github.ben-manes.caffeine:caffeine"
-    implementation project(':asset-pipeline-core'), {
-        exclude group:'org.mozilla', module:'rhino'
-        exclude group:'com.google.javascript', module:'closure-compiler-unshaded'
+    implementation project(":asset-pipeline-core"), {
+        exclude group: "org.mozilla", module: "rhino"
+        exclude group: "com.google.javascript", module: "closure-compiler-unshaded"
     }
-    testImplementation("org.graceframework:grace-test-support")
-    testImplementation 'org.spockframework:spock-core:2.4-groovy-4.0'
+    testImplementation "org.graceframework:grace-test-support"
+    testImplementation "org.spockframework:spock-core:2.4-groovy-4.0"
 }
 
 bootRun {
@@ -97,9 +96,10 @@ publishing {
     publications {
         maven(MavenPublication) {
             artifactId = 'asset-pipeline-plugin'
-            artifact source: "${project.sourceSets.main.groovy.classesDirectory.get()}/META-INF/grails-plugin.xml",
-                classifier: "plugin",
-                extension: 'xml'
+
+            artifact source: layout.buildDirectory.file('classes/groovy/main/META-INF/grails-plugin.xml').get().asFile,
+                    classifier: 'plugin',
+                    extension: 'xml'
 
             pom {
                 name = 'Grace Asset Pipeline Plugin'
